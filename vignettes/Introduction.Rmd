@@ -104,12 +104,12 @@ ps.filter.by.tax.names <- filterTaxaByNames(FuentesIliGutData,
 ```{r}
 library(biomeUtils)
 data("FuentesIliGutData")
-ps1 <- subset_samples(FuentesIliGutData, ILI == "C")
-ps1 <- prune_taxa(taxa_sums(ps1) > 0, ps1)
-ps2 <- subset_samples(FuentesIliGutData, ILI == "L1")
-ps2 <- prune_taxa(taxa_sums(ps2) > 0, ps2)
-ps3 <- subset_samples(FuentesIliGutData, ILI == "L2")
-ps3 <- prune_taxa(taxa_sums(ps3) > 0, ps3)
+ps1 <- filterSampleData(FuentesIliGutData, ILI == "C")
+
+ps2 <- filterSampleData(FuentesIliGutData, ILI == "L1")
+
+ps3 <- filterSampleData(FuentesIliGutData, ILI == "L2")
+
 
 ps.list <- c("C" = ps1, "L1" = ps2, "L2" = ps3)
 
@@ -124,8 +124,7 @@ comparePhyloseq(ps.list)
 library(biomeUtils)
 data("FuentesIliGutData")
 # reduce size for example
-ps1 <- subset_samples(FuentesIliGutData, ILI == "C")
-ps1 <- prune_taxa(taxa_sums(ps1) > 0, ps1)
+ps1 <- filterSampleData(FuentesIliGutData, ILI == "C")
 
 meta_tib <- calculatePD(ps1, justDF=TRUE)
 # check
@@ -148,18 +147,13 @@ head(prev_tib)
 
 ```{r}
 library(biomeUtils)
-library(dplyr)
+
 data("FuentesIliGutData")
 # Keep only two groups
-ps1 <- subset_samples(FuentesIliGutData, ILI != "L2")
-
-ps1 <- prune_taxa(taxa_sums(ps1) > 0, ps1)
+ps1 <- filterSampleData(FuentesIliGutData, ILI != "L2")
 
 taxa_fd <- calculateTaxaFoldDifference(ps1, group="ILI")
 # check
-taxa_fd <- taxa_fd %>% select(Family, Genus,FoldDifference,
-                              FeatureID,Prevalence.C,Prevalence.L1)
-
 head(taxa_fd)
 ```
 

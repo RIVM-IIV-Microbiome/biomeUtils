@@ -16,16 +16,16 @@ buildSeqTree(
 \arguments{
 \item{x}{Sequences DNAStringSet}
 
-\item{pml_model}{See optim.pml \code{\link[phangorn]{pml.control}}}
+\item{pml_model}{See optim.pml \code{phangorn}}
 
-\item{pml_optInv}{See optim.pml \code{\link[phangorn]{pml.control}}}
+\item{pml_optInv}{See optim.pml \code{phangorn}}
 
-\item{pml_optGamma}{See optim.pml \code{\link[phangorn]{pml.control}}}
+\item{pml_optGamma}{See optim.pml \code{phangorn}}
 
-\item{pml_rearrangement}{See optim.pml \code{\link[phangorn]{pml.control}}
+\item{pml_rearrangement}{See optim.pml \code{phangorn}
 #'}
 
-\item{pml_control}{See optim.pml \code{\link[phangorn]{pml.control}}}
+\item{pml_control}{See optim.pml \code{phangorn}}
 }
 \description{
 Build a phylogenetic tree
