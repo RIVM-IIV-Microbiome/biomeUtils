@@ -3,6 +3,10 @@
 ^data-raw$
 ^LICENSE\.md$
 ^_pkgdown\.yml$
+_pkgdown.yml
 ^docs$
 ^pkgdown$
 ^.github
+README.Rmd
+.github
+^\.github$

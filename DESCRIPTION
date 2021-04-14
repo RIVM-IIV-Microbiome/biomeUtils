@@ -35,9 +35,10 @@ Imports:
    rlang,
    tibble,
    tidyr
-RoxygenNote: 7.1.1
 Suggests: 
     testthat,
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+RoxygenNote: 7.1.1
+BugReports: https://github.com/RIVM-IIV-Microbiome/biomeUtils/issues
