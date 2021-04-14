@@ -1,0 +1,170 @@
+---
+title: "Introduction"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# biomeUtils  
+
+`biomeUtils` is part of the RIVM-ToolBox project aimed at providing standard set of tools that interact with open tools for a wide array of data analytics, including microbiomics. The RIVM-ToolBox is a set of individual R tools focused towards different goals/functionalities.  
+
+* Data handling  
+    Outputs for standard data generating pipelines/workflows.  
+  
+* Data analytics  
+    Common data analytics including basic statistics.  
+  
+* Data visualization  
+    Data visualization of different data types.  
+
+## Setup  
+
+### Install  
+
+```{r install, eval=FALSE}
+devtools::install_github("microsud/biomUtils")
+```
+
+### Load pkg  
+```{r setup}
+library(biomeUtils)
+```
+
+## Data handling    
+
+### Data  
+
+```{r}
+data("FuentesIliGutData")
+FuentesIliGutData
+```
+
+### Get tibbles  
+
+```{r}
+data("FuentesIliGutData")
+# get otu table in tibble format
+otu_tib <- getAbundanceTibble(FuentesIliGutData,
+                              select_rows = c("ASV302", "ASV82", "ASV410", "ASV2332"),
+                              select_cols = c("sample_1", "sample_5", "sample_6"),
+                              column_id = "FeatureID")
+
+# get taxa table in tibble format
+tax_tib <- getTaxaTibble(FuentesIliGutData,
+                         select_rows = c("ASV302", "ASV82", "ASV410", "ASV2332"),
+                         select_cols = c("Phylum", "Genus"),
+                         column_id = "FeatureID")
+
+# get sample data in tibble format
+meta_tib <- getSampleTibble(FuentesIliGutData,
+                            select_rows = c("sample_1", "sample_5", "sample_6"),
+                            select_cols = c("participant_id", "ILI", "age"),
+                            column_id = "FeatureID")
+```
+
+### Subset/Filter phyloseq  
+
+```{r}
+
+# Filter by phyloseq like subset_*
+ps.filtered.samples  <- filterSampleData(FuentesIliGutData,
+                                         ILI == "C" & BMI < 26)
+ps.filtered.samples
+
+ps.filtered.taxa  <- filterTaxaData(FuentesIliGutData,
+                                    Phylum=="Firmicutes")
+
+ps.filtered.taxa
+
+# Filter by names like prune_*
+sams.select <- sample_names(FuentesIliGutData)[1:10]
+ps.filter.by.sam.names <- filterSampleByNames(FuentesIliGutData,
+                                               ids = sams.select,
+                                               keep = TRUE)
+
+tax.select <- taxa_names(FuentesIliGutData)[1:10]
+ps.filter.by.tax.names <- filterTaxaByNames(FuentesIliGutData,
+                                           ids = tax.select,
+                                           keep = TRUE)
+```
+
+
+### Compare phyloseqs  
+
+```{r}
+library(biomeUtils)
+data("FuentesIliGutData")
+ps1 <- subset_samples(FuentesIliGutData, ILI == "C")
+ps1 <- prune_taxa(taxa_sums(ps1) > 0, ps1)
+ps2 <- subset_samples(FuentesIliGutData, ILI == "L1")
+ps2 <- prune_taxa(taxa_sums(ps2) > 0, ps2)
+ps3 <- subset_samples(FuentesIliGutData, ILI == "L2")
+ps3 <- prune_taxa(taxa_sums(ps3) > 0, ps3)
+
+ps.list <- c("C" = ps1, "L1" = ps2, "L2" = ps3)
+
+comparePhyloseq(ps.list)
+```
+
+## Calculations  
+
+### Phylogenetic diversity  
+
+```{r}
+library(biomeUtils)
+data("FuentesIliGutData")
+# reduce size for example
+ps1 <- subset_samples(FuentesIliGutData, ILI == "C")
+ps1 <- prune_taxa(taxa_sums(ps1) > 0, ps1)
+
+meta_tib <- calculatePD(ps1, justDF=TRUE)
+# check
+meta_tib[c(1,2,3),c("PD", "SR")]
+```
+
+### Prevalence  
+
+```{r}
+
+data("FuentesIliGutData")
+prev_tib <- getPrevalence(FuentesIliGutData,
+                          return_rank= c("Family", "Genus"),
+                          return_taxa = c("ASV4", "ASV17" , "ASV85", "ASV83"),
+                          sort=TRUE)
+head(prev_tib)
+```
+
+### Fold Difference   
+
+```{r}
+library(biomeUtils)
+library(dplyr)
+data("FuentesIliGutData")
+# Keep only two groups
+ps1 <- subset_samples(FuentesIliGutData, ILI != "L2")
+
+ps1 <- prune_taxa(taxa_sums(ps1) > 0, ps1)
+
+taxa_fd <- calculateTaxaFoldDifference(ps1, group="ILI")
+# check
+taxa_fd <- taxa_fd %>% select(Family, Genus,FoldDifference,
+                              FeatureID,Prevalence.C,Prevalence.L1)
+
+head(taxa_fd)
+```
+
+
+```{r}
+sessionInfo()
+```
+

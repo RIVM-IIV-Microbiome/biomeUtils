@@ -1,0 +1,43 @@
+Package: biomeUtils
+Type: Package
+Title: Utilities for microbiome analytics
+Version: 0.0.06
+Authors@R: 
+    c(person(given = "Sudarshan", family = "Shetty", role = c("aut", "cre"),
+             email = "sudarshanshetty9@gmail.com",
+             comment = c(ORCID = "0000-0001-7280-9915")),
+      person(given = "Person", family = "Person", role = c("aut")),
+      person(given = "Person", family = "Person", role = c("aut"),
+             email = "Person@rivm.nl")
+	     )
+Maintainer: Sudarshan Shetty <sudarshanshetty9@gmail.com>
+Description: `biomeUtils` is part of the RIVM-Microbiome-Toolbox.
+              Basic data parsing, data handling of outputs from pipelines processing 
+              amplicon and -omics data.  
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Depends: 
+    R (>= 3.6.0),
+    phyloseq,
+    microbiome
+Imports: 
+   Biobase,
+   Biostrings,
+   data.table,
+   DECIPHER,
+   dplyr,
+   ggplot2,
+   magrittr,
+   methods,
+   phangorn,
+   picante,
+   rlang,
+   tibble,
+   tidyr
+RoxygenNote: 7.1.1
+Suggests: 
+    testthat,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
