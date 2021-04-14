@@ -6,8 +6,9 @@
 *~
 inst/extras/*.rds
 inst/extras/*.R
-data-raw
-
+data-raw/*.R
+data-raw/*.pdf
+data-raw/*.rds
 # Never put this in version control
 OAtoken
 *.R
