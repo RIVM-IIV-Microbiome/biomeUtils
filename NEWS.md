@@ -1,4 +1,9 @@
 
+## biomeUtils 0.0.07
+
+* Added `getPrevalence` fix.
+* Vignette addition pipes.
+
 ## biomeUtils 0.0.06
 
 * Added `getPhyloseqSlots` functions.

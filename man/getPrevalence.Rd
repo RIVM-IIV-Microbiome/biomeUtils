@@ -7,7 +7,7 @@
 getPrevalence(
   x,
   return_rank = rank_names(x),
-  return_taxa = NULL,
+  return_taxa = taxa_names(x),
   sort = TRUE,
   ...
 )

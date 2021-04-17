@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">biomeUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.06</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.07</span>
       </span>
     </div>
 
@@ -62,7 +62,14 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+  <a href="https://github.com/RIVM-IIV-Microbiome/biomeUtils/">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -78,7 +85,7 @@
       <h1 data-toc-skip>Introduction</h1>
             
       
-      
+      <small class="dont-index">Source: <a href="https://github.com/RIVM-IIV-Microbiome/biomeUtils/blob/master/vignettes/Introduction.Rmd"><code>vignettes/Introduction.Rmd</code></a></small>
       <div class="hidden name"><code>Introduction.Rmd</code></div>
 
     </div>
@@ -90,11 +97,11 @@
 <a href="#biomeutils" class="anchor"></a>biomeUtils</h1>
 <p><code>biomeUtils</code> is part of the RIVM-ToolBox project aimed at providing standard set of tools that interact with open tools for a wide array of data analytics, including microbiomics. The RIVM-ToolBox is a set of individual R tools focused towards different goals/functionalities.</p>
 <ul>
-<li><p>Data handling<br>
+<li><p><code>biomeUtils</code> : Data handling<br>
 Outputs for standard data generating pipelines/workflows.</p></li>
-<li><p>Data analytics<br>
+<li><p><code>biomeStats</code>: Data analytics<br>
 Common data analytics including basic statistics.</p></li>
-<li><p>Data visualization<br>
+<li><p><code>biomeViz</code>: Data visualization<br>
 Data visualization of different data types.</p></li>
 </ul>
 <div id="setup" class="section level2">
@@ -306,7 +313,45 @@ Data visualization of different data types.</p></li>
 <span class="co">#&gt; 4    0.9945652     0.9624413        C</span>
 <span class="co">#&gt; 5    0.2336957     0.1784038        C</span>
 <span class="co">#&gt; 6    0.3206522     0.3192488        C</span></pre></div>
+</div>
+</div>
+</div>
+<div id="pipeing-steps" class="section level1">
+<h1 class="hasAnchor">
+<a href="#pipeing-steps" class="anchor"></a>Pipe’ing’ steps</h1>
+<p>Read <code><a href="https://rdrr.io/pkg/magrittr/man/pipe.html">%&gt;%</a></code> as <code>and then</code></p>
 <div class="sourceCode" id="cb10"><pre class="downlit">
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">biomeUtils</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span> <span class="co"># pipe function</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Attaching package: 'dplyr'</span>
+<span class="co">#&gt; The following objects are masked from 'package:stats':</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     filter, lag</span>
+<span class="co">#&gt; The following objects are masked from 'package:base':</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     intersect, setdiff, setequal, union</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"FuentesIliGutData"</span><span class="op">)</span>
+<span class="va">FuentesIliGutData</span> <span class="op">%&gt;%</span> <span class="co"># Take FuentesIliGutData phyloseq object and then</span>
+  <span class="fu"><a href="../reference/uniteGenusSpeciesNames.html">uniteGenusSpeciesNames</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># join genus and species columns and then</span>
+  <span class="fu"><a href="../reference/filterPhyloseq.html">filterSampleData</a></span><span class="op">(</span><span class="va">ILI</span> <span class="op">!=</span> <span class="st">"L1"</span> <span class="op">&amp;</span> <span class="va">BMI</span> <span class="op">&lt;</span> <span class="fl">30</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># Remove 'L1' group and keep those with BMI less than 30 and then</span>
+  <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/transform.html">transform</a></span><span class="op">(</span><span class="va">.</span>, <span class="st">"compositional"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># convert to compositional and then</span>
+  <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/core.html">core</a></span><span class="op">(</span><span class="va">.</span>, <span class="fl">0.0001</span>, <span class="fl">0.01</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># select ASVs with 0.0001 in at least 1% samples and then</span>
+  <span class="fu"><a href="../reference/calculateTaxaFoldDifference.html">calculateTaxaFoldDifference</a></span><span class="op">(</span>group<span class="op">=</span><span class="st">"ILI"</span><span class="op">)</span>  <span class="op">%&gt;%</span> <span class="co"># calculate foldchange and then </span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">FoldDifference</span><span class="op">)</span> <span class="op">&gt;=</span> <span class="fl">0.5</span> <span class="op">&amp;</span> <span class="co"># select major fold change ASVs and then plot </span>
+           <span class="va">Prevalence.C</span> <span class="op">!=</span> <span class="fl">0</span> <span class="op">&amp;</span>  <span class="co"># Remove ASVs not detected in Controls  </span>
+           <span class="va">Prevalence.L2</span> <span class="op">!=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># Remove ASVs not detected in L2 </span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">FoldDifference</span>, <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html">reorder</a></span><span class="op">(</span><span class="va">FeatureID</span> ,<span class="va">FoldDifference</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill<span class="op">=</span><span class="va">Enriched</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"ASVs"</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span> C <span class="op">=</span> <span class="st">"steelblue"</span>, L2 <span class="op">=</span> <span class="st">"brown3"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; Joining, by = "Taxa"</span>
+<span class="co">#&gt; Joining, by = "Taxa"</span>
+<span class="co">#&gt; Joining, by = c("Taxa", "Domain", "Phylum", "Class", "Order", "Family", "Genus", "Species")</span></pre></div>
+<p><img src="Introduction_files/figure-html/unnamed-chunk-9-1.png" width="900"></p>
+<div class="sourceCode" id="cb11"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; R version 4.0.3 (2020-10-10)</span>
 <span class="co">#&gt; Platform: x86_64-w64-mingw32/x64 (64-bit)</span>
@@ -323,7 +368,8 @@ Data visualization of different data types.</p></li>
 <span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; other attached packages:</span>
-<span class="co">#&gt; [1] biomeUtils_0.0.06 microbiome_1.11.2 ggplot2_3.3.2     phyloseq_1.33.0  </span>
+<span class="co">#&gt; [1] dplyr_1.0.2       biomeUtils_0.0.06 microbiome_1.11.2 ggplot2_3.3.2    </span>
+<span class="co">#&gt; [5] phyloseq_1.33.0  </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; loaded via a namespace (and not attached):</span>
 <span class="co">#&gt;  [1] Biobase_2.50.0      tidyr_1.1.2         bit64_4.0.5        </span>
@@ -336,28 +382,27 @@ Data visualization of different data types.</p></li>
 <span class="co">#&gt; [22] htmltools_0.5.1.1   Matrix_1.2-18       plyr_1.8.6         </span>
 <span class="co">#&gt; [25] pkgconfig_2.0.3     zlibbioc_1.36.0     purrr_0.3.4        </span>
 <span class="co">#&gt; [28] scales_1.1.1        Rtsne_0.15          tibble_3.0.4       </span>
-<span class="co">#&gt; [31] mgcv_1.8-33         generics_0.1.0      IRanges_2.24.0     </span>
-<span class="co">#&gt; [34] ellipsis_0.3.1      withr_2.3.0         BiocGenerics_0.36.0</span>
-<span class="co">#&gt; [37] survival_3.2-7      magrittr_1.5        crayon_1.3.4       </span>
-<span class="co">#&gt; [40] memoise_1.1.0       evaluate_0.14       fs_1.5.0           </span>
-<span class="co">#&gt; [43] nlme_3.1-149        MASS_7.3-53         vegan_2.5-6        </span>
-<span class="co">#&gt; [46] textshaping_0.1.2   tools_4.0.3         data.table_1.13.0  </span>
-<span class="co">#&gt; [49] lifecycle_0.2.0     stringr_1.4.0       Rhdf5lib_1.12.0    </span>
-<span class="co">#&gt; [52] S4Vectors_0.28.0    munsell_0.5.0       cluster_2.1.0      </span>
-<span class="co">#&gt; [55] Biostrings_2.58.0   ade4_1.7-15         compiler_4.0.3     </span>
-<span class="co">#&gt; [58] pkgdown_1.6.1       systemfonts_0.3.2   rlang_0.4.8        </span>
-<span class="co">#&gt; [61] rhdf5_2.34.0        grid_4.0.3          iterators_1.0.13   </span>
-<span class="co">#&gt; [64] rhdf5filters_1.2.0  biomformat_1.17.0   rstudioapi_0.11    </span>
-<span class="co">#&gt; [67] igraph_1.2.6        rmarkdown_2.4       gtable_0.3.0       </span>
-<span class="co">#&gt; [70] codetools_0.2-16    multtest_2.45.0     DBI_1.1.0          </span>
-<span class="co">#&gt; [73] reshape2_1.4.4      R6_2.5.0            knitr_1.30         </span>
-<span class="co">#&gt; [76] dplyr_1.0.2         bit_4.0.4           fastmatch_1.1-0    </span>
-<span class="co">#&gt; [79] rprojroot_1.3-2     ragg_0.4.0          permute_0.9-5      </span>
-<span class="co">#&gt; [82] desc_1.2.0          ape_5.4-1           stringi_1.5.3      </span>
-<span class="co">#&gt; [85] parallel_4.0.3      Rcpp_1.0.5          DECIPHER_2.18.1    </span>
-<span class="co">#&gt; [88] vctrs_0.3.4         tidyselect_1.1.0    xfun_0.17</span></pre></div>
-</div>
-</div>
+<span class="co">#&gt; [31] mgcv_1.8-33         farver_2.0.3        generics_0.1.0     </span>
+<span class="co">#&gt; [34] IRanges_2.24.0      ellipsis_0.3.1      withr_2.3.0        </span>
+<span class="co">#&gt; [37] BiocGenerics_0.36.0 survival_3.2-7      magrittr_1.5       </span>
+<span class="co">#&gt; [40] crayon_1.3.4        memoise_1.1.0       evaluate_0.14      </span>
+<span class="co">#&gt; [43] fs_1.5.0            nlme_3.1-149        MASS_7.3-53        </span>
+<span class="co">#&gt; [46] vegan_2.5-6         textshaping_0.1.2   tools_4.0.3        </span>
+<span class="co">#&gt; [49] data.table_1.13.0   lifecycle_0.2.0     stringr_1.4.0      </span>
+<span class="co">#&gt; [52] Rhdf5lib_1.12.0     S4Vectors_0.28.0    munsell_0.5.0      </span>
+<span class="co">#&gt; [55] cluster_2.1.0       Biostrings_2.58.0   ade4_1.7-15        </span>
+<span class="co">#&gt; [58] compiler_4.0.3      pkgdown_1.6.1       systemfonts_0.3.2  </span>
+<span class="co">#&gt; [61] rlang_0.4.8         rhdf5_2.34.0        grid_4.0.3         </span>
+<span class="co">#&gt; [64] iterators_1.0.13    rhdf5filters_1.2.0  biomformat_1.17.0  </span>
+<span class="co">#&gt; [67] rstudioapi_0.11     igraph_1.2.6        labeling_0.4.2     </span>
+<span class="co">#&gt; [70] rmarkdown_2.4       gtable_0.3.0        codetools_0.2-16   </span>
+<span class="co">#&gt; [73] multtest_2.45.0     DBI_1.1.0           reshape2_1.4.4     </span>
+<span class="co">#&gt; [76] R6_2.5.0            knitr_1.30          bit_4.0.4          </span>
+<span class="co">#&gt; [79] fastmatch_1.1-0     rprojroot_1.3-2     ragg_0.4.0         </span>
+<span class="co">#&gt; [82] permute_0.9-5       desc_1.2.0          ape_5.4-1          </span>
+<span class="co">#&gt; [85] stringi_1.5.3       parallel_4.0.3      Rcpp_1.0.5         </span>
+<span class="co">#&gt; [88] DECIPHER_2.18.1     vctrs_0.3.4         tidyselect_1.1.0   </span>
+<span class="co">#&gt; [91] xfun_0.17</span></pre></div>
 </div>
   </div>
 

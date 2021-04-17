@@ -18,13 +18,13 @@ knitr::opts_chunk$set(
 
 `biomeUtils` is part of the RIVM-ToolBox project aimed at providing standard set of tools that interact with open tools for a wide array of data analytics, including microbiomics. The RIVM-ToolBox is a set of individual R tools focused towards different goals/functionalities.  
 
-* Data handling  
+* `biomeUtils` : Data handling  
     Outputs for standard data generating pipelines/workflows.  
   
-* Data analytics  
+* `biomeStats`: Data analytics  
     Common data analytics including basic statistics.  
   
-* Data visualization  
+* `biomeViz`: Data visualization  
     Data visualization of different data types.  
 
 ## Setup  
@@ -156,6 +156,34 @@ taxa_fd <- calculateTaxaFoldDifference(ps1, group="ILI")
 # check
 head(taxa_fd)
 ```
+
+
+# Pipe'ing' steps  
+
+Read `%>%` as `and then`  
+
+```{r fig.height=4, fig.width=3}
+library(biomeUtils)
+library(ggplot2)
+library(dplyr) # pipe function
+data("FuentesIliGutData")
+FuentesIliGutData %>% # Take FuentesIliGutData phyloseq object and then
+  uniteGenusSpeciesNames() %>% # join genus and species columns and then
+  filterSampleData(ILI != "L1" & BMI < 30) %>% # Remove 'L1' group and keep those with BMI less than 30 and then
+  microbiome::transform(., "compositional") %>% # convert to compositional and then
+  microbiome::core(., 0.0001, 0.01) %>% # select ASVs with 0.0001 in at least 1% samples and then
+  calculateTaxaFoldDifference(group="ILI")  %>% # calculate foldchange and then 
+  filter(abs(FoldDifference) >= 0.5 & # select major fold change ASVs and then plot 
+           Prevalence.C != 0 &  # Remove ASVs not detected in Controls  
+           Prevalence.L2 != 0) %>% # Remove ASVs not detected in L2 
+  ggplot(aes(FoldDifference, reorder(FeatureID ,FoldDifference))) +
+  geom_col(aes(fill=Enriched)) + 
+  ylab("ASVs") + 
+  scale_fill_manual(values = c( C = "steelblue", L2 = "brown3")) +
+  theme_bw()
+
+```
+
 
 
 ```{r}
