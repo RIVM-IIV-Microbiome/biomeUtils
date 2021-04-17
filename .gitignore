@@ -11,8 +11,6 @@ data-raw/*.pdf
 data-raw/*.rds
 # Never put this in version control
 OAtoken
-*.R
-*.pdf
 *.rds
 inst/doc
 
