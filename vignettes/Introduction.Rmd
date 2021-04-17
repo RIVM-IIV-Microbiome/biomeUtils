@@ -162,7 +162,7 @@ head(taxa_fd)
 
 Read `%>%` as `and then`  
 
-```{r fig.height=4, fig.width=3}
+```{r fig.height=4, fig.width=3, eval=FALSE}
 library(biomeUtils)
 library(ggplot2)
 library(dplyr) # pipe function
