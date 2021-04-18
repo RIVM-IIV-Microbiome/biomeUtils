@@ -1,6 +1,10 @@
 
 ## biomeUtils 0.0.07
 
+* Added `meltDistanceToTable` fix.
+
+## biomeUtils 0.0.07
+
 * Added `getPrevalence` fix.
 * Vignette addition pipes.
 

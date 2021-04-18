@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get Prevalence and Taxonomy — getPrevalence • biomeUtils</title>
+<title>Convert Distance matrix to Data Frame — meltDistanceToTable • biomeUtils</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Get Prevalence and Taxonomy — getPrevalence" />
-<meta property="og:description" content="Get Prevalence and Taxonomy" />
+<meta property="og:title" content="Convert Distance matrix to Data Frame — meltDistanceToTable" />
+<meta property="og:description" content="Convert Distance matrix to Data Frame" />
 
 
 
@@ -123,22 +123,16 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get Prevalence and Taxonomy</h1>
-    <small class="dont-index">Source: <a href='https://github.com/RIVM-IIV-Microbiome/biomeUtils/blob/master/R/getPrevalence.R'><code>R/getPrevalence.R</code></a></small>
-    <div class="hidden name"><code>getPrevalence.Rd</code></div>
+    <h1>Convert Distance matrix to Data Frame</h1>
+    <small class="dont-index">Source: <a href='https://github.com/RIVM-IIV-Microbiome/biomeUtils/blob/master/R/meltDistanceToTable.R'><code>R/meltDistanceToTable.R</code></a></small>
+    <div class="hidden name"><code>meltDistanceToTable.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Get Prevalence and Taxonomy</p>
+    <p>Convert Distance matrix to Data Frame</p>
     </div>
 
-    <pre class="usage"><span class='fu'>getPrevalence</span><span class='op'>(</span>
-  <span class='va'>x</span>,
-  return_rank <span class='op'>=</span> <span class='fu'>rank_names</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>,
-  return_taxa <span class='op'>=</span> <span class='fu'>taxa_names</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>,
-  sort <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  <span class='va'>...</span>
-<span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>meltDistanceToTable</span><span class='op'>(</span><span class='va'>x</span>, dist_mat <span class='op'>=</span> <span class='cn'>NULL</span>, name_dist_column <span class='op'>=</span> <span class='st'>"value"</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -148,50 +142,28 @@
       <td><p>A phyloseq object</p></td>
     </tr>
     <tr>
-      <th>return_rank</th>
-      <td><p>Specify which taxonomic ranks to include in output.
-Must be a character vector <code><a href='https://rdrr.io/pkg/phyloseq/man/rank_names.html'>phyloseq::rank_names()</a></code></p></td>
+      <th>dist_mat</th>
+      <td><p>An object of class <code>dist</code></p></td>
     </tr>
     <tr>
-      <th>return_taxa</th>
-      <td><p>A specific list of taxa for which the values should
-be returned. This can be used if user is not interested
-in all the taxa in input <code>phyloseq</code>. Default is NULL
-which returns all taxa. This list must match rows names if
-otu_table in phyloseq has taxa_are_rows=TRUE or columns
-names if otu_table in phyloseq has taxa_are_rows=FALSE</p></td>
-    </tr>
-    <tr>
-      <th>sort</th>
-      <td><p>Logical. Sort by prevalence value from higher to lower (Default=TRUE)</p></td>
+      <th>name_dist_column</th>
+      <td><p>A specific name for column where distance values
+are stored. Default="value"</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Option to pass microbiome::prevalence</p></td>
+      <td><p>Option to pass biomeUtils::getSampleTibble like column name and columns
+to be included in the output.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A tibble with prevalence and taxonomy</p>
+    <p>A data frame with pairwise distance and sample information</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Get the prevalence of taxa in <code>phyloseq</code> objects
-         along with taxonomic classification.</p>
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
-
-    
-<ul>
-<li><p>A Salonen et al. (2012) The adult intestinal core microbiota
-        is determined by  analysis depth and health status.
-       <em>Clinical Microbiology and Infection</em>, 18(S4):16 20.
-       <a href='https://doi.org/10.1111/j.1469-0691.2012.03855.x'>https://doi.org/10.1111/j.1469-0691.2012.03855.x</a></p></li>
-<li><p>Lahti L, Shetty S (2012-2019). microbiome R package.
-        statistical aspects of the study of the microbiome.
-        <em>BioConductor</em>.
-        <a href='https://doi.org/doi:10.18129/B9.bioc.microbiome'>https://doi.org/doi:10.18129/B9.bioc.microbiome</a></p></li>
-</ul>
-
+    <p>Converts <code>dist</code> object from <code><a href='https://rdrr.io/pkg/phyloseq/man/distance.html'>phyloseq::distance()</a></code>
+         to a data frame combined with sample data</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Sudarshan A. Shetty</p>
@@ -199,17 +171,32 @@ names if otu_table in phyloseq has taxa_are_rows=FALSE</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>biomeUtils</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>"FuentesIliGutData"</span><span class='op'>)</span>
-<span class='va'>prev_tib</span> <span class='op'>&lt;-</span> <span class='fu'>getPrevalence</span><span class='op'>(</span><span class='va'>FuentesIliGutData</span>,
-  return_rank <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Family"</span>, <span class='st'>"Genus"</span><span class='op'>)</span>,
-  return_taxa <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"ASV4"</span>, <span class='st'>"ASV17"</span>, <span class='st'>"ASV85"</span>, <span class='st'>"ASV83"</span><span class='op'>)</span>,
-  sort <span class='op'>=</span> <span class='cn'>TRUE</span>
-<span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Joining, by = "Taxa"</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>prev_tib</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;    Taxa prevalence           Family         Genus
-#&gt; 1  ASV4  0.9881154  Lachnospiraceae       Blautia
-#&gt; 2 ASV17  0.9847199 Streptococcaceae Streptococcus
-#&gt; 3 ASV85  0.7758913  Lachnospiraceae     Roseburia
-#&gt; 4 ASV83  0.7045840   Bacteroidaceae   Bacteroides</div></pre>
+<span class='va'>ps</span> <span class='op'>&lt;-</span> <span class='fu'><a href='filterPhyloseq.html'>filterSampleData</a></span><span class='op'>(</span><span class='va'>FuentesIliGutData</span>, <span class='va'>ILI</span> <span class='op'>!=</span> <span class='st'>"L2"</span><span class='op'>)</span>
+<span class='va'>ps</span> <span class='op'>&lt;-</span> <span class='fu'>phyloseq</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/phyloseq/man/rarefy_even_depth.html'>rarefy_even_depth</a></span><span class='op'>(</span><span class='va'>ps</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>You set `rngseed` to FALSE. Make sure you've set &amp; recorded</span>
+#&gt; <span class='message'> the random seed of your session for reproducibility.</span>
+#&gt; <span class='message'>See `?set.seed`</span></div><div class='output co'>#&gt; <span class='message'>...</span></div><div class='output co'>#&gt; <span class='message'>1OTUs were removed because they are no longer </span>
+#&gt; <span class='message'>present in any sample after random subsampling</span></div><div class='output co'>#&gt; <span class='message'>...</span></div><div class='input'><span class='va'>dist.mat</span> <span class='op'>&lt;-</span> <span class='fu'>phyloseq</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/phyloseq/man/distance.html'>distance</a></span><span class='op'>(</span><span class='va'>ps</span>, <span class='st'>"bray"</span><span class='op'>)</span>
+<span class='va'>dist.melt.sample</span> <span class='op'>&lt;-</span> <span class='fu'>meltDistanceToTable</span><span class='op'>(</span><span class='va'>ps</span>,
+                                        dist_mat <span class='op'>=</span> <span class='va'>dist.mat</span>,
+                                        name_dist_column <span class='op'>=</span> <span class='st'>"Bray-Curtis"</span>,
+                                        select_cols <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"participant_id"</span>, <span class='st'>"ILI"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>dist.melt.sample</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;         S1       S2 Bray.Curtis participant_id_S1 ILI_S1 participant_id_S2
+#&gt; 1 sample_2 sample_1   0.5476993              ELD2      C              ELD1
+#&gt; 2 sample_3 sample_1   0.5702050              ELD3      C              ELD1
+#&gt; 3 sample_4 sample_1   0.5452392              ELD4      C              ELD1
+#&gt; 4 sample_5 sample_1   0.6339863              ELD5     L1              ELD1
+#&gt; 5 sample_6 sample_1   0.7324829              ELD6      C              ELD1
+#&gt; 6 sample_7 sample_1   0.5815034              ELD7     L1              ELD1
+#&gt;   ILI_S2
+#&gt; 1      C
+#&gt; 2      C
+#&gt; 3      C
+#&gt; 4      C
+#&gt; 5      C
+#&gt; 6      C</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

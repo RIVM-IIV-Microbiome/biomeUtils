@@ -157,6 +157,22 @@ taxa_fd <- calculateTaxaFoldDifference(ps1, group="ILI")
 head(taxa_fd)
 ```
 
+### Melting  
+```{r}
+
+library(biomeUtils)
+data("FuentesIliGutData")
+ps <- filterSampleData(FuentesIliGutData, ILI != "L2")
+ps <- phyloseq::rarefy_even_depth(ps)
+dist.mat <- phyloseq::distance(ps, "bray")
+dist.melt.sample <- meltDistanceToTable(ps,
+                                        dist_mat = dist.mat,
+                                        name_dist_column = "Bray-Curtis",
+                                        select_cols = c("participant_id", "ILI"))
+head(dist.melt.sample)
+
+```
+
 
 # Pipe'ing' steps  
 
