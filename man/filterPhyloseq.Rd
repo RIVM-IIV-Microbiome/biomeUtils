@@ -40,15 +40,15 @@ These are alternative to subset and prune functions in
          \code{phyloseq}.
 
 The \code{filterSampleData} does subsetting similar to
-\code{\link[phyloseq]{subset_samples}}.
+\code{phyloseq::subset_samples}.
 The \code{filterTaxaData} does subsetting similar to
-\code{\link[phyloseq]{subset_taxa}}.
+\code{phyloseq::subset_taxa}.
 
 
 The \code{filterSampleByNames} does pruning similar to
-\code{\link[phyloseq]{prune_samples}}.
+\code{phyloseq::prune_samples}.
 The \code{filterTaxaByNames} does pruning similar to
-\code{\link[phyloseq]{prune_taxa}}.
+\code{phyloseq::prune_taxa}.
 
 The naming is using filter because it uses the \code{dplyr::filter} function.
 

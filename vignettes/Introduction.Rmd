@@ -98,6 +98,19 @@ ps.filter.by.tax.names <- filterTaxaByNames(FuentesIliGutData,
                                            keep = TRUE)
 ```
 
+### Check for polyphyly  
+
+Check for polyphyletic taxa in `tax_table`. Useful to check this before aggregating at any level. Here, for e.g. _Eubacterium_ is is in both `Lachnospiraceae` and `EUbacteriaceae` family.    
+```{r}
+library(biomeUtils)
+library(dplyr)
+data("FuentesIliGutData")
+polydf <- checkPolyphyletic(FuentesIliGutData,
+                            taxa_level = "Genus",
+                            return_df = TRUE)
+polydf
+```
+
 
 ### Compare phyloseqs  
 

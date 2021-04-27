@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Compare Phyloseq Objects — comparePhyloseq • biomeUtils</title>
+<title>Mutating Slots of Phyloseq — mutatePhyloseq • biomeUtils</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Compare Phyloseq Objects — comparePhyloseq" />
-<meta property="og:description" content="Compare Phyloseq Objects" />
+<meta property="og:title" content="Mutating Slots of Phyloseq — mutatePhyloseq" />
+<meta property="og:description" content="Mutating Slots of Phyloseq" />
 
 
 
@@ -123,37 +123,48 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Compare Phyloseq Objects</h1>
-    <small class="dont-index">Source: <a href='https://github.com/RIVM-IIV-Microbiome/biomeUtils/blob/master/R/comparePhyloseq.R'><code>R/comparePhyloseq.R</code></a></small>
-    <div class="hidden name"><code>comparePhyloseq.Rd</code></div>
+    <h1>Mutating Slots of Phyloseq</h1>
+    <small class="dont-index">Source: <a href='https://github.com/RIVM-IIV-Microbiome/biomeUtils/blob/master/R/mutatePhyloseq.R'><code>R/mutatePhyloseq.R</code></a></small>
+    <div class="hidden name"><code>mutatePhyloseq.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Compare Phyloseq Objects</p>
+    <p>Mutating Slots of Phyloseq</p>
     </div>
 
-    <pre class="usage"><span class='fu'>comparePhyloseq</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>mutateSampleData</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='fu'>mutateTaxaTable</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='fu'>mutateAbundanceTable</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>A named list of <code>phyloseq</code> objects to compare</p></td>
+      <td><p><code>phyloseq</code> object</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Arguments that dplyr::mutate can accept</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A tibble</p>
+    <p>A phyloseq</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Provided a named list of different <code>phyloseq</code> objects
-         `comparePhyloseq` returns a data.frame with basic values in
-         each of the <code>phyloseq</code> objects.</p>
+    <p>Mutate different <code>phyloseq</code> slots.</p>
+<p><code>mutateAbundanceTable</code> mutate <code>otu_table</code>. Will also add the new sample to
+ <code>sample_data</code></p>
+<p><code>mutateTaxaTable</code> mutate <code>tax_table</code>, Add or modify existing columns.</p>
+<p><code>mutateSampleData</code> mutate <code>sample_data</code>. Add columns, modify existing
+columns.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Shetty SA (2021). Utilities for microbiome analytics.
+    <p>Shetty SA (2020). Utilities for microbiome analytics.
 <a href='https://github.com/microsud/biomeUtils'>https://github.com/microsud/biomeUtils</a></p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
@@ -161,27 +172,12 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>biomeUtils</span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>"FuentesIliGutData"</span><span class='op'>)</span>
-<span class='va'>ps1</span> <span class='op'>&lt;-</span> <span class='fu'>subset_samples</span><span class='op'>(</span><span class='va'>FuentesIliGutData</span>, <span class='va'>ILI</span> <span class='op'>==</span> <span class='st'>"C"</span><span class='op'>)</span>
-<span class='va'>ps1</span> <span class='op'>&lt;-</span> <span class='fu'>prune_taxa</span><span class='op'>(</span><span class='fu'>taxa_sums</span><span class='op'>(</span><span class='va'>ps1</span><span class='op'>)</span> <span class='op'>&gt;</span> <span class='fl'>0</span>, <span class='va'>ps1</span><span class='op'>)</span>
-
-<span class='va'>ps2</span> <span class='op'>&lt;-</span> <span class='fu'>subset_samples</span><span class='op'>(</span><span class='va'>FuentesIliGutData</span>, <span class='va'>ILI</span> <span class='op'>==</span> <span class='st'>"L1"</span><span class='op'>)</span>
-<span class='va'>ps2</span> <span class='op'>&lt;-</span> <span class='fu'>prune_taxa</span><span class='op'>(</span><span class='fu'>taxa_sums</span><span class='op'>(</span><span class='va'>ps2</span><span class='op'>)</span> <span class='op'>&gt;</span> <span class='fl'>0</span>, <span class='va'>ps2</span><span class='op'>)</span>
-
-<span class='va'>ps3</span> <span class='op'>&lt;-</span> <span class='fu'>subset_samples</span><span class='op'>(</span><span class='va'>FuentesIliGutData</span>, <span class='va'>ILI</span> <span class='op'>==</span> <span class='st'>"L2"</span><span class='op'>)</span>
-<span class='va'>ps3</span> <span class='op'>&lt;-</span> <span class='fu'>prune_taxa</span><span class='op'>(</span><span class='fu'>taxa_sums</span><span class='op'>(</span><span class='va'>ps3</span><span class='op'>)</span> <span class='op'>&gt;</span> <span class='fl'>0</span>, <span class='va'>ps3</span><span class='op'>)</span>
-
-<span class='va'>ps.list</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"C"</span> <span class='op'>=</span> <span class='va'>ps1</span>, <span class='st'>"L1"</span> <span class='op'>=</span> <span class='va'>ps2</span>, <span class='st'>"L2"</span> <span class='op'>=</span> <span class='va'>ps3</span><span class='op'>)</span>
-
-<span class='fu'>comparePhyloseq</span><span class='op'>(</span><span class='va'>ps.list</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   input ntaxa nsample min.reads max.reads total.read average.reads singletons
-#&gt; 1     C   901     184     10975    143946    7658743      41623.60          0
-#&gt; 2    L1   902     213     12715    140779    8568244      40226.50          0
-#&gt; 3    L2   896     192     24868    194135   15127300      78788.02          0
-#&gt;    sparsity
-#&gt; 1 0.6717355
-#&gt; 2 0.6678794
-#&gt; 3 0.6372652</div></pre>
+<span class='va'>ps_otu</span> <span class='op'>&lt;-</span> <span class='fu'>mutateAbundanceTable</span><span class='op'>(</span><span class='va'>FuentesIliGutData</span>, test <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fu'>ntaxa</span><span class='op'>(</span><span class='va'>FuentesIliGutData</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>ps_tax</span> <span class='op'>&lt;-</span> <span class='fu'>mutateTaxaTable</span><span class='op'>(</span><span class='va'>FuentesIliGutData</span>, test <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fu'>ntaxa</span><span class='op'>(</span><span class='va'>FuentesIliGutData</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>ps_samdat</span> <span class='op'>&lt;-</span> <span class='fu'>mutateSampleData</span><span class='op'>(</span><span class='va'>FuentesIliGutData</span>, test <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='va'>ILI</span>, <span class='st'>"-test"</span><span class='op'>)</span><span class='op'>)</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

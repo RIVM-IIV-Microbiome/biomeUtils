@@ -30,13 +30,13 @@ Get Phyloseq slots from Tibbles
 Convert different tibbles into \code{phyloseq} slots.
 
 \code{getOtuTableFromTibble} Converts OTU tibble obtained using
-\code{\link[biomeUtils]{getAbundanceTibble}} to \code{\link[phyloseq]{otu_table}}.
+\code{biomeUtils::getAbundanceTibble} to \code{phyloseq::otu_table}.
 
 \code{getTaxaTableFromTibble} Converts the taxa tibble obtained using
-\code{\link[biomeUtils]{getTaxaTibble}} to \code{\link[phyloseq]{tax_table}}.
+\code{biomeUtils::getTaxaTibble} to \code{phyloseq::tax_table}.
 
 \code{getSampleTableFromTibble} Converts the sample data tibble obtained using
-\code{\link[biomeUtils]{getSampleTibble}} to \code{\link[phyloseq]{sample_data}}.
+\code{biomeUtils::getSampleTibble} to \code{phyloseq::sample_data}.
 }
 \examples{
 library(biomeUtils)

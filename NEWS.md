@@ -1,12 +1,18 @@
 
-## biomeUtils 0.0.07
+## biomeUtils 0.0.09
+
+* Added `mutatePhyloseq` functions added.
+* Added `checkPolyphyletic` functions added.
+* Minor fixes in documentations. 
+
+## biomeUtils 0.0.08
 
 * Added `meltDistanceToTable` fix.
 
 ## biomeUtils 0.0.07
 
 * Added `getPrevalence` fix.
-* Vignette addition pipes.
+* Vignette addition pipes example.
 
 ## biomeUtils 0.0.06
 

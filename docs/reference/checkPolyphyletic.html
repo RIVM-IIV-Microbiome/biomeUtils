@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Compare Phyloseq Objects — comparePhyloseq • biomeUtils</title>
+<title>Check for Polyphyletic Taxa — checkPolyphyletic • biomeUtils</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Compare Phyloseq Objects — comparePhyloseq" />
-<meta property="og:description" content="Compare Phyloseq Objects" />
+<meta property="og:title" content="Check for Polyphyletic Taxa — checkPolyphyletic" />
+<meta property="og:description" content="Check for Polyphyletic Taxa" />
 
 
 
@@ -123,37 +123,44 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Compare Phyloseq Objects</h1>
-    <small class="dont-index">Source: <a href='https://github.com/RIVM-IIV-Microbiome/biomeUtils/blob/master/R/comparePhyloseq.R'><code>R/comparePhyloseq.R</code></a></small>
-    <div class="hidden name"><code>comparePhyloseq.Rd</code></div>
+    <h1>Check for Polyphyletic Taxa</h1>
+    <small class="dont-index">Source: <a href='https://github.com/RIVM-IIV-Microbiome/biomeUtils/blob/master/R/checkPolyphyletic.R'><code>R/checkPolyphyletic.R</code></a></small>
+    <div class="hidden name"><code>checkPolyphyletic.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Compare Phyloseq Objects</p>
+    <p>Check for Polyphyletic Taxa</p>
     </div>
 
-    <pre class="usage"><span class='fu'>comparePhyloseq</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>checkPolyphyletic</span><span class='op'>(</span><span class='va'>x</span>, taxa_level <span class='op'>=</span> <span class='st'>"Genus"</span>, return_df <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>A named list of <code>phyloseq</code> objects to compare</p></td>
+      <td><p><code>phyloseq</code> object</p></td>
+    </tr>
+    <tr>
+      <th>taxa_level</th>
+      <td><p>Taxonomic level to check. Default is Genus</p></td>
+    </tr>
+    <tr>
+      <th>return_df</th>
+      <td><p>Logical. Return data.frame or list</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A tibble</p>
+    <p>Data frame or list</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Provided a named list of different <code>phyloseq</code> objects
-         `comparePhyloseq` returns a data.frame with basic values in
-         each of the <code>phyloseq</code> objects.</p>
+    <p>Check for polyphyletic taxa in <code>tax_table</code>. Useful to check this
+         before aggregating at any level.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Shetty SA (2021). Utilities for microbiome analytics.
+    <p>Shetty SA (2020). Utilities for microbiome analytics.
 <a href='https://github.com/microsud/biomeUtils'>https://github.com/microsud/biomeUtils</a></p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
@@ -161,27 +168,26 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>biomeUtils</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>"FuentesIliGutData"</span><span class='op'>)</span>
-<span class='va'>ps1</span> <span class='op'>&lt;-</span> <span class='fu'>subset_samples</span><span class='op'>(</span><span class='va'>FuentesIliGutData</span>, <span class='va'>ILI</span> <span class='op'>==</span> <span class='st'>"C"</span><span class='op'>)</span>
-<span class='va'>ps1</span> <span class='op'>&lt;-</span> <span class='fu'>prune_taxa</span><span class='op'>(</span><span class='fu'>taxa_sums</span><span class='op'>(</span><span class='va'>ps1</span><span class='op'>)</span> <span class='op'>&gt;</span> <span class='fl'>0</span>, <span class='va'>ps1</span><span class='op'>)</span>
-
-<span class='va'>ps2</span> <span class='op'>&lt;-</span> <span class='fu'>subset_samples</span><span class='op'>(</span><span class='va'>FuentesIliGutData</span>, <span class='va'>ILI</span> <span class='op'>==</span> <span class='st'>"L1"</span><span class='op'>)</span>
-<span class='va'>ps2</span> <span class='op'>&lt;-</span> <span class='fu'>prune_taxa</span><span class='op'>(</span><span class='fu'>taxa_sums</span><span class='op'>(</span><span class='va'>ps2</span><span class='op'>)</span> <span class='op'>&gt;</span> <span class='fl'>0</span>, <span class='va'>ps2</span><span class='op'>)</span>
-
-<span class='va'>ps3</span> <span class='op'>&lt;-</span> <span class='fu'>subset_samples</span><span class='op'>(</span><span class='va'>FuentesIliGutData</span>, <span class='va'>ILI</span> <span class='op'>==</span> <span class='st'>"L2"</span><span class='op'>)</span>
-<span class='va'>ps3</span> <span class='op'>&lt;-</span> <span class='fu'>prune_taxa</span><span class='op'>(</span><span class='fu'>taxa_sums</span><span class='op'>(</span><span class='va'>ps3</span><span class='op'>)</span> <span class='op'>&gt;</span> <span class='fl'>0</span>, <span class='va'>ps3</span><span class='op'>)</span>
-
-<span class='va'>ps.list</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"C"</span> <span class='op'>=</span> <span class='va'>ps1</span>, <span class='st'>"L1"</span> <span class='op'>=</span> <span class='va'>ps2</span>, <span class='st'>"L2"</span> <span class='op'>=</span> <span class='va'>ps3</span><span class='op'>)</span>
-
-<span class='fu'>comparePhyloseq</span><span class='op'>(</span><span class='va'>ps.list</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   input ntaxa nsample min.reads max.reads total.read average.reads singletons
-#&gt; 1     C   901     184     10975    143946    7658743      41623.60          0
-#&gt; 2    L1   902     213     12715    140779    8568244      40226.50          0
-#&gt; 3    L2   896     192     24868    194135   15127300      78788.02          0
-#&gt;    sparsity
-#&gt; 1 0.6717355
-#&gt; 2 0.6678794
-#&gt; 3 0.6372652</div></pre>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Attaching package: 'dplyr'</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:stats':</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:base':</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>"FuentesIliGutData"</span><span class='op'>)</span>
+<span class='va'>polydf</span> <span class='op'>&lt;-</span> <span class='fu'>checkPolyphyletic</span><span class='op'>(</span><span class='va'>FuentesIliGutData</span><span class='op'>)</span>
+<span class='va'>polydf</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6 x 7</span><span>
+#&gt; </span><span style='color: #949494;'># Groups:   Genus [3]</span><span>
+#&gt;   Domain   Phylum     Class      Order         Family          Genus           n
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Bacteria Firmicutes Clostridia Clostridiales Lachnospiraceae Eubacterium     2
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> Bacteria Firmicutes Clostridia Clostridiales Lachnospiraceae Clostridium     2
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> Bacteria Firmicutes Clostridia Clostridiales Lachnospiraceae Ruminococc~     2
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> Bacteria Firmicutes Clostridia Clostridiales Ruminococcaceae Ruminococc~     2
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span> Bacteria Firmicutes Clostridia Clostridiales Eubacteriaceae  Eubacterium     2
+#&gt; </span><span style='color: #BCBCBC;'>6</span><span> Bacteria Firmicutes Clostridia Clostridiales Ruminococcaceae Clostridium     2</div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

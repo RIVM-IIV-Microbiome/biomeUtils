@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">biomeUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.08</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.09</span>
       </span>
     </div>
 
@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -106,7 +106,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/RIVM-IIV-Microbiome/biomeUtils/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -173,14 +173,14 @@ sample data or taxonomy table as tibble.</p></td>
     <p>These are alternative to subset and prune functions in
          <code>phyloseq</code>.</p>
 <p>The <code>filterSampleData</code> does subsetting similar to
-<code><a href='https://rdrr.io/pkg/phyloseq/man/subset_samples-methods.html'>subset_samples</a></code>.
+<code><a href='https://rdrr.io/pkg/phyloseq/man/subset_samples-methods.html'>phyloseq::subset_samples</a></code>.
 The <code>filterTaxaData</code> does subsetting similar to
-<code><a href='https://rdrr.io/pkg/phyloseq/man/subset_taxa-methods.html'>subset_taxa</a></code>.</p>
+<code><a href='https://rdrr.io/pkg/phyloseq/man/subset_taxa-methods.html'>phyloseq::subset_taxa</a></code>.</p>
 
 <p>The <code>filterSampleByNames</code> does pruning similar to
-<code><a href='https://rdrr.io/pkg/phyloseq/man/prune_samples-methods.html'>prune_samples</a></code>.
+<code><a href='https://rdrr.io/pkg/phyloseq/man/prune_samples-methods.html'>phyloseq::prune_samples</a></code>.
 The <code>filterTaxaByNames</code> does pruning similar to
-<code><a href='https://rdrr.io/pkg/phyloseq/man/prune_taxa-methods.html'>prune_taxa</a></code>.</p>
+<code><a href='https://rdrr.io/pkg/phyloseq/man/prune_taxa-methods.html'>phyloseq::prune_taxa</a></code>.</p>
 <p>The naming is using filter because it uses the <code><a href='https://dplyr.tidyverse.org/reference/filter.html'>dplyr::filter</a></code> function.</p>
 <p>Note:
 <code>filterSampleData</code> will additionally remove any taxa that are
