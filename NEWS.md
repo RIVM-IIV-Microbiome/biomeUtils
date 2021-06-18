@@ -1,6 +1,12 @@
 
 ## biomeUtils 0.0.09
 
+* Fixes to `getSampleTibble`.
+* Fixes to `getPrevalence`.
+* Fixes to `calculateTaxaFoldDifference`.  
+
+## biomeUtils 0.0.09
+
 * Added `mutatePhyloseq` functions added.
 * Added `checkPolyphyletic` functions added.
 * Minor fixes in documentations. 
