@@ -10,7 +10,7 @@ test_that("calculateTaxaFoldDifference works", {
 
   colsid <- colnames(tb)
   expcols <- c(
-    rank_names(ps1), "FoldDifference", "FeatureID",
+    "FeatureID", rank_names(ps1), "FoldDifference",
     "Prevalence.C", "Prevalence.L1", "Enriched"
   )
 

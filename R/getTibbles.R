@@ -141,8 +141,19 @@ getSampleTibble <- function(x,
     as_tibble() %>%
     filter(.data[[column_id_nw]] %in% sel_rows)
 
-  tib_dat <- tib_dat[, cols]
+  if(is.null(select_cols) && any(!colnames(tib_dat) %in% cols) || is.null(select_cols) && any(!cols %in% colnames(tib_dat))){
+    warning(paste0("Dropped following columns with merging issues ", setdiff(colnames(tib_dat), cols)))
+    tib_dat <- tib_dat[, colnames(tib_dat) %in% cols]
 
+  } else {
+    tib_dat <- tib_dat[, cols]
+  }
+
+
+  if (!column_id_nw == column_id) {
+    tib_dat <- tib_dat %>%
+      select(-column_id_nw)
+  }
   return(tib_dat)
 }
 

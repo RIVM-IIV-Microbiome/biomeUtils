@@ -33,8 +33,7 @@ Calculate Log10 fold difference in abundance of taxa between two-
 library(biomeUtils)
 data("FuentesIliGutData")
 # reduce size for example
-ps1 <- subset_samples(FuentesIliGutData, ILI != "L2")
-ps1 <- prune_taxa(taxa_sums(ps1) > 0, ps1)
+ps1 <- filterSampleData(FuentesIliGutData, ILI != "L2")
 
 taxa_fd <- calculateTaxaFoldDifference(ps1, group = "ILI")
 # check

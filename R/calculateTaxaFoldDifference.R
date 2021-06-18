@@ -20,8 +20,7 @@
 #' library(biomeUtils)
 #' data("FuentesIliGutData")
 #' # reduce size for example
-#' ps1 <- subset_samples(FuentesIliGutData, ILI != "L2")
-#' ps1 <- prune_taxa(taxa_sums(ps1) > 0, ps1)
+#' ps1 <- filterSampleData(FuentesIliGutData, ILI != "L2")
 #'
 #' taxa_fd <- calculateTaxaFoldDifference(ps1, group = "ILI")
 #' # check
@@ -114,15 +113,16 @@ calculateTaxaFoldDifference <- function(x, group, sort = FALSE, paired = FALSE) 
   )
   colnames(prev.tb.g2)[2] <- lab.prev2
 
+
   prev.tb <- prev.tb.g1 %>%
     left_join(prev.tb.g2)
 
   fcdf <- fcdf %>%
-    left_join(prev.tb, by = c(FeatureID = "Taxa")) %>%
+    left_join(prev.tb, by = c("FeatureID" = "Taxa")) %>%
     mutate(Enriched = ifelse(FoldDifference > 0, lev.g2,
       ifelse(FoldDifference < 0, lev.g1, "NoChange")
     )) %>%
-    dplyr::relocate(rank_names(x), before = "FoldDifference")
+    dplyr::relocate(rank_names(x), .before = "FoldDifference")
 
   if (sort) {
     fcdf <- fcdf %>%
@@ -131,3 +131,4 @@ calculateTaxaFoldDifference <- function(x, group, sort = FALSE, paired = FALSE) 
 
   return(fcdf)
 }
+

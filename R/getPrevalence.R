@@ -83,7 +83,7 @@ getPrevalence <- function(x,
     as.data.frame() %>%
     rownames_to_column("Taxa") %>%
     rename(prevalence = ".") %>%
-    left_join(tax_tib)
+    left_join(tax_tib, by = "Taxa")
 
   # colnames(prev_tbl) <- c("Taxa", "prevalence", rank_nm)
 
