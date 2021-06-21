@@ -216,7 +216,7 @@ FuentesIliGutData %>%
            Prevalence.C != 0 &  # Remove ASVs not detected in Controls  
            Prevalence.L2 != 0) %>% # Remove ASVs not detected in L2
   # join genus name to FeatureID
-  mutate(asv.genus = paste0(FeatureID, Genus, sep="-")) %>% 
+  mutate(asv.genus = paste0(FeatureID, "-", Genus)) %>% 
   # Plot fold difference Notice that from here on below we use '+'
   ggplot(aes(FoldDifference, reorder(asv.genus, FoldDifference))) +
   geom_col(aes(fill=Enriched)) + 

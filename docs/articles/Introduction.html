@@ -355,9 +355,6 @@ Data visualization of different data types.</p></li>
 <span class="co">#&gt;  the random seed of your session for reproducibility.</span>
 <span class="co">#&gt; See `?set.seed`</span>
 <span class="co">#&gt; ...</span>
-<span class="co">#&gt; 1OTUs were removed because they are no longer </span>
-<span class="co">#&gt; present in any sample after random subsampling</span>
-<span class="co">#&gt; ...</span>
 <span class="va">dist.mat</span> <span class="op">&lt;-</span> <span class="fu">phyloseq</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/distance.html">distance</a></span><span class="op">(</span><span class="va">ps</span>, <span class="st">"bray"</span><span class="op">)</span>
 <span class="va">dist.melt.sample</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/meltDistanceToTable.html">meltDistanceToTable</a></span><span class="op">(</span><span class="va">ps</span>,
                                         dist_mat <span class="op">=</span> <span class="va">dist.mat</span>,
@@ -365,12 +362,12 @@ Data visualization of different data types.</p></li>
                                         select_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"participant_id"</span>, <span class="st">"ILI"</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">dist.melt.sample</span><span class="op">)</span>
 <span class="co">#&gt;         S1       S2 Bray.Curtis participant_id_S1 ILI_S1 participant_id_S2</span>
-<span class="co">#&gt; 1 sample_2 sample_1   0.5556264              ELD2      C              ELD1</span>
-<span class="co">#&gt; 2 sample_3 sample_1   0.5768565              ELD3      C              ELD1</span>
-<span class="co">#&gt; 3 sample_4 sample_1   0.5525285              ELD4      C              ELD1</span>
-<span class="co">#&gt; 4 sample_5 sample_1   0.6490205              ELD5     L1              ELD1</span>
-<span class="co">#&gt; 5 sample_6 sample_1   0.7296583              ELD6      C              ELD1</span>
-<span class="co">#&gt; 6 sample_7 sample_1   0.5919818              ELD7     L1              ELD1</span>
+<span class="co">#&gt; 1 sample_2 sample_1   0.5549886              ELD2      C              ELD1</span>
+<span class="co">#&gt; 2 sample_3 sample_1   0.5780410              ELD3      C              ELD1</span>
+<span class="co">#&gt; 3 sample_4 sample_1   0.5559909              ELD4      C              ELD1</span>
+<span class="co">#&gt; 4 sample_5 sample_1   0.6370843              ELD5     L1              ELD1</span>
+<span class="co">#&gt; 5 sample_6 sample_1   0.7376765              ELD6      C              ELD1</span>
+<span class="co">#&gt; 6 sample_7 sample_1   0.5887016              ELD7     L1              ELD1</span>
 <span class="co">#&gt;   ILI_S2</span>
 <span class="co">#&gt; 1      C</span>
 <span class="co">#&gt; 2      C</span>
@@ -410,7 +407,7 @@ Below we use four R packages in combination to check for differences in ASVs bet
            <span class="va">Prevalence.C</span> <span class="op">!=</span> <span class="fl">0</span> <span class="op">&amp;</span>  <span class="co"># Remove ASVs not detected in Controls  </span>
            <span class="va">Prevalence.L2</span> <span class="op">!=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># Remove ASVs not detected in L2</span>
   <span class="co"># join genus name to FeatureID</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>asv.genus <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">FeatureID</span>, <span class="va">Genus</span>, sep<span class="op">=</span><span class="st">"-"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>asv.genus <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">FeatureID</span>, <span class="st">"-"</span>, <span class="va">Genus</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="co"># Plot fold difference Notice that from here on below we use '+'</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">FoldDifference</span>, <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html">reorder</a></span><span class="op">(</span><span class="va">asv.genus</span>, <span class="va">FoldDifference</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill<span class="op">=</span><span class="va">Enriched</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
