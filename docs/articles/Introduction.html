@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">biomeUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.09</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.011</span>
       </span>
     </div>
 
@@ -79,7 +79,7 @@
 
       
 
-      </header><script src="Introduction_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="Introduction_files/header-attrs-2.8/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Introduction</h1>
@@ -121,7 +121,6 @@ Data visualization of different data types.</p></li>
 <span class="co">#&gt; Loading required package: phyloseq</span>
 <span class="co">#&gt; Loading required package: microbiome</span>
 <span class="co">#&gt; Loading required package: ggplot2</span>
-<span class="co">#&gt; Warning: package 'ggplot2' was built under R version 4.0.5</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; microbiome R package (microbiome.github.com)</span>
 <span class="co">#&gt;     </span>
@@ -235,14 +234,14 @@ Data visualization of different data types.</p></li>
 <span class="va">polydf</span>
 <span class="co">#&gt; # A tibble: 6 x 7</span>
 <span class="co">#&gt; # Groups:   Genus [3]</span>
-<span class="co">#&gt;   Domain   Phylum     Class      Order         Family          Genus           n</span>
-<span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;         &lt;chr&gt;           &lt;chr&gt;       &lt;int&gt;</span>
-<span class="co">#&gt; 1 Bacteria Firmicutes Clostridia Clostridiales Lachnospiraceae Eubacterium     2</span>
-<span class="co">#&gt; 2 Bacteria Firmicutes Clostridia Clostridiales Lachnospiraceae Clostridium     2</span>
-<span class="co">#&gt; 3 Bacteria Firmicutes Clostridia Clostridiales Lachnospiraceae Ruminococc~     2</span>
-<span class="co">#&gt; 4 Bacteria Firmicutes Clostridia Clostridiales Ruminococcaceae Ruminococc~     2</span>
-<span class="co">#&gt; 5 Bacteria Firmicutes Clostridia Clostridiales Eubacteriaceae  Eubacterium     2</span>
-<span class="co">#&gt; 6 Bacteria Firmicutes Clostridia Clostridiales Ruminococcaceae Clostridium     2</span></code></pre></div>
+<span class="co">#&gt;   Domain   Phylum     Class      Order       Family        Genus       nfeatures</span>
+<span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;       &lt;chr&gt;         &lt;chr&gt;           &lt;int&gt;</span>
+<span class="co">#&gt; 1 Bacteria Firmicutes Clostridia Clostridia~ Lachnospirac~ Eubacterium         2</span>
+<span class="co">#&gt; 2 Bacteria Firmicutes Clostridia Clostridia~ Lachnospirac~ Clostridium         2</span>
+<span class="co">#&gt; 3 Bacteria Firmicutes Clostridia Clostridia~ Lachnospirac~ Ruminococc~         2</span>
+<span class="co">#&gt; 4 Bacteria Firmicutes Clostridia Clostridia~ Ruminococcac~ Ruminococc~         2</span>
+<span class="co">#&gt; 5 Bacteria Firmicutes Clostridia Clostridia~ Eubacteriace~ Eubacterium         2</span>
+<span class="co">#&gt; 6 Bacteria Firmicutes Clostridia Clostridia~ Ruminococcac~ Clostridium         2</span></code></pre></div>
 </div>
 <div id="compare-phyloseqs" class="section level3">
 <h3 class="hasAnchor">
@@ -300,7 +299,6 @@ Data visualization of different data types.</p></li>
                           return_rank<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Family"</span>, <span class="st">"Genus"</span><span class="op">)</span>,
                           return_taxa <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"ASV4"</span>, <span class="st">"ASV17"</span> , <span class="st">"ASV85"</span>, <span class="st">"ASV83"</span><span class="op">)</span>,
                           sort<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
-<span class="co">#&gt; Joining, by = "Taxa"</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">prev_tib</span><span class="op">)</span>
 <span class="co">#&gt;    Taxa prevalence           Family         Genus</span>
 <span class="co">#&gt; 1  ASV4  0.9881154  Lachnospiraceae       Blautia</span>
@@ -319,32 +317,30 @@ Data visualization of different data types.</p></li>
 <span class="va">ps1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/filterPhyloseq.html">filterSampleData</a></span><span class="op">(</span><span class="va">FuentesIliGutData</span>, <span class="va">ILI</span> <span class="op">!=</span> <span class="st">"L2"</span><span class="op">)</span>
 
 <span class="va">taxa_fd</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/calculateTaxaFoldDifference.html">calculateTaxaFoldDifference</a></span><span class="op">(</span><span class="va">ps1</span>, group<span class="op">=</span><span class="st">"ILI"</span><span class="op">)</span>
-<span class="co">#&gt; Joining, by = "Taxa"</span>
-<span class="co">#&gt; Joining, by = "Taxa"</span>
 <span class="co">#&gt; Joining, by = c("Taxa", "Domain", "Phylum", "Class", "Order", "Family", "Genus", "Species")</span>
 <span class="co"># check</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">taxa_fd</span><span class="op">)</span>
-<span class="co">#&gt;     Domain     Phylum      Class         Order          Family</span>
-<span class="co">#&gt; 1 Bacteria Firmicutes Clostridia Clostridiales Lachnospiraceae</span>
-<span class="co">#&gt; 2 Bacteria Firmicutes Clostridia Clostridiales Ruminococcaceae</span>
-<span class="co">#&gt; 3 Bacteria Firmicutes Clostridia Clostridiales Ruminococcaceae</span>
-<span class="co">#&gt; 4 Bacteria Firmicutes Clostridia Clostridiales Lachnospiraceae</span>
-<span class="co">#&gt; 5 Bacteria Firmicutes Clostridia Clostridiales Ruminococcaceae</span>
-<span class="co">#&gt; 6 Bacteria Firmicutes Clostridia Clostridiales Ruminococcaceae</span>
-<span class="co">#&gt;                          Genus        Species FoldDifference FeatureID</span>
-<span class="co">#&gt; 1 Lachnospiraceae NC2004 group           &lt;NA&gt;   -0.167551359    ASV302</span>
-<span class="co">#&gt; 2      Ruminococcaceae UCG-013           &lt;NA&gt;   -0.100108612    ASV636</span>
-<span class="co">#&gt; 3                         &lt;NA&gt;           &lt;NA&gt;    0.157777020    ASV500</span>
-<span class="co">#&gt; 4             Fusicatenibacter saccharivorans   -0.124023091      ASV7</span>
-<span class="co">#&gt; 5                         &lt;NA&gt;           &lt;NA&gt;   -0.068360663   ASV2617</span>
-<span class="co">#&gt; 6                         &lt;NA&gt;           &lt;NA&gt;   -0.002698838    ASV148</span>
-<span class="co">#&gt;   Prevalence.C Prevalence.L1 Enriched</span>
-<span class="co">#&gt; 1    0.8478261     0.8309859        C</span>
-<span class="co">#&gt; 2    0.2228261     0.1830986        C</span>
-<span class="co">#&gt; 3    0.2989130     0.4178404       L1</span>
-<span class="co">#&gt; 4    0.9945652     0.9624413        C</span>
-<span class="co">#&gt; 5    0.2336957     0.1784038        C</span>
-<span class="co">#&gt; 6    0.3206522     0.3192488        C</span></code></pre></div>
+<span class="co">#&gt;   FeatureID   Domain     Phylum      Class         Order          Family</span>
+<span class="co">#&gt; 1    ASV302 Bacteria Firmicutes Clostridia Clostridiales Lachnospiraceae</span>
+<span class="co">#&gt; 2    ASV636 Bacteria Firmicutes Clostridia Clostridiales Ruminococcaceae</span>
+<span class="co">#&gt; 3    ASV500 Bacteria Firmicutes Clostridia Clostridiales Ruminococcaceae</span>
+<span class="co">#&gt; 4      ASV7 Bacteria Firmicutes Clostridia Clostridiales Lachnospiraceae</span>
+<span class="co">#&gt; 5   ASV2617 Bacteria Firmicutes Clostridia Clostridiales Ruminococcaceae</span>
+<span class="co">#&gt; 6    ASV148 Bacteria Firmicutes Clostridia Clostridiales Ruminococcaceae</span>
+<span class="co">#&gt;                          Genus        Species FoldDifference Prevalence.C</span>
+<span class="co">#&gt; 1 Lachnospiraceae NC2004 group           &lt;NA&gt;   -0.167551359    0.8478261</span>
+<span class="co">#&gt; 2      Ruminococcaceae UCG-013           &lt;NA&gt;   -0.100108612    0.2228261</span>
+<span class="co">#&gt; 3                         &lt;NA&gt;           &lt;NA&gt;    0.157777020    0.2989130</span>
+<span class="co">#&gt; 4             Fusicatenibacter saccharivorans   -0.124023091    0.9945652</span>
+<span class="co">#&gt; 5                         &lt;NA&gt;           &lt;NA&gt;   -0.068360663    0.2336957</span>
+<span class="co">#&gt; 6                         &lt;NA&gt;           &lt;NA&gt;   -0.002698838    0.3206522</span>
+<span class="co">#&gt;   Prevalence.L1 Enriched</span>
+<span class="co">#&gt; 1     0.8309859        C</span>
+<span class="co">#&gt; 2     0.1830986        C</span>
+<span class="co">#&gt; 3     0.4178404       L1</span>
+<span class="co">#&gt; 4     0.9624413        C</span>
+<span class="co">#&gt; 5     0.1784038        C</span>
+<span class="co">#&gt; 6     0.3192488        C</span></code></pre></div>
 </div>
 <div id="melting" class="section level3">
 <h3 class="hasAnchor">
@@ -369,12 +365,12 @@ Data visualization of different data types.</p></li>
                                         select_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"participant_id"</span>, <span class="st">"ILI"</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">dist.melt.sample</span><span class="op">)</span>
 <span class="co">#&gt;         S1       S2 Bray.Curtis participant_id_S1 ILI_S1 participant_id_S2</span>
-<span class="co">#&gt; 1 sample_2 sample_1   0.5588155              ELD2      C              ELD1</span>
-<span class="co">#&gt; 2 sample_3 sample_1   0.5876082              ELD3      C              ELD1</span>
-<span class="co">#&gt; 3 sample_4 sample_1   0.5488838              ELD4      C              ELD1</span>
-<span class="co">#&gt; 4 sample_5 sample_1   0.6427335              ELD5     L1              ELD1</span>
-<span class="co">#&gt; 5 sample_6 sample_1   0.7339408              ELD6      C              ELD1</span>
-<span class="co">#&gt; 6 sample_7 sample_1   0.5805011              ELD7     L1              ELD1</span>
+<span class="co">#&gt; 1 sample_2 sample_1   0.5556264              ELD2      C              ELD1</span>
+<span class="co">#&gt; 2 sample_3 sample_1   0.5768565              ELD3      C              ELD1</span>
+<span class="co">#&gt; 3 sample_4 sample_1   0.5525285              ELD4      C              ELD1</span>
+<span class="co">#&gt; 4 sample_5 sample_1   0.6490205              ELD5     L1              ELD1</span>
+<span class="co">#&gt; 5 sample_6 sample_1   0.7296583              ELD6      C              ELD1</span>
+<span class="co">#&gt; 6 sample_7 sample_1   0.5919818              ELD7     L1              ELD1</span>
 <span class="co">#&gt;   ILI_S2</span>
 <span class="co">#&gt; 1      C</span>
 <span class="co">#&gt; 2      C</span>
@@ -388,29 +384,44 @@ Data visualization of different data types.</p></li>
 <div id="pipeing-steps" class="section level1">
 <h1 class="hasAnchor">
 <a href="#pipeing-steps" class="anchor"></a>Pipe’ing’ steps</h1>
-<p>Read <code><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></code> as <code>and then</code></p>
+<p>Read <code><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></code> as <code>and then</code><br>
+Below we use four R packages in combination to check for differences in ASVs between two groups.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">biomeUtils</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://microbiome.github.io/microbiome">microbiome</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span> <span class="co"># pipe function</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"FuentesIliGutData"</span><span class="op">)</span>
-<span class="va">FuentesIliGutData</span> <span class="op">%&gt;%</span> <span class="co"># Take FuentesIliGutData phyloseq object and then</span>
-  <span class="fu"><a href="../reference/uniteGenusSpeciesNames.html">uniteGenusSpeciesNames</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># join genus and species columns and then</span>
-  <span class="fu"><a href="../reference/filterPhyloseq.html">filterSampleData</a></span><span class="op">(</span><span class="va">ILI</span> <span class="op">!=</span> <span class="st">"L1"</span> <span class="op">&amp;</span> <span class="va">BMI</span> <span class="op">&lt;</span> <span class="fl">30</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># Remove 'L1' group and keep those with BMI less than 30 and then</span>
-  <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/transform.html">transform</a></span><span class="op">(</span><span class="va">.</span>, <span class="st">"compositional"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># convert to compositional and then</span>
-  <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/core.html">core</a></span><span class="op">(</span><span class="va">.</span>, <span class="fl">0.0001</span>, <span class="fl">0.01</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># select ASVs with 0.0001 in at least 1% samples and then</span>
-  <span class="fu"><a href="../reference/calculateTaxaFoldDifference.html">calculateTaxaFoldDifference</a></span><span class="op">(</span>group<span class="op">=</span><span class="st">"ILI"</span><span class="op">)</span>  <span class="op">%&gt;%</span> <span class="co"># calculate foldchange and then </span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">FoldDifference</span><span class="op">)</span> <span class="op">&gt;=</span> <span class="fl">0.5</span> <span class="op">&amp;</span> <span class="co"># select major fold change ASVs and then plot </span>
+
+<span class="co"># Take FuentesIliGutData phyloseq object and then</span>
+<span class="va">FuentesIliGutData</span> <span class="op">%&gt;%</span> 
+  <span class="co"># join genus and species columns </span>
+  <span class="fu"><a href="../reference/uniteGenusSpeciesNames.html">uniteGenusSpeciesNames</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="co"># Remove 'L1' group and keep those with BMI less than 30 and then</span>
+  <span class="fu"><a href="../reference/filterPhyloseq.html">filterSampleData</a></span><span class="op">(</span><span class="va">ILI</span> <span class="op">!=</span> <span class="st">"L1"</span> <span class="op">&amp;</span> <span class="va">BMI</span> <span class="op">&lt;</span> <span class="fl">30</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="co"># convert to rel. abundance and then</span>
+  <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/transform.html">transform</a></span><span class="op">(</span><span class="va">.</span>, <span class="st">"compositional"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="co"># select ASVs with 0.0001 in at least 1% samples and then</span>
+  <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/core.html">core</a></span><span class="op">(</span><span class="va">.</span>, detection <span class="op">=</span> <span class="fl">0.0001</span>, prevalence <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="co"># calculate foldchange and then </span>
+  <span class="fu"><a href="../reference/calculateTaxaFoldDifference.html">calculateTaxaFoldDifference</a></span><span class="op">(</span>group<span class="op">=</span><span class="st">"ILI"</span><span class="op">)</span>  <span class="op">%&gt;%</span> 
+  <span class="co"># select major fold change ASVs and then plot </span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">FoldDifference</span><span class="op">)</span> <span class="op">&gt;=</span> <span class="fl">0.5</span> <span class="op">&amp;</span> 
            <span class="va">Prevalence.C</span> <span class="op">!=</span> <span class="fl">0</span> <span class="op">&amp;</span>  <span class="co"># Remove ASVs not detected in Controls  </span>
-           <span class="va">Prevalence.L2</span> <span class="op">!=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># Remove ASVs not detected in L2 </span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">FoldDifference</span>, <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html">reorder</a></span><span class="op">(</span><span class="va">FeatureID</span> ,<span class="va">FoldDifference</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+           <span class="va">Prevalence.L2</span> <span class="op">!=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># Remove ASVs not detected in L2</span>
+  <span class="co"># join genus name to FeatureID</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>asv.genus <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">FeatureID</span>, <span class="va">Genus</span>, sep<span class="op">=</span><span class="st">"-"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="co"># Plot fold difference Notice that from here on below we use '+'</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">FoldDifference</span>, <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html">reorder</a></span><span class="op">(</span><span class="va">asv.genus</span>, <span class="va">FoldDifference</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill<span class="op">=</span><span class="va">Enriched</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"ASVs"</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span> C <span class="op">=</span> <span class="st">"steelblue"</span>, L2 <span class="op">=</span> <span class="st">"brown3"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; Joining, by = c("Taxa", "Domain", "Phylum", "Class", "Order", "Family", "Genus", "Species")</span></code></pre></div>
+<p><img src="Introduction_files/figure-html/unnamed-chunk-11-1.png" width="1800"></p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; R version 4.0.3 (2020-10-10)</span>
+<span class="co">#&gt; R version 4.1.0 (2021-05-18)</span>
 <span class="co">#&gt; Platform: x86_64-w64-mingw32/x64 (64-bit)</span>
 <span class="co">#&gt; Running under: Windows 10 x64 (build 19042)</span>
 <span class="co">#&gt; </span>
@@ -425,43 +436,46 @@ Data visualization of different data types.</p></li>
 <span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; other attached packages:</span>
-<span class="co">#&gt; [1] dplyr_1.0.2       biomeUtils_0.0.09 microbiome_1.12.0 ggplot2_3.3.3    </span>
-<span class="co">#&gt; [5] phyloseq_1.34.0  </span>
+<span class="co">#&gt; [1] dplyr_1.0.6       biomeUtils_0.011  microbiome_1.14.0 ggplot2_3.3.3    </span>
+<span class="co">#&gt; [5] phyloseq_1.36.0  </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; loaded via a namespace (and not attached):</span>
-<span class="co">#&gt;  [1] nlme_3.1-149        fs_1.5.0            bit64_4.0.5        </span>
-<span class="co">#&gt;  [4] progress_1.2.2      rprojroot_2.0.2     tools_4.0.3        </span>
-<span class="co">#&gt;  [7] bslib_0.2.4         utf8_1.2.1          R6_2.5.0           </span>
-<span class="co">#&gt; [10] vegan_2.5-7         DBI_1.1.1           BiocGenerics_0.36.1</span>
-<span class="co">#&gt; [13] mgcv_1.8-33         colorspace_1.4-1    permute_0.9-5      </span>
-<span class="co">#&gt; [16] rhdf5filters_1.2.0  ade4_1.7-16         withr_2.4.2        </span>
-<span class="co">#&gt; [19] tidyselect_1.1.0    prettyunits_1.1.1   phangorn_2.6.3     </span>
-<span class="co">#&gt; [22] bit_4.0.4           compiler_4.0.3      cli_2.4.0          </span>
-<span class="co">#&gt; [25] textshaping_0.3.3   Biobase_2.50.0      desc_1.3.0         </span>
-<span class="co">#&gt; [28] sass_0.3.1          scales_1.1.1        quadprog_1.5-8     </span>
-<span class="co">#&gt; [31] pkgdown_1.6.1       systemfonts_1.0.1   stringr_1.4.0      </span>
-<span class="co">#&gt; [34] digest_0.6.27       rmarkdown_2.7       XVector_0.30.0     </span>
-<span class="co">#&gt; [37] pkgconfig_2.0.3     htmltools_0.5.1.1   fastmap_1.0.1      </span>
-<span class="co">#&gt; [40] rlang_0.4.10        rstudioapi_0.13     RSQLite_2.2.1      </span>
-<span class="co">#&gt; [43] jquerylib_0.1.3     generics_0.1.0      jsonlite_1.7.1     </span>
-<span class="co">#&gt; [46] magrittr_2.0.1      biomformat_1.18.0   Matrix_1.2-18      </span>
-<span class="co">#&gt; [49] Rcpp_1.0.5          munsell_0.5.0       S4Vectors_0.28.1   </span>
-<span class="co">#&gt; [52] Rhdf5lib_1.12.1     fansi_0.4.2         DECIPHER_2.18.1    </span>
-<span class="co">#&gt; [55] ape_5.4-1           lifecycle_1.0.0     stringi_1.5.3      </span>
-<span class="co">#&gt; [58] yaml_2.2.1          MASS_7.3-53         zlibbioc_1.36.0    </span>
-<span class="co">#&gt; [61] rhdf5_2.34.0        Rtsne_0.15          plyr_1.8.6         </span>
-<span class="co">#&gt; [64] grid_4.0.3          blob_1.2.1          parallel_4.0.3     </span>
-<span class="co">#&gt; [67] crayon_1.4.1        lattice_0.20-41     Biostrings_2.58.0  </span>
-<span class="co">#&gt; [70] splines_4.0.3       multtest_2.46.0     hms_1.0.0          </span>
-<span class="co">#&gt; [73] ps_1.6.0            knitr_1.32          pillar_1.6.0       </span>
-<span class="co">#&gt; [76] igraph_1.2.6        reshape2_1.4.4      codetools_0.2-16   </span>
-<span class="co">#&gt; [79] stats4_4.0.3        fastmatch_1.1-0     picante_1.8.2      </span>
-<span class="co">#&gt; [82] glue_1.4.2          evaluate_0.14       data.table_1.13.0  </span>
-<span class="co">#&gt; [85] vctrs_0.3.4         foreach_1.5.1       gtable_0.3.0       </span>
-<span class="co">#&gt; [88] purrr_0.3.4         tidyr_1.1.2         cachem_1.0.4       </span>
-<span class="co">#&gt; [91] xfun_0.22           ragg_1.1.2          survival_3.2-7     </span>
-<span class="co">#&gt; [94] tibble_3.0.4        iterators_1.0.13    memoise_2.0.0      </span>
-<span class="co">#&gt; [97] IRanges_2.24.1      cluster_2.1.0       ellipsis_0.3.1</span></code></pre></div>
+<span class="co">#&gt;   [1] nlme_3.1-152           bitops_1.0-7           fs_1.5.0              </span>
+<span class="co">#&gt;   [4] bit64_4.0.5            progress_1.2.2         rprojroot_2.0.2       </span>
+<span class="co">#&gt;   [7] GenomeInfoDb_1.29.0    tools_4.1.0            bslib_0.2.5.1         </span>
+<span class="co">#&gt;  [10] utf8_1.2.1             R6_2.5.0               vegan_2.5-7           </span>
+<span class="co">#&gt;  [13] DBI_1.1.1              BiocGenerics_0.39.0    mgcv_1.8-35           </span>
+<span class="co">#&gt;  [16] colorspace_2.0-1       permute_0.9-5          rhdf5filters_1.4.0    </span>
+<span class="co">#&gt;  [19] ade4_1.7-16            withr_2.4.2            phangorn_2.7.0        </span>
+<span class="co">#&gt;  [22] tidyselect_1.1.1       prettyunits_1.1.1      bit_4.0.4             </span>
+<span class="co">#&gt;  [25] compiler_4.1.0         cli_2.5.0              textshaping_0.3.5     </span>
+<span class="co">#&gt;  [28] Biobase_2.53.0         desc_1.3.0             labeling_0.4.2        </span>
+<span class="co">#&gt;  [31] sass_0.4.0             scales_1.1.1           quadprog_1.5-8        </span>
+<span class="co">#&gt;  [34] pkgdown_1.6.1          systemfonts_1.0.2      stringr_1.4.0         </span>
+<span class="co">#&gt;  [37] digest_0.6.27          rmarkdown_2.8          XVector_0.33.0        </span>
+<span class="co">#&gt;  [40] pkgconfig_2.0.3        htmltools_0.5.1.1      highr_0.9             </span>
+<span class="co">#&gt;  [43] fastmap_1.1.0          rlang_0.4.11           rstudioapi_0.13       </span>
+<span class="co">#&gt;  [46] RSQLite_2.2.7          farver_2.1.0           jquerylib_0.1.4       </span>
+<span class="co">#&gt;  [49] generics_0.1.0         jsonlite_1.7.2         RCurl_1.98-1.3        </span>
+<span class="co">#&gt;  [52] magrittr_2.0.1         GenomeInfoDbData_1.2.6 biomformat_1.20.0     </span>
+<span class="co">#&gt;  [55] Matrix_1.3-3           Rcpp_1.0.6             munsell_0.5.0         </span>
+<span class="co">#&gt;  [58] S4Vectors_0.31.0       Rhdf5lib_1.14.1        fansi_0.5.0           </span>
+<span class="co">#&gt;  [61] DECIPHER_2.21.0        ape_5.5                lifecycle_1.0.0       </span>
+<span class="co">#&gt;  [64] stringi_1.6.2          yaml_2.2.1             MASS_7.3-54           </span>
+<span class="co">#&gt;  [67] zlibbioc_1.39.0        rhdf5_2.36.0           Rtsne_0.15            </span>
+<span class="co">#&gt;  [70] plyr_1.8.6             blob_1.2.1             grid_4.1.0            </span>
+<span class="co">#&gt;  [73] parallel_4.1.0         crayon_1.4.1           lattice_0.20-44       </span>
+<span class="co">#&gt;  [76] Biostrings_2.61.0      splines_4.1.0          multtest_2.49.0       </span>
+<span class="co">#&gt;  [79] hms_1.1.0              ps_1.6.0               knitr_1.33            </span>
+<span class="co">#&gt;  [82] pillar_1.6.1           igraph_1.2.6           reshape2_1.4.4        </span>
+<span class="co">#&gt;  [85] codetools_0.2-18       stats4_4.1.0           fastmatch_1.1-0       </span>
+<span class="co">#&gt;  [88] picante_1.8.2          glue_1.4.2             evaluate_0.14         </span>
+<span class="co">#&gt;  [91] data.table_1.14.0      vctrs_0.3.8            foreach_1.5.1         </span>
+<span class="co">#&gt;  [94] gtable_0.3.0           purrr_0.3.4            tidyr_1.1.3           </span>
+<span class="co">#&gt;  [97] assertthat_0.2.1       cachem_1.0.5           xfun_0.23             </span>
+<span class="co">#&gt; [100] ragg_1.1.3             survival_3.2-11        tibble_3.1.2          </span>
+<span class="co">#&gt; [103] iterators_1.0.13       memoise_2.0.0          IRanges_2.27.0        </span>
+<span class="co">#&gt; [106] cluster_2.1.2          ellipsis_0.3.2</span></code></pre></div>
 </div>
   </div>
 

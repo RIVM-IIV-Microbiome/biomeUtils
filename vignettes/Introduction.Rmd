@@ -190,22 +190,35 @@ head(dist.melt.sample)
 # Pipe'ing' steps  
 
 Read `%>%` as `and then`  
+Below we use four R packages in combination to check for differences in ASVs between two groups. 
 
-```{r fig.height=4, fig.width=3, eval=FALSE}
+```{r fig.height=4, fig.width=6, eval=T}
 library(biomeUtils)
 library(ggplot2)
+library(microbiome)
 library(dplyr) # pipe function
 data("FuentesIliGutData")
-FuentesIliGutData %>% # Take FuentesIliGutData phyloseq object and then
-  uniteGenusSpeciesNames() %>% # join genus and species columns and then
-  filterSampleData(ILI != "L1" & BMI < 30) %>% # Remove 'L1' group and keep those with BMI less than 30 and then
-  microbiome::transform(., "compositional") %>% # convert to compositional and then
-  microbiome::core(., 0.0001, 0.01) %>% # select ASVs with 0.0001 in at least 1% samples and then
-  calculateTaxaFoldDifference(group="ILI")  %>% # calculate foldchange and then 
-  filter(abs(FoldDifference) >= 0.5 & # select major fold change ASVs and then plot 
+
+# Take FuentesIliGutData phyloseq object and then
+FuentesIliGutData %>% 
+  # join genus and species columns 
+  uniteGenusSpeciesNames() %>% 
+  # Remove 'L1' group and keep those with BMI less than 30 and then
+  filterSampleData(ILI != "L1" & BMI < 30) %>% 
+  # convert to rel. abundance and then
+  microbiome::transform(., "compositional") %>% 
+  # select ASVs with 0.0001 in at least 1% samples and then
+  microbiome::core(., detection = 0.0001, prevalence = 0.01) %>% 
+  # calculate foldchange and then 
+  calculateTaxaFoldDifference(group="ILI")  %>% 
+  # select major fold change ASVs and then plot 
+  filter(abs(FoldDifference) >= 0.5 & 
            Prevalence.C != 0 &  # Remove ASVs not detected in Controls  
-           Prevalence.L2 != 0) %>% # Remove ASVs not detected in L2 
-  ggplot(aes(FoldDifference, reorder(FeatureID ,FoldDifference))) +
+           Prevalence.L2 != 0) %>% # Remove ASVs not detected in L2
+  # join genus name to FeatureID
+  mutate(asv.genus = paste0(FeatureID, Genus, sep="-")) %>% 
+  # Plot fold difference Notice that from here on below we use '+'
+  ggplot(aes(FoldDifference, reorder(asv.genus, FoldDifference))) +
   geom_col(aes(fill=Enriched)) + 
   ylab("ASVs") + 
   scale_fill_manual(values = c( C = "steelblue", L2 = "brown3")) +

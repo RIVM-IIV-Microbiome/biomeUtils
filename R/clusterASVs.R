@@ -126,11 +126,21 @@ clusterASVs <- function(x,
 
   }
 
-  x <- merge_phyloseq(otu,
-                      tax_table(x),
-                      sample_data(x),
-                      phy_tree(x),
-                      refseq(x))
+  if(is.null(x@phy_tree)){
+    #print("yes")
+    x <- merge_phyloseq(otu,
+                        tax_table(x),
+                        sample_data(x),
+                        refseq(x))
+
+  } else {
+    x <- merge_phyloseq(otu,
+                        tax_table(x),
+                        sample_data(x),
+                        phy_tree(x),
+                        refseq(x))
+  }
+
 
   return(x)
 }

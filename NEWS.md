@@ -1,5 +1,11 @@
 
-## biomeUtils 0.0.09
+## biomeUtils 0.011
+
+* Handle missing tree in `clusterASVs`.  
+* Added `renameSampleVariables`.  
+* Fix pipe section in vignette.
+
+## biomeUtils 0.010
 
 * Fixes to `getSampleTibble`.
 * Fixes to `getPrevalence`.
@@ -24,7 +30,7 @@
 
 * Added `getPhyloseqSlots` functions.
 * Added `filterPhyloseq` functions.
-* Improved `removeZeros`
+* Improved `removeZeros`.
 * Added `clusterASVs` ASVs to OTUs.
 * Added `calculateQC` Calculate QC metrics for taxa and samples.
 

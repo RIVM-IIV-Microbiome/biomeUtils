@@ -19,6 +19,10 @@
 #'
 #' @author Sudarshan A. Shetty
 #'
+#' @references
+#' Shetty SA (2020). Utilities for microbiome analytics.
+#' \url{https://github.com/microsud/biomeUtils}
+#'
 #' @importFrom microbiome prevalence abundances
 #' @importFrom utils head
 #' @importFrom Biobase rowMedians

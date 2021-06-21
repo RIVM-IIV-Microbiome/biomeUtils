@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Changelog • biomeUtils</title>
+<title>Rename Sample Variables in Phyloseq Sample Data — renameSampleVariables • biomeUtils</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,8 @@
 
 
 
-<meta property="og:title" content="Changelog" />
+<meta property="og:title" content="Rename Sample Variables in Phyloseq Sample Data — renameSampleVariables" />
+<meta property="og:description" content="Rename Sample Variables in Phyloseq Sample Data" />
 
 
 
@@ -58,7 +59,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-news">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -122,122 +123,74 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1 data-toc-skip>Changelog <small></small></h1>
-      <small>Source: <a href='https://github.com/RIVM-IIV-Microbiome/biomeUtils/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
+    <h1>Rename Sample Variables in Phyloseq Sample Data</h1>
+    <small class="dont-index">Source: <a href='https://github.com/RIVM-IIV-Microbiome/biomeUtils/blob/master/R/renameSampleVariables.R'><code>R/renameSampleVariables.R</code></a></small>
+    <div class="hidden name"><code>renameSampleVariables.Rd</code></div>
     </div>
 
-    <div id="biomeutils-0011" class="section level2">
-<h2 class="hasAnchor">
-<a href="#biomeutils-0011" class="anchor"></a>biomeUtils 0.011</h2>
-<ul>
-<li>Handle missing tree in <code>clusterASVs</code>.<br>
-</li>
-<li>Added <code>renameSampleVariables</code>.<br>
-</li>
-<li>Fix pipe section in vignette.</li>
-</ul>
-</div>
-    <div id="biomeutils-0010" class="section level2">
-<h2 class="hasAnchor">
-<a href="#biomeutils-0010" class="anchor"></a>biomeUtils 0.010</h2>
-<ul>
-<li>Fixes to <code>getSampleTibble</code>.</li>
-<li>Fixes to <code>getPrevalence</code>.</li>
-<li>Fixes to <code>calculateTaxaFoldDifference</code>.</li>
-</ul>
-</div>
-    <div id="biomeutils-0009" class="section level2">
-<h2 class="hasAnchor">
-<a href="#biomeutils-0009" class="anchor"></a>biomeUtils 0.0.09</h2>
-<ul>
-<li>Added <code>mutatePhyloseq</code> functions added.</li>
-<li>Added <code>checkPolyphyletic</code> functions added.</li>
-<li>Minor fixes in documentations.</li>
-</ul>
-</div>
-    <div id="biomeutils-0008" class="section level2">
-<h2 class="hasAnchor">
-<a href="#biomeutils-0008" class="anchor"></a>biomeUtils 0.0.08</h2>
-<ul>
-<li>Added <code>meltDistanceToTable</code> fix.</li>
-</ul>
-</div>
-    <div id="biomeutils-0007" class="section level2">
-<h2 class="hasAnchor">
-<a href="#biomeutils-0007" class="anchor"></a>biomeUtils 0.0.07</h2>
-<ul>
-<li>Added <code>getPrevalence</code> fix.</li>
-<li>Vignette addition pipes example.</li>
-</ul>
-</div>
-    <div id="biomeutils-0006" class="section level2">
-<h2 class="hasAnchor">
-<a href="#biomeutils-0006" class="anchor"></a>biomeUtils 0.0.06</h2>
-<ul>
-<li>Added <code>getPhyloseqSlots</code> functions.</li>
-<li>Added <code>filterPhyloseq</code> functions.</li>
-<li>Improved <code>removeZeros</code>.</li>
-<li>Added <code>clusterASVs</code> ASVs to OTUs.</li>
-<li>Added <code>calculateQC</code> Calculate QC metrics for taxa and samples.</li>
-</ul>
-</div>
-    <div id="biomeutils-0005" class="section level2">
-<h2 class="hasAnchor">
-<a href="#biomeutils-0005" class="anchor"></a>biomeUtils 0.0.05</h2>
-<ul>
-<li>Added <code>buildSeqTree</code> to build trees from sequences.</li>
-<li>Added <code>calculateTaxaFoldDifference</code> to build trees from sequences.</li>
-<li>Added <code>cleanTaxonomy</code> to build trees from sequences.</li>
-<li>Added <code>getPrevalence</code>
-</li>
-<li>Added <code>calculatePD</code>
-</li>
-</ul>
-</div>
-    <div id="biomeutils-0004" class="section level2">
-<h2 class="hasAnchor">
-<a href="#biomeutils-0004" class="anchor"></a>biomeUtils 0.0.04</h2>
-<ul>
-<li>Added <code>getTaxaSummary</code>.</li>
-<li>Added <code>removeZeros</code>.</li>
-<li>Added <code>saveSequence</code>.</li>
-<li>Added <code>summarizeTaxonomicAssignments</code>.</li>
-<li>Added <code>trendAbundanceAssignment</code>.</li>
-<li>Added <code>SprockettTHData</code> example data.</li>
-</ul>
-</div>
-    <div id="biomeutils-0003" class="section level2">
-<h2 class="hasAnchor">
-<a href="#biomeutils-0003" class="anchor"></a>biomeUtils 0.0.03</h2>
-<ul>
-<li>Added <code>comparePhyloseq</code> to compare phyloseq objects.</li>
-<li>Added <code>getTibbles</code> create tibbles from phyloseq objects.</li>
-<li>Added <code>uniteGenusSpeciesNames</code>.</li>
-</ul>
-</div>
-    <div id="biomeutils-0002" class="section level2">
-<h2 class="hasAnchor">
-<a href="#biomeutils-0002" class="anchor"></a>biomeUtils 0.0.02</h2>
-<ul>
-<li>Added a <code>NEWS.md</code> file to track changes to the package.</li>
-</ul>
-</div>
-    <div id="biomeutils-0001" class="section level2">
-<h2 class="hasAnchor">
-<a href="#biomeutils-0001" class="anchor"></a>biomeUtils 0.0.01</h2>
-<ul>
-<li>Added <code>FuentesIliGutData</code> example data.</li>
-<li>First build of the package.</li>
-</ul>
-</div>
-  </div>
+    <div class="ref-description">
+    <p>Rename Sample Variables in Phyloseq Sample Data</p>
+    </div>
 
+    <pre class="usage"><span class='fu'>renameSampleVariables</span><span class='op'>(</span><span class='va'>x</span>, with <span class='op'>=</span> <span class='cn'>FALSE</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p><code>phyloseq</code> object</p></td>
+    </tr>
+    <tr>
+      <th>with</th>
+      <td><p>Default is FALSE. Set this to TRUE when using a function. See
+<code><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename_with</a></code></p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Option to pass on to <code><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></code> or
+<code><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename_with</a></code>. If using later,
+set with=TRUE.</p></td>
+    </tr>
+    </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>Phyloseq with modified sample_data</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>In some cases user may want to rename one or several sample variables.
+         With <code>phyloseq</code>, this needs to be done one by one. To ease this step,
+         we make use of the <code><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></code> and
+         <code><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename_with</a></code>. The later allows to use
+         functions such as those that work with string matching.</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>Shetty SA (2020). Utilities for microbiome analytics.
+<a href='https://github.com/microsud/biomeUtils'>https://github.com/microsud/biomeUtils</a></p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Sudarshan A. Shetty</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>biomeUtils</span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>FuentesIliGutData</span><span class='op'>)</span>
+<span class='va'>FuentesIliGutData</span> <span class='op'>&lt;-</span> <span class='fu'>renameSampleVariables</span><span class='op'>(</span><span class='va'>FuentesIliGutData</span>,
+                                           with<span class='op'>=</span><span class='cn'>FALSE</span>,
+                                           condition <span class='op'>=</span> <span class='st'>"ILI"</span><span class='op'>)</span>
+
+<span class='va'>FuentesIliGutData</span> <span class='op'>&lt;-</span> <span class='fu'>renameSampleVariables</span><span class='op'>(</span><span class='va'>FuentesIliGutData</span>,
+                                           with<span class='op'>=</span><span class='cn'>TRUE</span>,
+                                           .fn <span class='op'>=</span> <span class='va'>toupper</span><span class='op'>)</span>
+
+</div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
     </nav>
   </div>
-
 </div>
 
 
