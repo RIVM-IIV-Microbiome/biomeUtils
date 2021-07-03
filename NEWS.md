@@ -1,4 +1,10 @@
 
+## biomeUtils 0.012
+
+* Added `pullPhyloseq`.   
+* Added `separateSampleColumn`.  
+* Added `uniteSampleColumn`.  
+
 ## biomeUtils 0.011
 
 * Handle missing tree in `clusterASVs`.  

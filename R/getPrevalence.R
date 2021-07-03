@@ -90,7 +90,7 @@ getPrevalence <- function(x,
   taxa_rt <- .check_taxa(x, return_taxa)
 
   prev_tbl <- prev_tbl %>%
-    filter(Taxa %in% !!syms(taxa_rt))
+    filter(Taxa %in% taxa_rt)
 
   if (sort) {
     prev_tbl <- prev_tbl %>%
