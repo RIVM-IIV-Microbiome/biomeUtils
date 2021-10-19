@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get tibble — getTibble • biomeUtils</title>
+<title>Save data — saveData • biomeUtils</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Get tibble — getTibble" />
-<meta property="og:description" content="Get tibble" />
+<meta property="og:title" content="Save data — saveData" />
+<meta property="og:description" content="Save data" />
 
 
 
@@ -123,34 +123,34 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get tibble</h1>
-    <small class="dont-index">Source: <a href='https://github.com/RIVM-IIV-Microbiome/biomeUtils/blob/master/R/getTibbles.R'><code>R/getTibbles.R</code></a></small>
-    <div class="hidden name"><code>getTibble.Rd</code></div>
+    <h1>Save data</h1>
+    <small class="dont-index">Source: <a href='https://github.com/RIVM-IIV-Microbiome/biomeUtils/blob/master/R/saveData.R'><code>R/saveData.R</code></a></small>
+    <div class="hidden name"><code>saveData.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Get tibble</p>
+    <p>Save data</p>
     </div>
 
-    <pre class="usage"><span class='fu'>getAbundanceTibble</span><span class='op'>(</span>
+    <pre class="usage"><span class='fu'>saveAbundanceData</span><span class='op'>(</span>
   <span class='va'>x</span>,
-  column_id <span class='op'>=</span> <span class='st'>"FeatureID"</span>,
-  select_rows <span class='op'>=</span> <span class='cn'>NULL</span>,
-  select_cols <span class='op'>=</span> <span class='cn'>NULL</span>
+  path_file <span class='op'>=</span> <span class='cn'>NULL</span>,
+  file_type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"delim"</span>, <span class='st'>"csv"</span>, <span class='st'>"csv2"</span>, <span class='st'>"tsv"</span>, <span class='st'>"excel_csv"</span>, <span class='st'>"excel_csv2"</span><span class='op'>)</span>,
+  <span class='va'>...</span>
 <span class='op'>)</span>
 
-<span class='fu'>getTaxaTibble</span><span class='op'>(</span>
+<span class='fu'>saveTaxonomyData</span><span class='op'>(</span>
   <span class='va'>x</span>,
-  column_id <span class='op'>=</span> <span class='st'>"FeatureID"</span>,
-  select_rows <span class='op'>=</span> <span class='cn'>NULL</span>,
-  select_cols <span class='op'>=</span> <span class='cn'>NULL</span>
+  path_file <span class='op'>=</span> <span class='cn'>NULL</span>,
+  file_type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"delim"</span>, <span class='st'>"csv"</span>, <span class='st'>"csv2"</span>, <span class='st'>"tsv"</span>, <span class='st'>"excel_csv"</span>, <span class='st'>"excel_csv2"</span><span class='op'>)</span>,
+  <span class='va'>...</span>
 <span class='op'>)</span>
 
-<span class='fu'>getSampleTibble</span><span class='op'>(</span>
+<span class='fu'>saveSampleData</span><span class='op'>(</span>
   <span class='va'>x</span>,
-  column_id <span class='op'>=</span> <span class='st'>"SampleID"</span>,
-  select_rows <span class='op'>=</span> <span class='cn'>NULL</span>,
-  select_cols <span class='op'>=</span> <span class='cn'>NULL</span>
+  path_file <span class='op'>=</span> <span class='cn'>NULL</span>,
+  file_type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"delim"</span>, <span class='st'>"csv"</span>, <span class='st'>"csv2"</span>, <span class='st'>"tsv"</span>, <span class='st'>"excel_csv"</span>, <span class='st'>"excel_csv2"</span><span class='op'>)</span>,
+  <span class='va'>...</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -161,28 +161,30 @@
       <td><p><code>phyloseq</code> object</p></td>
     </tr>
     <tr>
-      <th>column_id</th>
-      <td><p>A character</p></td>
+      <th>path_file</th>
+      <td><p>path to save the file along with name.
+Default is NULL. E.g. "data/output/otu_table.csv"</p></td>
     </tr>
     <tr>
-      <th>select_rows</th>
-      <td><p>Rows to return in output.</p></td>
+      <th>file_type</th>
+      <td><p>One of "delim","csv","csv2","tsv","excel_csv","excel_csv2"
+supported by <code>readr</code> package</p></td>
     </tr>
     <tr>
-      <th>select_cols</th>
-      <td><p>Columns to return in output</p></td>
+      <th>...</th>
+      <td><p>Arguments to pass to readr functions</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A tibble</p>
+    <p>Store file locally specified by user.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Convert different <code>phyloseq</code> slots into tibbles.</p>
-<p><code>getAbundanceTibble</code> gets the otu_table in tibble format.</p>
-<p><code>getTaxaTibble</code> gets the taxa_table in tibble format.</p>
-<p><code>getSampleTibble</code> gets the sample_data in tibble format.</p>
+    <p>Basic utilities for saving data in <code>phyloseq</code>.</p>
+<p><code>saveAbundanceData</code> save the otu_table.</p>
+<p><code>saveTaxonomyData</code> save the taxa_table.</p>
+<p><code>saveSampleData</code> save the sample_data.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Shetty SA (2020). Utilities for microbiome analytics.
@@ -192,11 +194,13 @@
     <p>Sudarshan A. Shetty</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>biomeUtils</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>biomeUtils</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>"FuentesIliGutData"</span><span class='op'>)</span>
-<span class='va'>otu_tib</span> <span class='op'>&lt;-</span> <span class='fu'>getAbundanceTibble</span><span class='op'>(</span><span class='va'>FuentesIliGutData</span><span class='op'>)</span>
-<span class='va'>tax_tib</span> <span class='op'>&lt;-</span> <span class='fu'>getTaxaTibble</span><span class='op'>(</span><span class='va'>FuentesIliGutData</span><span class='op'>)</span>
-<span class='va'>meta_tib</span> <span class='op'>&lt;-</span> <span class='fu'>getSampleTibble</span><span class='op'>(</span><span class='va'>FuentesIliGutData</span><span class='op'>)</span>
+<span class='fu'>saveAbundanceData</span><span class='op'>(</span><span class='va'>FuentesIliGutData</span>, path_file <span class='op'>=</span> <span class='st'>"otu.tsv"</span>, file_type <span class='op'>=</span> <span class='st'>"tsv"</span><span class='op'>)</span>
+<span class='fu'>saveTaxonomyData</span><span class='op'>(</span><span class='va'>FuentesIliGutData</span>, path_file <span class='op'>=</span> <span class='st'>"taxa.tsv"</span>, file_type <span class='op'>=</span> <span class='st'>"tsv"</span><span class='op'>)</span>
+<span class='fu'>saveSampleData</span><span class='op'>(</span><span class='va'>FuentesIliGutData</span>, path_file <span class='op'>=</span> <span class='st'>"sample.tsv"</span>, file_type <span class='op'>=</span> <span class='st'>"tsv"</span><span class='op'>)</span>
+<span class='op'>}</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
