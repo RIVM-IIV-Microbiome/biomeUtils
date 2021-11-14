@@ -1,3 +1,7 @@
+## biomeUtils 0.014
+
+* Added `readMergedMetaphlan`.   
+
 ## biomeUtils 0.013
 
 * Added `genericUtilities`.   

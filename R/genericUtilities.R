@@ -44,6 +44,7 @@ NULL
 #'
 meltAbundance <- function(x, ...){
 
+  FeatureID <- NULL
   ab.tib <- getAbundanceTibble(x) %>%
     tidyr::pivot_longer(-FeatureID, ...)
 
