@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">biomeUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.013</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.015</span>
       </span>
     </div>
 
@@ -207,7 +207,7 @@ Default= 0.01 i.e. 99 percent identity</p></td>
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>    between, first, last</span></div><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tibble.tidyverse.org/'>tibble</a></span><span class='op'>)</span>
 
-<span class='va'>testSprockett</span> <span class='op'>&lt;-</span> <span class='fu'>core</span><span class='op'>(</span><span class='fu'>subset_samples</span><span class='op'>(</span><span class='va'>SprockettTHData</span>, <span class='va'>Community</span> <span class='op'>==</span> <span class='st'>"River_4"</span><span class='op'>)</span>, <span class='fl'>5</span>, <span class='fl'>20</span> <span class='op'>/</span> <span class='fl'>100</span><span class='op'>)</span>
+<span class='va'>testSprockett</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/microbiome/man/core.html'>core</a></span><span class='op'>(</span><span class='fu'>subset_samples</span><span class='op'>(</span><span class='va'>SprockettTHData</span>, <span class='va'>Community</span> <span class='op'>==</span> <span class='st'>"River_4"</span><span class='op'>)</span>, <span class='fl'>5</span>, <span class='fl'>20</span> <span class='op'>/</span> <span class='fl'>100</span><span class='op'>)</span>
 <span class='va'>testSprockett</span> <span class='op'>&lt;-</span> <span class='fu'>clusterASVs</span><span class='op'>(</span><span class='va'>testSprockett</span>,
                              cluster_method <span class='op'>=</span> <span class='st'>"NJ"</span>,
                              cluster_cutoff <span class='op'>=</span> <span class='fl'>0.01</span>,
@@ -225,7 +225,7 @@ Default= 0.01 i.e. 99 percent identity</p></td>
 #&gt; Aligning Sequences:
 #&gt; ================================================================================
 #&gt; 
-#&gt; Time difference of 2.15 secs
+#&gt; Time difference of 1.75 secs
 #&gt; 
 #&gt; Iteration 1 of 2:
 #&gt; 
@@ -242,7 +242,7 @@ Default= 0.01 i.e. 99 percent identity</p></td>
 #&gt; Realigning Sequences:
 #&gt; ================================================================================
 #&gt; 
-#&gt; Time difference of 1.1 secs
+#&gt; Time difference of 1.11 secs
 #&gt; 
 #&gt; Iteration 2 of 2:
 #&gt; 
