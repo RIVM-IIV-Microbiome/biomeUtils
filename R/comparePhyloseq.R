@@ -29,7 +29,7 @@
 #'
 #' @references
 #' Shetty SA (2021). Utilities for microbiome analytics.
-#' \url{https://github.com/microsud/biomeUtils}
+#' \url{https://github.com/RIVM-IIV-Microbiome/biomeUtils}
 #'
 #' @importFrom phyloseq nsamples ntaxa sample_sums taxa_sums
 #' @importFrom microbiome abundances

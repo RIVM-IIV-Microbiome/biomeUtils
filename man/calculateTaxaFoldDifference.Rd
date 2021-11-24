@@ -41,7 +41,7 @@ taxa_fd
 }
 \references{
 Shetty SA (2021). Utilities for microbiome analytics.
-\url{https://github.com/microsud/biomeUtils}
+\url{https://github.com/RIVM-IIV-Microbiome/biomeUtils}
 }
 \author{
 Original Author: Leo Lahti. Adapted by Sudarshan A. Shetty

@@ -32,7 +32,7 @@ knitr::opts_chunk$set(
 ### Install  
 
 ```{r install, eval=FALSE}
-devtools::install_github("microsud/biomUtils")
+devtools::install_github("RIVM-IIV-Microbiome/biomeUtils")
 ```
 
 ### Load pkg  

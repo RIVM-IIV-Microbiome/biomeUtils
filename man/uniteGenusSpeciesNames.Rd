@@ -30,7 +30,7 @@ head(tax_table(ps)[, 7])
 }
 \references{
 Shetty SA (2021). Utilities for microbiome analytics.
-\url{https://github.com/microsud/biomeUtils}
+\url{https://github.com/RIVM-IIV-Microbiome/biomeUtils}
 }
 \author{
 Sudarshan A. Shetty

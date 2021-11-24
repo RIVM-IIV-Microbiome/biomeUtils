@@ -21,7 +21,7 @@
 #'
 #' @references
 #' Shetty SA (2021). Utilities for microbiome analytics.
-#' \url{https://github.com/microsud/biomeUtils}
+#' \url{https://github.com/RIVM-IIV-Microbiome/biomeUtils}
 #'
 #' @importFrom dplyr select mutate rename
 #' @importFrom phyloseq tax_table 'tax_table<-'

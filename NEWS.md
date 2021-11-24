@@ -1,3 +1,7 @@
+## biomeUtils 0.015
+
+* Added `chekFilterEffect` functions.  
+
 ## biomeUtils 0.014
 
 * Added `readMergedMetaphlan`.   

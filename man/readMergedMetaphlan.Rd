@@ -49,7 +49,7 @@ mpa.ps <- readMergedMetaphlan(input_file_path = "../metaphlan_bugs_list_merged.t
 }
 \references{
 Shetty SA (2020). Utilities for microbiome analytics.
-\url{https://github.com/microsud/biomeUtils}
+\url{https://github.com/RIVM-IIV-Microbiome/biomeUtils}
 }
 \author{
 Sudarshan A. Shetty
