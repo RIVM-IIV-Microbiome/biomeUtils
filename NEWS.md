@@ -1,3 +1,8 @@
+## biomeUtils 0.016
+
+* Added `filterTaxaTotal` functions.  
+* Added transformation functions.  
+
 ## biomeUtils 0.015
 
 * Added `chekFilterEffect` functions.  

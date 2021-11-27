@@ -49,7 +49,7 @@ ab.check
 
 pv.check <- checkPrevalenceCutOffs(ps.rel,
                                    abundance_thres = 0.01,
-                                   prevalence_thres =c(0.05, 0.1, 0.15, 0.2))
+                                   prevalence_thres = c(0.05, 0.1, 0.15, 0.2))
 pv.check
 
 }

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Check Filter Effect — chekFilterEffect • biomeUtils</title>
+<title>Filter Taxa Based on Total Data — filterTaxaTotal • biomeUtils</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Check Filter Effect — chekFilterEffect" />
-<meta property="og:description" content="Check Filter Effect" />
+<meta property="og:title" content="Filter Taxa Based on Total Data — filterTaxaTotal" />
+<meta property="og:description" content="Filter Taxa Based on Total Data" />
 
 
 
@@ -123,82 +123,108 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Check Filter Effect</h1>
-    <small class="dont-index">Source: <a href='https://github.com/RIVM-IIV-Microbiome/biomeUtils/blob/master/R/checkFilterEffect.R'><code>R/checkFilterEffect.R</code></a></small>
-    <div class="hidden name"><code>chekFilterEffect.Rd</code></div>
+    <h1>Filter Taxa Based on Total Data</h1>
+    <small class="dont-index">Source: <a href='https://github.com/RIVM-IIV-Microbiome/biomeUtils/blob/master/R/filterTaxaTotal.R'><code>R/filterTaxaTotal.R</code></a></small>
+    <div class="hidden name"><code>filterTaxaTotal.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Check Filter Effect</p>
+    <p>Filter Taxa Based on Total Data</p>
     </div>
 
-    <pre class="usage"><span class='fu'>checkAbundanceCutOffs</span><span class='op'>(</span><span class='va'>x</span>, abundance_thres <span class='op'>=</span> <span class='cn'>NULL</span>, prevalence_thres <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
-
-<span class='fu'>checkPrevalenceCutOffs</span><span class='op'>(</span><span class='va'>x</span>, abundance_thres <span class='op'>=</span> <span class='cn'>NULL</span>, prevalence_thres <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p><code>phyloseq</code> object</p></td>
+      <td><p><code>phyloseq</code> object.</p></td>
     </tr>
     <tr>
-      <th>abundance_thres</th>
-      <td><p>If using 'checkAbundanceCutOffs', can have multiple
-numeric values like c(0.1, 0.01, 0.001, 0.0001).
-If using 'checkPrevalenceCutOffs', a single value.</p></td>
+      <th>rank</th>
+      <td><p>Taxonomic rank to use like Phylum.</p></td>
     </tr>
     <tr>
-      <th>prevalence_thres</th>
-      <td><p>If using 'checkPrevalenceCutOffs', can have multiple
-numeric values like c(0.05, 0.1, 0.15, 0.2).
-If using 'checkAbundanceCutOffs', a single value.</p></td>
+      <th>percent_thres</th>
+      <td><p>Percent cut-off to use. If value is 10, then all phyla with
+less that 10 percent of the total counts in all data are removed.</p></td>
+    </tr>
+    <tr>
+      <th>verbose</th>
+      <td><p>Logical. Prints a list of removed taxa. Default is TRUE.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A tibble</p>
+    <p>Filtered phyloseq</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Investigate effect of abundance and prevalence thresholds on
-         taxa numbers.</p>
-<p><code>checkAbundanceCutOffs</code> check how many taxa are lost at different
-abundance thresholds.</p>
-<p><code>checkPrevalenceCutOffs</code> check how many taxa are lost at different
-prevalence thresholds.</p>
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
-
-    <p>Shetty SA (2020). Utilities for microbiome analytics.
-<a href='https://github.com/microsud/biomeUtils'>https://github.com/microsud/biomeUtils</a></p>
+    <p>Provided a count data <code>phyloseq</code>, <code>filterTaxaTotal</code> calculates
+         the percent of taxon at the rank level is calculated. Those that are
+         less than the percent_thres are removed. This function works with ASV
+         level data as the ASVs are merged at specified level for calculation.
+         Therefore, ASVs that belong to low/rare abundance at a specified rank
+         are removed.</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Sudarshan A. Shetty</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>biomeUtils</span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://microbiome.github.io/microbiome'>microbiome</a></span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>"FuentesIliGutData"</span><span class='op'>)</span>
-<span class='va'>ps.rel</span> <span class='op'>&lt;-</span> <span class='fu'>microbiome</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/microbiome/man/transform.html'>transform</a></span><span class='op'>(</span><span class='va'>FuentesIliGutData</span>, <span class='st'>"compositional"</span><span class='op'>)</span>
-<span class='va'>ab.check</span> <span class='op'>&lt;-</span> <span class='fu'>checkAbundanceCutOffs</span><span class='op'>(</span><span class='va'>ps.rel</span>,
-                                  abundance_thres <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.0001</span>, <span class='fl'>0.001</span>, <span class='fl'>0.01</span>, <span class='fl'>0.1</span><span class='op'>)</span>,
-                                  prevalence_thres <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span>
-<span class='va'>ab.check</span>
-</div><div class='output co'>#&gt;   Abundance Taxa_lost TotalTaxa PrevalenceCutOff
-#&gt; 1     1e-04       310       905              0.1
-#&gt; 2     0.001       654       905              0.1
-#&gt; 3      0.01       847       905              0.1
-#&gt; 4       0.1       905       905              0.1</div><div class='input'>
-<span class='va'>pv.check</span> <span class='op'>&lt;-</span> <span class='fu'>checkPrevalenceCutOffs</span><span class='op'>(</span><span class='va'>ps.rel</span>,
-                                   abundance_thres <span class='op'>=</span> <span class='fl'>0.01</span>,
-                                   prevalence_thres <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.05</span>, <span class='fl'>0.1</span>, <span class='fl'>0.15</span>, <span class='fl'>0.2</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>pv.check</span>
-</div><div class='output co'>#&gt;   Prevalence Taxa_lost TotalTaxa AbundanceCutOff
-#&gt; 1       0.05       809       905            0.01
-#&gt; 2        0.1       847       905            0.01
-#&gt; 3       0.15       864       905            0.01
-#&gt; 4        0.2       876       905            0.01</div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>'FuentesIliGutData'</span><span class='op'>)</span>
+<span class='co'># below we filter Family that are less than 2% of the total data</span>
+<span class='va'>ps.filt</span> <span class='op'>&lt;-</span> <span class='fu'>filterTaxaTotal</span><span class='op'>(</span><span class='va'>FuentesIliGutData</span>,
+                           rank <span class='op'>=</span> <span class='st'>'Family'</span>,
+                           percent_thres <span class='op'>=</span> <span class='fl'>2</span>,
+                           verbose <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Following taxa were removed at level: Family</span></div><div class='output co'>#&gt; <span class='message'>Akkermansiaceae</span>
+#&gt; <span class='message'>Erysipelotrichaceae</span>
+#&gt; <span class='message'>Streptococcaceae</span>
+#&gt; <span class='message'>Methanobacteriaceae</span>
+#&gt; <span class='message'>Bifidobacteriaceae</span>
+#&gt; <span class='message'>Peptostreptococcaceae</span>
+#&gt; <span class='message'>Christensenellaceae</span>
+#&gt; <span class='message'>Rikenellaceae</span>
+#&gt; <span class='message'>Tannerellaceae</span>
+#&gt; <span class='message'>Veillonellaceae</span>
+#&gt; <span class='message'>Clostridiaceae 1</span>
+#&gt; <span class='message'>Barnesiellaceae</span>
+#&gt; <span class='message'>Family XI_2II</span>
+#&gt; <span class='message'>Coriobacteriaceae</span>
+#&gt; <span class='message'>Lactobacillaceae</span>
+#&gt; <span class='message'>Burkholderiaceae</span>
+#&gt; <span class='message'>Desulfovibrionaceae</span>
+#&gt; <span class='message'>Eggerthellaceae</span>
+#&gt; <span class='message'>Acidaminococcaceae</span>
+#&gt; <span class='message'>Marinifilaceae</span>
+#&gt; <span class='message'>Muribaculaceae</span>
+#&gt; <span class='message'>Peptococcaceae</span>
+#&gt; <span class='message'>Pasteurellaceae</span>
+#&gt; <span class='message'>Halomonadaceae</span>
+#&gt; <span class='message'>Enterococcaceae</span>
+#&gt; <span class='message'>Anaeroplasmataceae</span>
+#&gt; <span class='message'>Clostridiales vadinBB60 group</span>
+#&gt; <span class='message'>Defluviitaleaceae</span>
+#&gt; <span class='message'>Atopobiaceae</span>
+#&gt; <span class='message'>Leuconostocaceae</span>
+#&gt; <span class='message'>Shewanellaceae</span>
+#&gt; <span class='message'>Victivallaceae</span>
+#&gt; <span class='message'>Actinomycetaceae</span>
+#&gt; <span class='message'>Synergistaceae</span>
+#&gt; <span class='message'>Eubacteriaceae</span>
+#&gt; <span class='message'>env.OPS 17</span>
+#&gt; <span class='message'>Micrococcaceae</span>
+#&gt; <span class='message'>Pseudomonadaceae</span>
+#&gt; <span class='message'>Family XI</span>
+#&gt; <span class='message'>Family XI_2</span>
+#&gt; <span class='message'>Staphylococcaceae</span>
+#&gt; <span class='message'>Corynebacteriaceae</span></div><div class='output co'>#&gt; <span class='message'>No. of taxa removed: 217</span></div><div class='output co'>#&gt; <span class='message'>No. of samples removed: 0</span></div><div class='input'><span class='va'>ps.filt</span>
+</div><div class='output co'>#&gt; phyloseq-class experiment-level object
+#&gt; otu_table()   OTU Table:         [ 688 taxa and 589 samples ]
+#&gt; sample_data() Sample Data:       [ 589 samples by 61 sample variables ]
+#&gt; tax_table()   Taxonomy Table:    [ 688 taxa by 7 taxonomic ranks ]
+#&gt; phy_tree()    Phylogenetic Tree: [ 688 tips and 687 internal nodes ]</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
