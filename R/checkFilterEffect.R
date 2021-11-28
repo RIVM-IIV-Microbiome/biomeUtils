@@ -1,6 +1,6 @@
 #' Check Filter Effect
 #'
-#' @name chekFilterEffect
+#' @name checkFilterEffect
 #'
 #' @details Investigate effect of abundance and prevalence thresholds on
 #'          taxa numbers.
@@ -47,7 +47,7 @@
 #'
 NULL
 
-#' @rdname chekFilterEffect
+#' @rdname checkFilterEffect
 #' @aliases checkAbundanceCutOffs
 #' @importFrom dplyr as_tibble %>%
 #' @importFrom phyloseq ntaxa
@@ -93,7 +93,7 @@ checkAbundanceCutOffs <- function(x,
 }
 
 #
-#' @rdname chekFilterEffect
+#' @rdname checkFilterEffect
 #' @aliases checkPrevalenceCutOffs
 #' @importFrom dplyr as_tibble %>%
 #' @importFrom phyloseq ntaxa
