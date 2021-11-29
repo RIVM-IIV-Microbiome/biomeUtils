@@ -29,13 +29,15 @@ NULL
 
 #' @rdname transformation
 #' @aliases getProportions
+#' @importFrom microbiome abundances
+#' @importFrom phyloseq otu_table
 #' @export
 getProportions <- function(x) {
 
   if (class(x) != "phyloseq") {
     stop("Input is not an object of phyloseq class")
   }
-  x <- microbiome::abundances(x, "compositional")
+  otu_table(x) <- otu_table(abundances(x, "compositional"), taxa_are_rows=T)
   return(x)
 
 }
@@ -47,7 +49,7 @@ getCLR <- function(x){
   if (class(x) != "phyloseq") {
     stop("Input is not an object of phyloseq class")
   }
-  x <- microbiome::abundances(x, "clr")
+  otu_table(x) <- otu_table(abundances(x, "clr"), taxa_are_rows=T)
   return(x)
 }
 
