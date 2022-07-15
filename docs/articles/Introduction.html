@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,23 +33,17 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">biomeUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.016</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.017</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -64,7 +60,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/RIVM-IIV-Microbiome/biomeUtils/">
+  <a href="https://github.com/RIVM-IIV-Microbiome/biomeUtils/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -79,23 +75,27 @@
 
       
 
-      </header><script src="Introduction_files/header-attrs-2.11/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Introduction</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/RIVM-IIV-Microbiome/biomeUtils/blob/master/vignettes/Introduction.Rmd"><code>vignettes/Introduction.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/RIVM-IIV-Microbiome/biomeUtils/blob/HEAD/vignettes/Introduction.Rmd" class="external-link"><code>vignettes/Introduction.Rmd</code></a></small>
       <div class="hidden name"><code>Introduction.Rmd</code></div>
 
     </div>
 
     
     
-<div id="biomeutils" class="section level1">
-<h1 class="hasAnchor">
-<a href="#biomeutils" class="anchor"></a>biomeUtils</h1>
-<p><code>biomeUtils</code> is part of the RIVM-ToolBox project aimed at providing standard set of tools that interact with open tools for a wide array of data analytics, including microbiomics. The RIVM-ToolBox is a set of individual R tools focused towards different goals/functionalities.</p>
+<div class="section level2">
+<h2 id="biomeutils">biomeUtils<a class="anchor" aria-label="anchor" href="#biomeutils"></a>
+</h2>
+<p><code>biomeUtils</code> is part of the RIVM-ToolBox project aimed at
+providing standard set of tools that interact with open tools for a wide
+array of data analytics, including microbiomics. The RIVM-ToolBox is a
+set of individual R tools focused towards different
+goals/functionalities.</p>
 <ul>
 <li><p><code>biomeUtils</code> : Data handling<br>
 Outputs for standard data generating pipelines/workflows.</p></li>
@@ -104,381 +104,408 @@ Common data analytics including basic statistics.</p></li>
 <li><p><code>biomeViz</code>: Data visualization<br>
 Data visualization of different data types.</p></li>
 </ul>
-<div id="setup" class="section level2">
-<h2 class="hasAnchor">
-<a href="#setup" class="anchor"></a>Setup</h2>
-<div id="install" class="section level3">
-<h3 class="hasAnchor">
-<a href="#install" class="anchor"></a>Install</h3>
+<div class="section level3">
+<h3 id="setup">Setup<a class="anchor" aria-label="anchor" href="#setup"></a>
+</h3>
+<div class="section level4">
+<h4 id="install">Install<a class="anchor" aria-label="anchor" href="#install"></a>
+</h4>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"RIVM-IIV-Microbiome/biomeUtils"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"RIVM-IIV-Microbiome/biomeUtils"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="load-pkg" class="section level3">
-<h3 class="hasAnchor">
-<a href="#load-pkg" class="anchor"></a>Load pkg</h3>
+<div class="section level4">
+<h4 id="load-pkg">Load pkg<a class="anchor" aria-label="anchor" href="#load-pkg"></a>
+</h4>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">biomeUtils</span><span class="op">)</span>
-<span class="co">#&gt; Loading required package: phyloseq</span>
-<span class="co">#&gt; Loading required package: microbiome</span>
-<span class="co">#&gt; Loading required package: ggplot2</span>
-<span class="co">#&gt; Warning: package 'ggplot2' was built under R version 4.1.1</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; microbiome R package (microbiome.github.com)</span>
-<span class="co">#&gt;     </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;  Copyright (C) 2011-2020 Leo Lahti, </span>
-<span class="co">#&gt;     Sudarshan Shetty et al. &lt;microbiome.github.io&gt;</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'microbiome'</span>
-<span class="co">#&gt; The following object is masked from 'package:ggplot2':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     alpha</span>
-<span class="co">#&gt; The following object is masked from 'package:base':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     transform</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">biomeUtils</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Loading required package: phyloseq</span></span>
+<span><span class="co">#&gt; Loading required package: microbiome</span></span>
+<span><span class="co">#&gt; Loading required package: ggplot2</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; microbiome R package (microbiome.github.com)</span></span>
+<span><span class="co">#&gt;     </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;  Copyright (C) 2011-2022 Leo Lahti, </span></span>
+<span><span class="co">#&gt;     Sudarshan Shetty et al. &lt;microbiome.github.io&gt;</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Attaching package: 'microbiome'</span></span>
+<span><span class="co">#&gt; The following object is masked from 'package:ggplot2':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     alpha</span></span>
+<span><span class="co">#&gt; The following object is masked from 'package:base':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     transform</span></span></code></pre></div>
 </div>
 </div>
-<div id="data-handling" class="section level2">
-<h2 class="hasAnchor">
-<a href="#data-handling" class="anchor"></a>Data handling</h2>
-<div id="data" class="section level3">
-<h3 class="hasAnchor">
-<a href="#data" class="anchor"></a>Data</h3>
+<div class="section level3">
+<h3 id="data-handling">Data handling<a class="anchor" aria-label="anchor" href="#data-handling"></a>
+</h3>
+<div class="section level4">
+<h4 id="data">Data<a class="anchor" aria-label="anchor" href="#data"></a>
+</h4>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"FuentesIliGutData"</span><span class="op">)</span>
-<span class="va">FuentesIliGutData</span>
-<span class="co">#&gt; phyloseq-class experiment-level object</span>
-<span class="co">#&gt; otu_table()   OTU Table:         [ 905 taxa and 589 samples ]</span>
-<span class="co">#&gt; sample_data() Sample Data:       [ 589 samples by 61 sample variables ]</span>
-<span class="co">#&gt; tax_table()   Taxonomy Table:    [ 905 taxa by 7 taxonomic ranks ]</span>
-<span class="co">#&gt; phy_tree()    Phylogenetic Tree: [ 905 tips and 904 internal nodes ]</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"FuentesIliGutData"</span><span class="op">)</span></span>
+<span><span class="va">FuentesIliGutData</span></span>
+<span><span class="co">#&gt; phyloseq-class experiment-level object</span></span>
+<span><span class="co">#&gt; otu_table()   OTU Table:         [ 905 taxa and 589 samples ]</span></span>
+<span><span class="co">#&gt; sample_data() Sample Data:       [ 589 samples by 61 sample variables ]</span></span>
+<span><span class="co">#&gt; tax_table()   Taxonomy Table:    [ 905 taxa by 7 taxonomic ranks ]</span></span>
+<span><span class="co">#&gt; phy_tree()    Phylogenetic Tree: [ 905 tips and 904 internal nodes ]</span></span></code></pre></div>
 </div>
-<div id="get-tibbles" class="section level3">
-<h3 class="hasAnchor">
-<a href="#get-tibbles" class="anchor"></a>Get tibbles</h3>
+<div class="section level4">
+<h4 id="get-tibbles">Get tibbles<a class="anchor" aria-label="anchor" href="#get-tibbles"></a>
+</h4>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"FuentesIliGutData"</span><span class="op">)</span>
-<span class="co"># get otu table in tibble format</span>
-<span class="va">otu_tib</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getTibble.html">getAbundanceTibble</a></span><span class="op">(</span><span class="va">FuentesIliGutData</span>,
-                              select_rows <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"ASV302"</span>, <span class="st">"ASV82"</span>, <span class="st">"ASV410"</span>, <span class="st">"ASV2332"</span><span class="op">)</span>,
-                              select_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"sample_1"</span>, <span class="st">"sample_5"</span>, <span class="st">"sample_6"</span><span class="op">)</span>,
-                              column_id <span class="op">=</span> <span class="st">"FeatureID"</span><span class="op">)</span>
-
-<span class="co"># get taxa table in tibble format</span>
-<span class="va">tax_tib</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getTibble.html">getTaxaTibble</a></span><span class="op">(</span><span class="va">FuentesIliGutData</span>,
-                         select_rows <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"ASV302"</span>, <span class="st">"ASV82"</span>, <span class="st">"ASV410"</span>, <span class="st">"ASV2332"</span><span class="op">)</span>,
-                         select_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Phylum"</span>, <span class="st">"Genus"</span><span class="op">)</span>,
-                         column_id <span class="op">=</span> <span class="st">"FeatureID"</span><span class="op">)</span>
-
-<span class="co"># get sample data in tibble format</span>
-<span class="va">meta_tib</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getTibble.html">getSampleTibble</a></span><span class="op">(</span><span class="va">FuentesIliGutData</span>,
-                            select_rows <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"sample_1"</span>, <span class="st">"sample_5"</span>, <span class="st">"sample_6"</span><span class="op">)</span>,
-                            select_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"participant_id"</span>, <span class="st">"ILI"</span>, <span class="st">"age"</span><span class="op">)</span>,
-                            column_id <span class="op">=</span> <span class="st">"FeatureID"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"FuentesIliGutData"</span><span class="op">)</span></span>
+<span><span class="co"># get otu table in tibble format</span></span>
+<span><span class="va">otu_tib</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getTibble.html">getAbundanceTibble</a></span><span class="op">(</span><span class="va">FuentesIliGutData</span>,</span>
+<span>                              select_rows <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ASV302"</span>, <span class="st">"ASV82"</span>, <span class="st">"ASV410"</span>, <span class="st">"ASV2332"</span><span class="op">)</span>,</span>
+<span>                              select_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"sample_1"</span>, <span class="st">"sample_5"</span>, <span class="st">"sample_6"</span><span class="op">)</span>,</span>
+<span>                              column_id <span class="op">=</span> <span class="st">"FeatureID"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># get taxa table in tibble format</span></span>
+<span><span class="va">tax_tib</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getTibble.html">getTaxaTibble</a></span><span class="op">(</span><span class="va">FuentesIliGutData</span>,</span>
+<span>                         select_rows <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ASV302"</span>, <span class="st">"ASV82"</span>, <span class="st">"ASV410"</span>, <span class="st">"ASV2332"</span><span class="op">)</span>,</span>
+<span>                         select_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Phylum"</span>, <span class="st">"Genus"</span><span class="op">)</span>,</span>
+<span>                         column_id <span class="op">=</span> <span class="st">"FeatureID"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># get sample data in tibble format</span></span>
+<span><span class="va">meta_tib</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getTibble.html">getSampleTibble</a></span><span class="op">(</span><span class="va">FuentesIliGutData</span>,</span>
+<span>                            select_rows <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"sample_1"</span>, <span class="st">"sample_5"</span>, <span class="st">"sample_6"</span><span class="op">)</span>,</span>
+<span>                            select_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"participant_id"</span>, <span class="st">"ILI"</span>, <span class="st">"age"</span><span class="op">)</span>,</span>
+<span>                            column_id <span class="op">=</span> <span class="st">"FeatureID"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="subsetfilter-phyloseq" class="section level3">
-<h3 class="hasAnchor">
-<a href="#subsetfilter-phyloseq" class="anchor"></a>Subset/Filter phyloseq</h3>
+<div class="section level4">
+<h4 id="subsetfilter-phyloseq">Subset/Filter phyloseq<a class="anchor" aria-label="anchor" href="#subsetfilter-phyloseq"></a>
+</h4>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="co"># Filter by phyloseq like subset_*</span>
-<span class="va">ps.filtered.samples</span>  <span class="op">&lt;-</span> <span class="fu"><a href="../reference/filterPhyloseq.html">filterSampleData</a></span><span class="op">(</span><span class="va">FuentesIliGutData</span>,
-                                         <span class="va">ILI</span> <span class="op">==</span> <span class="st">"C"</span> <span class="op">&amp;</span> <span class="va">BMI</span> <span class="op">&lt;</span> <span class="fl">26</span><span class="op">)</span>
-<span class="va">ps.filtered.samples</span>
-<span class="co">#&gt; phyloseq-class experiment-level object</span>
-<span class="co">#&gt; otu_table()   OTU Table:         [ 901 taxa and 91 samples ]</span>
-<span class="co">#&gt; sample_data() Sample Data:       [ 91 samples by 61 sample variables ]</span>
-<span class="co">#&gt; tax_table()   Taxonomy Table:    [ 901 taxa by 7 taxonomic ranks ]</span>
-<span class="co">#&gt; phy_tree()    Phylogenetic Tree: [ 901 tips and 900 internal nodes ]</span>
-
-<span class="va">ps.filtered.taxa</span>  <span class="op">&lt;-</span> <span class="fu"><a href="../reference/filterPhyloseq.html">filterTaxaData</a></span><span class="op">(</span><span class="va">FuentesIliGutData</span>,
-                                    <span class="va">Phylum</span><span class="op">==</span><span class="st">"Firmicutes"</span><span class="op">)</span>
-
-<span class="va">ps.filtered.taxa</span>
-<span class="co">#&gt; phyloseq-class experiment-level object</span>
-<span class="co">#&gt; otu_table()   OTU Table:         [ 758 taxa and 589 samples ]</span>
-<span class="co">#&gt; sample_data() Sample Data:       [ 589 samples by 61 sample variables ]</span>
-<span class="co">#&gt; tax_table()   Taxonomy Table:    [ 758 taxa by 7 taxonomic ranks ]</span>
-<span class="co">#&gt; phy_tree()    Phylogenetic Tree: [ 758 tips and 757 internal nodes ]</span>
-
-<span class="co"># Filter by names like prune_*</span>
-<span class="va">sams.select</span> <span class="op">&lt;-</span> <span class="fu">sample_names</span><span class="op">(</span><span class="va">FuentesIliGutData</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span>
-<span class="va">ps.filter.by.sam.names</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/filterPhyloseq.html">filterSampleByNames</a></span><span class="op">(</span><span class="va">FuentesIliGutData</span>,
-                                               ids <span class="op">=</span> <span class="va">sams.select</span>,
-                                               keep <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-
-<span class="va">tax.select</span> <span class="op">&lt;-</span> <span class="fu">taxa_names</span><span class="op">(</span><span class="va">FuentesIliGutData</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span>
-<span class="va">ps.filter.by.tax.names</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/filterPhyloseq.html">filterTaxaByNames</a></span><span class="op">(</span><span class="va">FuentesIliGutData</span>,
-                                           ids <span class="op">=</span> <span class="va">tax.select</span>,
-                                           keep <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span></span>
+<span><span class="co"># Filter by phyloseq like subset_*</span></span>
+<span><span class="va">ps.filtered.samples</span>  <span class="op">&lt;-</span> <span class="fu"><a href="../reference/filterPhyloseq.html">filterSampleData</a></span><span class="op">(</span><span class="va">FuentesIliGutData</span>,</span>
+<span>                                         <span class="va">ILI</span> <span class="op">==</span> <span class="st">"C"</span> <span class="op">&amp;</span> <span class="va">BMI</span> <span class="op">&lt;</span> <span class="fl">26</span><span class="op">)</span></span>
+<span><span class="va">ps.filtered.samples</span></span>
+<span><span class="co">#&gt; phyloseq-class experiment-level object</span></span>
+<span><span class="co">#&gt; otu_table()   OTU Table:         [ 901 taxa and 91 samples ]</span></span>
+<span><span class="co">#&gt; sample_data() Sample Data:       [ 91 samples by 61 sample variables ]</span></span>
+<span><span class="co">#&gt; tax_table()   Taxonomy Table:    [ 901 taxa by 7 taxonomic ranks ]</span></span>
+<span><span class="co">#&gt; phy_tree()    Phylogenetic Tree: [ 901 tips and 900 internal nodes ]</span></span>
+<span></span>
+<span><span class="va">ps.filtered.taxa</span>  <span class="op">&lt;-</span> <span class="fu"><a href="../reference/filterPhyloseq.html">filterTaxaData</a></span><span class="op">(</span><span class="va">FuentesIliGutData</span>,</span>
+<span>                                    <span class="va">Phylum</span><span class="op">==</span><span class="st">"Firmicutes"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">ps.filtered.taxa</span></span>
+<span><span class="co">#&gt; phyloseq-class experiment-level object</span></span>
+<span><span class="co">#&gt; otu_table()   OTU Table:         [ 758 taxa and 589 samples ]</span></span>
+<span><span class="co">#&gt; sample_data() Sample Data:       [ 589 samples by 61 sample variables ]</span></span>
+<span><span class="co">#&gt; tax_table()   Taxonomy Table:    [ 758 taxa by 7 taxonomic ranks ]</span></span>
+<span><span class="co">#&gt; phy_tree()    Phylogenetic Tree: [ 758 tips and 757 internal nodes ]</span></span>
+<span></span>
+<span><span class="co"># Filter by names like prune_*</span></span>
+<span><span class="va">sams.select</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/sample_names-methods.html" class="external-link">sample_names</a></span><span class="op">(</span><span class="va">FuentesIliGutData</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span></span>
+<span><span class="va">ps.filter.by.sam.names</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/filterPhyloseq.html">filterSampleByNames</a></span><span class="op">(</span><span class="va">FuentesIliGutData</span>,</span>
+<span>                                               ids <span class="op">=</span> <span class="va">sams.select</span>,</span>
+<span>                                               keep <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">tax.select</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/taxa_names-methods.html" class="external-link">taxa_names</a></span><span class="op">(</span><span class="va">FuentesIliGutData</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span></span>
+<span><span class="va">ps.filter.by.tax.names</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/filterPhyloseq.html">filterTaxaByNames</a></span><span class="op">(</span><span class="va">FuentesIliGutData</span>,</span>
+<span>                                           ids <span class="op">=</span> <span class="va">tax.select</span>,</span>
+<span>                                           keep <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="check-for-polyphyly" class="section level3">
-<h3 class="hasAnchor">
-<a href="#check-for-polyphyly" class="anchor"></a>Check for polyphyly</h3>
-<p>Check for polyphyletic taxa in <code>tax_table</code>. Useful to check this before aggregating at any level. Here, for e.g. <em>Eubacterium</em> is is in both <code>Lachnospiraceae</code> and <code>EUbacteriaceae</code> family.</p>
+<div class="section level4">
+<h4 id="check-for-polyphyly">Check for polyphyly<a class="anchor" aria-label="anchor" href="#check-for-polyphyly"></a>
+</h4>
+<p>Check for polyphyletic taxa in <code>tax_table</code>. Useful to
+check this before aggregating at any level. Here, for
+e.g. <em>Eubacterium</em> is is in both <code>Lachnospiraceae</code> and
+<code>EUbacteriaceae</code> family.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">biomeUtils</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'dplyr'</span>
-<span class="co">#&gt; The following objects are masked from 'package:stats':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     filter, lag</span>
-<span class="co">#&gt; The following objects are masked from 'package:base':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     intersect, setdiff, setequal, union</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"FuentesIliGutData"</span><span class="op">)</span>
-<span class="va">polydf</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/checkPolyphyletic.html">checkPolyphyletic</a></span><span class="op">(</span><span class="va">FuentesIliGutData</span>,
-                            taxa_level <span class="op">=</span> <span class="st">"Genus"</span>,
-                            return_df <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="va">polydf</span>
-<span class="co">#&gt; # A tibble: 6 x 7</span>
-<span class="co">#&gt; # Groups:   Genus [3]</span>
-<span class="co">#&gt;   Domain   Phylum     Class      Order         Family          Genus   nfeatures</span>
-<span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;         &lt;chr&gt;           &lt;chr&gt;       &lt;int&gt;</span>
-<span class="co">#&gt; 1 Bacteria Firmicutes Clostridia Clostridiales Lachnospiraceae Eubact~         2</span>
-<span class="co">#&gt; 2 Bacteria Firmicutes Clostridia Clostridiales Lachnospiraceae Clostr~         2</span>
-<span class="co">#&gt; 3 Bacteria Firmicutes Clostridia Clostridiales Lachnospiraceae Rumino~         2</span>
-<span class="co">#&gt; 4 Bacteria Firmicutes Clostridia Clostridiales Ruminococcaceae Rumino~         2</span>
-<span class="co">#&gt; 5 Bacteria Firmicutes Clostridia Clostridiales Eubacteriaceae  Eubact~         2</span>
-<span class="co">#&gt; 6 Bacteria Firmicutes Clostridia Clostridiales Ruminococcaceae Clostr~         2</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">biomeUtils</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Attaching package: 'dplyr'</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     filter, lag</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"FuentesIliGutData"</span><span class="op">)</span></span>
+<span><span class="va">polydf</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/checkPolyphyletic.html">checkPolyphyletic</a></span><span class="op">(</span><span class="va">FuentesIliGutData</span>,</span>
+<span>                            taxa_level <span class="op">=</span> <span class="st">"Genus"</span>,</span>
+<span>                            return_df <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">polydf</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 7</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   Genus [3]</span></span></span>
+<span><span class="co">#&gt;   Domain   Phylum     Class      Order         Family          Genus   nfeatures</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Bacteria Firmicutes Clostridia Clostridiales Lachnospiraceae Eubact…         2</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Bacteria Firmicutes Clostridia Clostridiales Lachnospiraceae Clostr…         2</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Bacteria Firmicutes Clostridia Clostridiales Lachnospiraceae Rumino…         2</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Bacteria Firmicutes Clostridia Clostridiales Ruminococcaceae Rumino…         2</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Bacteria Firmicutes Clostridia Clostridiales Eubacteriaceae  Eubact…         2</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Bacteria Firmicutes Clostridia Clostridiales Ruminococcaceae Clostr…         2</span></span></code></pre></div>
 </div>
-<div id="compare-phyloseqs" class="section level3">
-<h3 class="hasAnchor">
-<a href="#compare-phyloseqs" class="anchor"></a>Compare phyloseqs</h3>
+<div class="section level4">
+<h4 id="compare-phyloseqs">Compare phyloseqs<a class="anchor" aria-label="anchor" href="#compare-phyloseqs"></a>
+</h4>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">biomeUtils</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"FuentesIliGutData"</span><span class="op">)</span>
-<span class="va">ps1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/filterPhyloseq.html">filterSampleData</a></span><span class="op">(</span><span class="va">FuentesIliGutData</span>, <span class="va">ILI</span> <span class="op">==</span> <span class="st">"C"</span><span class="op">)</span>
-
-<span class="va">ps2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/filterPhyloseq.html">filterSampleData</a></span><span class="op">(</span><span class="va">FuentesIliGutData</span>, <span class="va">ILI</span> <span class="op">==</span> <span class="st">"L1"</span><span class="op">)</span>
-
-<span class="va">ps3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/filterPhyloseq.html">filterSampleData</a></span><span class="op">(</span><span class="va">FuentesIliGutData</span>, <span class="va">ILI</span> <span class="op">==</span> <span class="st">"L2"</span><span class="op">)</span>
-
-
-<span class="va">ps.list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"C"</span> <span class="op">=</span> <span class="va">ps1</span>, <span class="st">"L1"</span> <span class="op">=</span> <span class="va">ps2</span>, <span class="st">"L2"</span> <span class="op">=</span> <span class="va">ps3</span><span class="op">)</span>
-
-<span class="fu"><a href="../reference/comparePhyloseq.html">comparePhyloseq</a></span><span class="op">(</span><span class="va">ps.list</span><span class="op">)</span>
-<span class="co">#&gt;   input ntaxa nsample min.reads max.reads total.read average.reads singletons</span>
-<span class="co">#&gt; 1     C   901     184     10975    143946    7658743      41623.60          0</span>
-<span class="co">#&gt; 2    L1   902     213     12715    140779    8568244      40226.50          0</span>
-<span class="co">#&gt; 3    L2   896     192     24868    194135   15127300      78788.02          0</span>
-<span class="co">#&gt;    sparsity</span>
-<span class="co">#&gt; 1 0.6717355</span>
-<span class="co">#&gt; 2 0.6678794</span>
-<span class="co">#&gt; 3 0.6372652</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">biomeUtils</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"FuentesIliGutData"</span><span class="op">)</span></span>
+<span><span class="va">ps1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/filterPhyloseq.html">filterSampleData</a></span><span class="op">(</span><span class="va">FuentesIliGutData</span>, <span class="va">ILI</span> <span class="op">==</span> <span class="st">"C"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">ps2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/filterPhyloseq.html">filterSampleData</a></span><span class="op">(</span><span class="va">FuentesIliGutData</span>, <span class="va">ILI</span> <span class="op">==</span> <span class="st">"L1"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">ps3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/filterPhyloseq.html">filterSampleData</a></span><span class="op">(</span><span class="va">FuentesIliGutData</span>, <span class="va">ILI</span> <span class="op">==</span> <span class="st">"L2"</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="va">ps.list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"C"</span> <span class="op">=</span> <span class="va">ps1</span>, <span class="st">"L1"</span> <span class="op">=</span> <span class="va">ps2</span>, <span class="st">"L2"</span> <span class="op">=</span> <span class="va">ps3</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/comparePhyloseq.html">comparePhyloseq</a></span><span class="op">(</span><span class="va">ps.list</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   input ntaxa nsample min.reads max.reads total.read average.reads singletons</span></span>
+<span><span class="co">#&gt; 1     C   901     184     10975    143946    7658743      41623.60          0</span></span>
+<span><span class="co">#&gt; 2    L1   902     213     12715    140779    8568244      40226.50          0</span></span>
+<span><span class="co">#&gt; 3    L2   896     192     24868    194135   15127300      78788.02          0</span></span>
+<span><span class="co">#&gt;    sparsity</span></span>
+<span><span class="co">#&gt; 1 0.6717355</span></span>
+<span><span class="co">#&gt; 2 0.6678794</span></span>
+<span><span class="co">#&gt; 3 0.6372652</span></span></code></pre></div>
 </div>
 </div>
-<div id="calculations" class="section level2">
-<h2 class="hasAnchor">
-<a href="#calculations" class="anchor"></a>Calculations</h2>
-<div id="phylogenetic-diversity" class="section level3">
-<h3 class="hasAnchor">
-<a href="#phylogenetic-diversity" class="anchor"></a>Phylogenetic diversity</h3>
+<div class="section level3">
+<h3 id="calculations">Calculations<a class="anchor" aria-label="anchor" href="#calculations"></a>
+</h3>
+<div class="section level4">
+<h4 id="phylogenetic-diversity">Phylogenetic diversity<a class="anchor" aria-label="anchor" href="#phylogenetic-diversity"></a>
+</h4>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">biomeUtils</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"FuentesIliGutData"</span><span class="op">)</span>
-<span class="co"># reduce size for example</span>
-<span class="va">ps1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/filterPhyloseq.html">filterSampleData</a></span><span class="op">(</span><span class="va">FuentesIliGutData</span>, <span class="va">ILI</span> <span class="op">==</span> <span class="st">"C"</span><span class="op">)</span>
-
-<span class="va">meta_tib</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/calculatePD.html">calculatePD</a></span><span class="op">(</span><span class="va">ps1</span>, justDF<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
-<span class="co"># check</span>
-<span class="va">meta_tib</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"PD"</span>, <span class="st">"SR"</span><span class="op">)</span><span class="op">]</span>
-<span class="co">#&gt;                 PD  SR</span>
-<span class="co">#&gt; sample_1  967.3003 259</span>
-<span class="co">#&gt; sample_2 1035.1305 291</span>
-<span class="co">#&gt; sample_3 1189.0248 336</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">biomeUtils</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"FuentesIliGutData"</span><span class="op">)</span></span>
+<span><span class="co"># reduce size for example</span></span>
+<span><span class="va">ps1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/filterPhyloseq.html">filterSampleData</a></span><span class="op">(</span><span class="va">FuentesIliGutData</span>, <span class="va">ILI</span> <span class="op">==</span> <span class="st">"C"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">meta_tib</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/calculatePD.html">calculatePD</a></span><span class="op">(</span><span class="va">ps1</span>, justDF<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co"># check</span></span>
+<span><span class="va">meta_tib</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"PD"</span>, <span class="st">"SR"</span><span class="op">)</span><span class="op">]</span></span></code></pre></div>
 </div>
-<div id="prevalence" class="section level3">
-<h3 class="hasAnchor">
-<a href="#prevalence" class="anchor"></a>Prevalence</h3>
+<div class="section level4">
+<h4 id="prevalence">Prevalence<a class="anchor" aria-label="anchor" href="#prevalence"></a>
+</h4>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"FuentesIliGutData"</span><span class="op">)</span>
-<span class="va">prev_tib</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getPrevalence.html">getPrevalence</a></span><span class="op">(</span><span class="va">FuentesIliGutData</span>,
-                          return_rank<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Family"</span>, <span class="st">"Genus"</span><span class="op">)</span>,
-                          return_taxa <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"ASV4"</span>, <span class="st">"ASV17"</span> , <span class="st">"ASV85"</span>, <span class="st">"ASV83"</span><span class="op">)</span>,
-                          sort<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">prev_tib</span><span class="op">)</span>
-<span class="co">#&gt;    Taxa prevalence           Family         Genus</span>
-<span class="co">#&gt; 1  ASV4  0.9881154  Lachnospiraceae       Blautia</span>
-<span class="co">#&gt; 2 ASV17  0.9847199 Streptococcaceae Streptococcus</span>
-<span class="co">#&gt; 3 ASV85  0.7758913  Lachnospiraceae     Roseburia</span>
-<span class="co">#&gt; 4 ASV83  0.7045840   Bacteroidaceae   Bacteroides</span></code></pre></div>
+<code class="sourceCode R"><span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"FuentesIliGutData"</span><span class="op">)</span></span>
+<span><span class="va">prev_tib</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getPrevalence.html">getPrevalence</a></span><span class="op">(</span><span class="va">FuentesIliGutData</span>,</span>
+<span>                          return_rank<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Family"</span>, <span class="st">"Genus"</span><span class="op">)</span>,</span>
+<span>                          return_taxa <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ASV4"</span>, <span class="st">"ASV17"</span> , <span class="st">"ASV85"</span>, <span class="st">"ASV83"</span><span class="op">)</span>,</span>
+<span>                          sort<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">prev_tib</span><span class="op">)</span></span>
+<span><span class="co">#&gt;    Taxa prevalence           Family         Genus</span></span>
+<span><span class="co">#&gt; 1  ASV4  0.9881154  Lachnospiraceae       Blautia</span></span>
+<span><span class="co">#&gt; 2 ASV17  0.9847199 Streptococcaceae Streptococcus</span></span>
+<span><span class="co">#&gt; 3 ASV85  0.7758913  Lachnospiraceae     Roseburia</span></span>
+<span><span class="co">#&gt; 4 ASV83  0.7045840   Bacteroidaceae   Bacteroides</span></span></code></pre></div>
 </div>
-<div id="fold-difference" class="section level3">
-<h3 class="hasAnchor">
-<a href="#fold-difference" class="anchor"></a>Fold Difference</h3>
+<div class="section level4">
+<h4 id="microbiota-uniqueness">Microbiota Uniqueness<a class="anchor" aria-label="anchor" href="#microbiota-uniqueness"></a>
+</h4>
+<p>Extracts the minimum value from a matrix for each individual. This is
+the dissimilarity of an individual from their nearest neighbor. Here,
+the option of using a one or more reference samples is provided. see the
+man page. The original article (cite when using this) did all versus all
+samples dissimilarities. Wilmanski T, et al., (2021) Gut microbiome
+pattern reflects healthy ageing and predicts survival in humans. <a href="https://www.nature.com/articles/s42255-021-00348-0" class="external-link">Nature
+metabolism</a></p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">biomeUtils</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"FuentesIliGutData"</span><span class="op">)</span>
-<span class="co"># Keep only two groups</span>
-<span class="va">ps1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/filterPhyloseq.html">filterSampleData</a></span><span class="op">(</span><span class="va">FuentesIliGutData</span>, <span class="va">ILI</span> <span class="op">!=</span> <span class="st">"L2"</span><span class="op">)</span>
-
-<span class="va">taxa_fd</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/calculateTaxaFoldDifference.html">calculateTaxaFoldDifference</a></span><span class="op">(</span><span class="va">ps1</span>, group<span class="op">=</span><span class="st">"ILI"</span><span class="op">)</span>
-<span class="co">#&gt; Joining, by = c("Taxa", "Domain", "Phylum", "Class", "Order", "Family", "Genus", "Species")</span>
-<span class="co"># check</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">taxa_fd</span><span class="op">)</span>
-<span class="co">#&gt;   FeatureID   Domain     Phylum      Class         Order          Family</span>
-<span class="co">#&gt; 1    ASV302 Bacteria Firmicutes Clostridia Clostridiales Lachnospiraceae</span>
-<span class="co">#&gt; 2    ASV636 Bacteria Firmicutes Clostridia Clostridiales Ruminococcaceae</span>
-<span class="co">#&gt; 3    ASV500 Bacteria Firmicutes Clostridia Clostridiales Ruminococcaceae</span>
-<span class="co">#&gt; 4      ASV7 Bacteria Firmicutes Clostridia Clostridiales Lachnospiraceae</span>
-<span class="co">#&gt; 5   ASV2617 Bacteria Firmicutes Clostridia Clostridiales Ruminococcaceae</span>
-<span class="co">#&gt; 6    ASV148 Bacteria Firmicutes Clostridia Clostridiales Ruminococcaceae</span>
-<span class="co">#&gt;                          Genus        Species FoldDifference Prevalence.C</span>
-<span class="co">#&gt; 1 Lachnospiraceae NC2004 group           &lt;NA&gt;   -0.167551359    0.8478261</span>
-<span class="co">#&gt; 2      Ruminococcaceae UCG-013           &lt;NA&gt;   -0.100108612    0.2228261</span>
-<span class="co">#&gt; 3                         &lt;NA&gt;           &lt;NA&gt;    0.157777020    0.2989130</span>
-<span class="co">#&gt; 4             Fusicatenibacter saccharivorans   -0.124023091    0.9945652</span>
-<span class="co">#&gt; 5                         &lt;NA&gt;           &lt;NA&gt;   -0.068360663    0.2336957</span>
-<span class="co">#&gt; 6                         &lt;NA&gt;           &lt;NA&gt;   -0.002698838    0.3206522</span>
-<span class="co">#&gt;   Prevalence.L1 Enriched</span>
-<span class="co">#&gt; 1     0.8309859        C</span>
-<span class="co">#&gt; 2     0.1830986        C</span>
-<span class="co">#&gt; 3     0.4178404       L1</span>
-<span class="co">#&gt; 4     0.9624413        C</span>
-<span class="co">#&gt; 5     0.1784038        C</span>
-<span class="co">#&gt; 6     0.3192488        C</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">biomeUtils</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"FuentesIliGutData"</span><span class="op">)</span></span>
+<span><span class="va">ps</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/transformation.html">getProportions</a></span><span class="op">(</span><span class="va">FuentesIliGutData</span><span class="op">)</span></span>
+<span><span class="va">dist.mat</span> <span class="op">&lt;-</span> <span class="fu">phyloseq</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/distance.html" class="external-link">distance</a></span><span class="op">(</span><span class="va">ps</span>, <span class="st">"bray"</span><span class="op">)</span></span>
+<span><span class="va">muniq</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/uniqueness.html">uniqueness</a></span><span class="op">(</span><span class="va">ps</span>,</span>
+<span>                    dist_mat<span class="op">=</span><span class="va">dist.mat</span>,</span>
+<span>                    reference_samples <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span><span class="co">#head(muniq)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">muniq</span>,<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">age</span>,<span class="va">uniqueness</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>alpha<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html" class="external-link">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></span></code></pre></div>
+<p><img src="Introduction_files/figure-html/unnamed-chunk-9-1.png" width="1200"></p>
 </div>
-<div id="melting" class="section level3">
-<h3 class="hasAnchor">
-<a href="#melting" class="anchor"></a>Melting</h3>
+<div class="section level4">
+<h4 id="fold-difference">Fold Difference<a class="anchor" aria-label="anchor" href="#fold-difference"></a>
+</h4>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">biomeUtils</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"FuentesIliGutData"</span><span class="op">)</span>
-<span class="va">ps</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/filterPhyloseq.html">filterSampleData</a></span><span class="op">(</span><span class="va">FuentesIliGutData</span>, <span class="va">ILI</span> <span class="op">!=</span> <span class="st">"L2"</span><span class="op">)</span>
-<span class="va">ps</span> <span class="op">&lt;-</span> <span class="fu">phyloseq</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/rarefy_even_depth.html">rarefy_even_depth</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span>
-<span class="co">#&gt; You set `rngseed` to FALSE. Make sure you've set &amp; recorded</span>
-<span class="co">#&gt;  the random seed of your session for reproducibility.</span>
-<span class="co">#&gt; See `?set.seed`</span>
-<span class="co">#&gt; ...</span>
-<span class="co">#&gt; 1OTUs were removed because they are no longer </span>
-<span class="co">#&gt; present in any sample after random subsampling</span>
-<span class="co">#&gt; ...</span>
-<span class="va">dist.mat</span> <span class="op">&lt;-</span> <span class="fu">phyloseq</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/distance.html">distance</a></span><span class="op">(</span><span class="va">ps</span>, <span class="st">"bray"</span><span class="op">)</span>
-<span class="va">dist.melt.sample</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/meltDistanceToTable.html">meltDistanceToTable</a></span><span class="op">(</span><span class="va">ps</span>,
-                                        dist_mat <span class="op">=</span> <span class="va">dist.mat</span>,
-                                        name_dist_column <span class="op">=</span> <span class="st">"Bray-Curtis"</span>,
-                                        select_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"participant_id"</span>, <span class="st">"ILI"</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">dist.melt.sample</span><span class="op">)</span>
-<span class="co">#&gt;         S1       S2 Bray.Curtis participant_id_S1 ILI_S1 participant_id_S2</span>
-<span class="co">#&gt; 1 sample_2 sample_1   0.5547153              ELD2      C              ELD1</span>
-<span class="co">#&gt; 2 sample_3 sample_1   0.5825968              ELD3      C              ELD1</span>
-<span class="co">#&gt; 3 sample_4 sample_1   0.5405011              ELD4      C              ELD1</span>
-<span class="co">#&gt; 4 sample_5 sample_1   0.6304328              ELD5     L1              ELD1</span>
-<span class="co">#&gt; 5 sample_6 sample_1   0.7323918              ELD6      C              ELD1</span>
-<span class="co">#&gt; 6 sample_7 sample_1   0.5924374              ELD7     L1              ELD1</span>
-<span class="co">#&gt;   ILI_S2</span>
-<span class="co">#&gt; 1      C</span>
-<span class="co">#&gt; 2      C</span>
-<span class="co">#&gt; 3      C</span>
-<span class="co">#&gt; 4      C</span>
-<span class="co">#&gt; 5      C</span>
-<span class="co">#&gt; 6      C</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">biomeUtils</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"FuentesIliGutData"</span><span class="op">)</span></span>
+<span><span class="co"># Keep only two groups</span></span>
+<span><span class="va">ps1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/filterPhyloseq.html">filterSampleData</a></span><span class="op">(</span><span class="va">FuentesIliGutData</span>, <span class="va">ILI</span> <span class="op">!=</span> <span class="st">"L2"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">taxa_fd</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/calculateTaxaFoldDifference.html">calculateTaxaFoldDifference</a></span><span class="op">(</span><span class="va">ps1</span>, group<span class="op">=</span><span class="st">"ILI"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Joining, by = c("Taxa", "Domain", "Phylum", "Class", "Order", "Family",</span></span>
+<span><span class="co">#&gt; "Genus", "Species")</span></span>
+<span><span class="co"># check</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">taxa_fd</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   FeatureID   Domain     Phylum      Class         Order          Family</span></span>
+<span><span class="co">#&gt; 1    ASV302 Bacteria Firmicutes Clostridia Clostridiales Lachnospiraceae</span></span>
+<span><span class="co">#&gt; 2    ASV636 Bacteria Firmicutes Clostridia Clostridiales Ruminococcaceae</span></span>
+<span><span class="co">#&gt; 3    ASV500 Bacteria Firmicutes Clostridia Clostridiales Ruminococcaceae</span></span>
+<span><span class="co">#&gt; 4      ASV7 Bacteria Firmicutes Clostridia Clostridiales Lachnospiraceae</span></span>
+<span><span class="co">#&gt; 5   ASV2617 Bacteria Firmicutes Clostridia Clostridiales Ruminococcaceae</span></span>
+<span><span class="co">#&gt; 6    ASV148 Bacteria Firmicutes Clostridia Clostridiales Ruminococcaceae</span></span>
+<span><span class="co">#&gt;                          Genus        Species FoldDifference Prevalence.C</span></span>
+<span><span class="co">#&gt; 1 Lachnospiraceae NC2004 group           &lt;NA&gt;   -0.167551359    0.8478261</span></span>
+<span><span class="co">#&gt; 2      Ruminococcaceae UCG-013           &lt;NA&gt;   -0.100108612    0.2228261</span></span>
+<span><span class="co">#&gt; 3                         &lt;NA&gt;           &lt;NA&gt;    0.157777020    0.2989130</span></span>
+<span><span class="co">#&gt; 4             Fusicatenibacter saccharivorans   -0.124023091    0.9945652</span></span>
+<span><span class="co">#&gt; 5                         &lt;NA&gt;           &lt;NA&gt;   -0.068360663    0.2336957</span></span>
+<span><span class="co">#&gt; 6                         &lt;NA&gt;           &lt;NA&gt;   -0.002698838    0.3206522</span></span>
+<span><span class="co">#&gt;   Prevalence.L1 Enriched</span></span>
+<span><span class="co">#&gt; 1     0.8309859        C</span></span>
+<span><span class="co">#&gt; 2     0.1830986        C</span></span>
+<span><span class="co">#&gt; 3     0.4178404       L1</span></span>
+<span><span class="co">#&gt; 4     0.9624413        C</span></span>
+<span><span class="co">#&gt; 5     0.1784038        C</span></span>
+<span><span class="co">#&gt; 6     0.3192488        C</span></span></code></pre></div>
 </div>
-</div>
-</div>
-<div id="pipeing-steps" class="section level1">
-<h1 class="hasAnchor">
-<a href="#pipeing-steps" class="anchor"></a>Pipe’ing’ steps</h1>
-<p>Read <code><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></code> as <code>and then</code><br>
-Below we use four R packages in combination to check for differences in ASVs between two groups.</p>
+<div class="section level4">
+<h4 id="melting">Melting<a class="anchor" aria-label="anchor" href="#melting"></a>
+</h4>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">biomeUtils</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://microbiome.github.io/microbiome">microbiome</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span> <span class="co"># pipe function</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"FuentesIliGutData"</span><span class="op">)</span>
-
-<span class="co"># Take FuentesIliGutData phyloseq object and then</span>
-<span class="va">FuentesIliGutData</span> <span class="op">%&gt;%</span> 
-  <span class="co"># join genus and species columns </span>
-  <span class="fu"><a href="../reference/uniteGenusSpeciesNames.html">uniteGenusSpeciesNames</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="co"># Remove 'L1' group and keep those with BMI less than 30 and then</span>
-  <span class="fu"><a href="../reference/filterPhyloseq.html">filterSampleData</a></span><span class="op">(</span><span class="va">ILI</span> <span class="op">!=</span> <span class="st">"L1"</span> <span class="op">&amp;</span> <span class="va">BMI</span> <span class="op">&lt;</span> <span class="fl">30</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="co"># convert to rel. abundance and then</span>
-  <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/transform.html">transform</a></span><span class="op">(</span><span class="va">.</span>, <span class="st">"compositional"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="co"># select ASVs with 0.0001 in at least 1% samples and then</span>
-  <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/core.html">core</a></span><span class="op">(</span><span class="va">.</span>, detection <span class="op">=</span> <span class="fl">0.0001</span>, prevalence <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="co"># calculate foldchange and then </span>
-  <span class="fu"><a href="../reference/calculateTaxaFoldDifference.html">calculateTaxaFoldDifference</a></span><span class="op">(</span>group<span class="op">=</span><span class="st">"ILI"</span><span class="op">)</span>  <span class="op">%&gt;%</span> 
-  <span class="co"># select major fold change ASVs and then plot </span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">FoldDifference</span><span class="op">)</span> <span class="op">&gt;=</span> <span class="fl">0.5</span> <span class="op">&amp;</span> 
-           <span class="va">Prevalence.C</span> <span class="op">!=</span> <span class="fl">0</span> <span class="op">&amp;</span>  <span class="co"># Remove ASVs not detected in Controls  </span>
-           <span class="va">Prevalence.L2</span> <span class="op">!=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># Remove ASVs not detected in L2</span>
-  <span class="co"># join genus name to FeatureID</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>asv.genus <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">FeatureID</span>, <span class="st">"-"</span>, <span class="va">Genus</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="co"># Plot fold difference Notice that from here on below we use '+'</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">FoldDifference</span>, <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html">reorder</a></span><span class="op">(</span><span class="va">asv.genus</span>, <span class="va">FoldDifference</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill<span class="op">=</span><span class="va">Enriched</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"ASVs"</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span> C <span class="op">=</span> <span class="st">"steelblue"</span>, L2 <span class="op">=</span> <span class="st">"brown3"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; Joining, by = c("Taxa", "Domain", "Phylum", "Class", "Order", "Family", "Genus", "Species")</span></code></pre></div>
-<p><img src="Introduction_files/figure-html/unnamed-chunk-11-1.png" width="1800"></p>
+<code class="sourceCode R"><span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">biomeUtils</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"FuentesIliGutData"</span><span class="op">)</span></span>
+<span><span class="va">ps</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/filterPhyloseq.html">filterSampleData</a></span><span class="op">(</span><span class="va">FuentesIliGutData</span>, <span class="va">ILI</span> <span class="op">!=</span> <span class="st">"L2"</span><span class="op">)</span></span>
+<span><span class="va">ps</span> <span class="op">&lt;-</span> <span class="fu">phyloseq</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/rarefy_even_depth.html" class="external-link">rarefy_even_depth</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span></span>
+<span><span class="co">#&gt; You set `rngseed` to FALSE. Make sure you've set &amp; recorded</span></span>
+<span><span class="co">#&gt;  the random seed of your session for reproducibility.</span></span>
+<span><span class="co">#&gt; See `?set.seed`</span></span>
+<span><span class="co">#&gt; ...</span></span>
+<span><span class="co">#&gt; 1OTUs were removed because they are no longer </span></span>
+<span><span class="co">#&gt; present in any sample after random subsampling</span></span>
+<span><span class="co">#&gt; ...</span></span>
+<span><span class="va">dist.mat</span> <span class="op">&lt;-</span> <span class="fu">phyloseq</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/distance.html" class="external-link">distance</a></span><span class="op">(</span><span class="va">ps</span>, <span class="st">"bray"</span><span class="op">)</span></span>
+<span><span class="va">dist.melt.sample</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/meltDistanceToTable.html">meltDistanceToTable</a></span><span class="op">(</span><span class="va">ps</span>,</span>
+<span>                                        dist_mat <span class="op">=</span> <span class="va">dist.mat</span>,</span>
+<span>                                        name_dist_column <span class="op">=</span> <span class="st">"Bray-Curtis"</span>,</span>
+<span>                                        select_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"participant_id"</span>, <span class="st">"ILI"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">dist.melt.sample</span><span class="op">)</span></span>
+<span><span class="co">#&gt;         S1       S2 Bray.Curtis participant_id_S1 ILI_S1 participant_id_S2</span></span>
+<span><span class="co">#&gt; 1 sample_2 sample_1   0.5632802              ELD2      C              ELD1</span></span>
+<span><span class="co">#&gt; 2 sample_3 sample_1   0.5895216              ELD3      C              ELD1</span></span>
+<span><span class="co">#&gt; 3 sample_4 sample_1   0.5536219              ELD4      C              ELD1</span></span>
+<span><span class="co">#&gt; 4 sample_5 sample_1   0.6345330              ELD5     L1              ELD1</span></span>
+<span><span class="co">#&gt; 5 sample_6 sample_1   0.7358542              ELD6      C              ELD1</span></span>
+<span><span class="co">#&gt; 6 sample_7 sample_1   0.5847836              ELD7     L1              ELD1</span></span>
+<span><span class="co">#&gt;   ILI_S2</span></span>
+<span><span class="co">#&gt; 1      C</span></span>
+<span><span class="co">#&gt; 2      C</span></span>
+<span><span class="co">#&gt; 3      C</span></span>
+<span><span class="co">#&gt; 4      C</span></span>
+<span><span class="co">#&gt; 5      C</span></span>
+<span><span class="co">#&gt; 6      C</span></span></code></pre></div>
+</div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="pipeing-steps">Pipe’ing’ steps<a class="anchor" aria-label="anchor" href="#pipeing-steps"></a>
+</h2>
+<p>Read <code>%&gt;%</code> as <code>and then</code><br>
+Below we use four R packages in combination to check for differences in
+ASVs between two groups.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; R version 4.1.0 (2021-05-18)</span>
-<span class="co">#&gt; Platform: x86_64-w64-mingw32/x64 (64-bit)</span>
-<span class="co">#&gt; Running under: Windows 10 x64 (build 19043)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Matrix products: default</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; locale:</span>
-<span class="co">#&gt; [1] LC_COLLATE=English_United States.1252 </span>
-<span class="co">#&gt; [2] LC_CTYPE=English_United States.1252   </span>
-<span class="co">#&gt; [3] LC_MONETARY=English_United States.1252</span>
-<span class="co">#&gt; [4] LC_NUMERIC=C                          </span>
-<span class="co">#&gt; [5] LC_TIME=English_United States.1252    </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; attached base packages:</span>
-<span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; other attached packages:</span>
-<span class="co">#&gt; [1] dplyr_1.0.6       biomeUtils_0.016  microbiome_1.14.0 ggplot2_3.3.5    </span>
-<span class="co">#&gt; [5] phyloseq_1.36.0  </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; loaded via a namespace (and not attached):</span>
-<span class="co">#&gt;   [1] nlme_3.1-152           bitops_1.0-7           fs_1.5.0              </span>
-<span class="co">#&gt;   [4] bit64_4.0.5            progress_1.2.2         rprojroot_2.0.2       </span>
-<span class="co">#&gt;   [7] GenomeInfoDb_1.28.4    tools_4.1.0            bslib_0.3.1           </span>
-<span class="co">#&gt;  [10] utf8_1.2.1             R6_2.5.1               vegan_2.5-7           </span>
-<span class="co">#&gt;  [13] DBI_1.1.1              BiocGenerics_0.38.0    mgcv_1.8-35           </span>
-<span class="co">#&gt;  [16] colorspace_2.0-1       permute_0.9-5          rhdf5filters_1.3.5    </span>
-<span class="co">#&gt;  [19] ade4_1.7-16            withr_2.4.2            phangorn_2.7.1        </span>
-<span class="co">#&gt;  [22] tidyselect_1.1.1       prettyunits_1.1.1      bit_4.0.4             </span>
-<span class="co">#&gt;  [25] compiler_4.1.0         cli_3.0.1              textshaping_0.3.6     </span>
-<span class="co">#&gt;  [28] Biobase_2.51.0         desc_1.4.0             labeling_0.4.2        </span>
-<span class="co">#&gt;  [31] sass_0.4.0             scales_1.1.1           quadprog_1.5-8        </span>
-<span class="co">#&gt;  [34] pkgdown_1.6.1          systemfonts_1.0.3      stringr_1.4.0         </span>
-<span class="co">#&gt;  [37] digest_0.6.27          rmarkdown_2.11         XVector_0.31.1        </span>
-<span class="co">#&gt;  [40] pkgconfig_2.0.3        htmltools_0.5.2        highr_0.9             </span>
-<span class="co">#&gt;  [43] fastmap_1.1.0          rlang_0.4.11           rstudioapi_0.13       </span>
-<span class="co">#&gt;  [46] RSQLite_2.2.8          farver_2.1.0           jquerylib_0.1.4       </span>
-<span class="co">#&gt;  [49] generics_0.1.0         jsonlite_1.7.2         RCurl_1.98-1.3        </span>
-<span class="co">#&gt;  [52] magrittr_2.0.1         GenomeInfoDbData_1.2.6 biomformat_1.20.0     </span>
-<span class="co">#&gt;  [55] Matrix_1.3-3           Rcpp_1.0.7             munsell_0.5.0         </span>
-<span class="co">#&gt;  [58] S4Vectors_0.29.19      Rhdf5lib_1.13.7        fansi_0.4.2           </span>
-<span class="co">#&gt;  [61] DECIPHER_2.20.0        ape_5.5                lifecycle_1.0.1       </span>
-<span class="co">#&gt;  [64] stringi_1.6.2          yaml_2.2.1             MASS_7.3-54           </span>
-<span class="co">#&gt;  [67] zlibbioc_1.37.0        rhdf5_2.35.5           Rtsne_0.15            </span>
-<span class="co">#&gt;  [70] plyr_1.8.6             blob_1.2.2             grid_4.1.0            </span>
-<span class="co">#&gt;  [73] parallel_4.1.0         crayon_1.4.1           lattice_0.20-44       </span>
-<span class="co">#&gt;  [76] Biostrings_2.59.4      splines_4.1.0          multtest_2.47.0       </span>
-<span class="co">#&gt;  [79] hms_1.1.1              knitr_1.36             pillar_1.6.3          </span>
-<span class="co">#&gt;  [82] igraph_1.2.6           reshape2_1.4.4         codetools_0.2-18      </span>
-<span class="co">#&gt;  [85] stats4_4.1.0           fastmatch_1.1-3        picante_1.8.2         </span>
-<span class="co">#&gt;  [88] glue_1.4.2             evaluate_0.14          data.table_1.14.0     </span>
-<span class="co">#&gt;  [91] vctrs_0.3.8            foreach_1.5.1          gtable_0.3.0          </span>
-<span class="co">#&gt;  [94] purrr_0.3.4            tidyr_1.1.3            assertthat_0.2.1      </span>
-<span class="co">#&gt;  [97] cachem_1.0.5           xfun_0.23              ragg_1.1.3            </span>
-<span class="co">#&gt; [100] survival_3.2-11        tibble_3.1.2           iterators_1.0.13      </span>
-<span class="co">#&gt; [103] memoise_2.0.0          IRanges_2.25.11        cluster_2.1.2         </span>
-<span class="co">#&gt; [106] ellipsis_0.3.2</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">biomeUtils</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://microbiome.github.io/microbiome" class="external-link">microbiome</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span> <span class="co"># pipe function</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"FuentesIliGutData"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Take FuentesIliGutData phyloseq object and then</span></span>
+<span><span class="va">FuentesIliGutData</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="co"># join genus and species columns </span></span>
+<span>  <span class="fu"><a href="../reference/uniteGenusSpeciesNames.html">uniteGenusSpeciesNames</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="co"># Remove 'L1' group and keep those with BMI less than 30 and then</span></span>
+<span>  <span class="fu"><a href="../reference/filterPhyloseq.html">filterSampleData</a></span><span class="op">(</span><span class="va">ILI</span> <span class="op">!=</span> <span class="st">"L1"</span> <span class="op">&amp;</span> <span class="va">BMI</span> <span class="op">&lt;</span> <span class="fl">30</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="co"># convert to rel. abundance and then</span></span>
+<span>  <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/transform.html" class="external-link">transform</a></span><span class="op">(</span><span class="va">.</span>, <span class="st">"compositional"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="co"># select ASVs with 0.0001 in at least 1% samples and then</span></span>
+<span>  <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/core.html" class="external-link">core</a></span><span class="op">(</span><span class="va">.</span>, detection <span class="op">=</span> <span class="fl">0.0001</span>, prevalence <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="co"># calculate foldchange and then </span></span>
+<span>  <span class="fu"><a href="../reference/calculateTaxaFoldDifference.html">calculateTaxaFoldDifference</a></span><span class="op">(</span>group<span class="op">=</span><span class="st">"ILI"</span><span class="op">)</span>  <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="co"># select major fold change ASVs and then plot </span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">abs</a></span><span class="op">(</span><span class="va">FoldDifference</span><span class="op">)</span> <span class="op">&gt;=</span> <span class="fl">0.5</span> <span class="op">&amp;</span> </span>
+<span>           <span class="va">Prevalence.C</span> <span class="op">!=</span> <span class="fl">0</span> <span class="op">&amp;</span>  <span class="co"># Remove ASVs not detected in Controls  </span></span>
+<span>           <span class="va">Prevalence.L2</span> <span class="op">!=</span> <span class="fl">0</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="co"># Remove ASVs not detected in L2</span></span>
+<span>  <span class="co"># join genus name to FeatureID</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>asv.genus <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">FeatureID</span>, <span class="st">"-"</span>, <span class="va">Genus</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="co"># Plot fold difference Notice that from here on below we use '+'</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">FoldDifference</span>, <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html" class="external-link">reorder</a></span><span class="op">(</span><span class="va">asv.genus</span>, <span class="va">FoldDifference</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_col</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>fill<span class="op">=</span><span class="va">Enriched</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">"ASVs"</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span> C <span class="op">=</span> <span class="st">"steelblue"</span>, L2 <span class="op">=</span> <span class="st">"brown3"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Joining, by = c("Taxa", "Domain", "Phylum", "Class", "Order", "Family",</span></span>
+<span><span class="co">#&gt; "Genus", "Species")</span></span></code></pre></div>
+<p><img src="Introduction_files/figure-html/unnamed-chunk-12-1.png" width="1800"></p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; R version 4.2.1 (2022-06-23 ucrt)</span></span>
+<span><span class="co">#&gt; Platform: x86_64-w64-mingw32/x64 (64-bit)</span></span>
+<span><span class="co">#&gt; Running under: Windows 10 x64 (build 19044)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Matrix products: default</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; locale:</span></span>
+<span><span class="co">#&gt; [1] LC_COLLATE=English_United States.utf8 </span></span>
+<span><span class="co">#&gt; [2] LC_CTYPE=English_United States.utf8   </span></span>
+<span><span class="co">#&gt; [3] LC_MONETARY=English_United States.utf8</span></span>
+<span><span class="co">#&gt; [4] LC_NUMERIC=C                          </span></span>
+<span><span class="co">#&gt; [5] LC_TIME=English_United States.utf8    </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; attached base packages:</span></span>
+<span><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; other attached packages:</span></span>
+<span><span class="co">#&gt; [1] dplyr_1.0.9       biomeUtils_0.017  microbiome_1.18.0 ggplot2_3.3.6    </span></span>
+<span><span class="co">#&gt; [5] phyloseq_1.40.0  </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
+<span><span class="co">#&gt;   [1] nlme_3.1-157           bitops_1.0-7           fs_1.5.2              </span></span>
+<span><span class="co">#&gt;   [4] bit64_4.0.5            rprojroot_2.0.3        GenomeInfoDb_1.32.2   </span></span>
+<span><span class="co">#&gt;   [7] tools_4.2.1            bslib_0.3.1            utf8_1.2.2            </span></span>
+<span><span class="co">#&gt;  [10] R6_2.5.1               vegan_2.6-2            DBI_1.1.3             </span></span>
+<span><span class="co">#&gt;  [13] BiocGenerics_0.42.0    mgcv_1.8-40            colorspace_2.0-3      </span></span>
+<span><span class="co">#&gt;  [16] permute_0.9-7          rhdf5filters_1.8.0     ade4_1.7-19           </span></span>
+<span><span class="co">#&gt;  [19] withr_2.5.0            phangorn_2.8.1         tidyselect_1.1.2      </span></span>
+<span><span class="co">#&gt;  [22] bit_4.0.4              compiler_4.2.1         textshaping_0.3.6     </span></span>
+<span><span class="co">#&gt;  [25] cli_3.3.0              Biobase_2.56.0         desc_1.4.1            </span></span>
+<span><span class="co">#&gt;  [28] labeling_0.4.2         sass_0.4.1             scales_1.2.0          </span></span>
+<span><span class="co">#&gt;  [31] quadprog_1.5-8         pkgdown_2.0.5          systemfonts_1.0.4     </span></span>
+<span><span class="co">#&gt;  [34] stringr_1.4.0          digest_0.6.29          rmarkdown_2.14        </span></span>
+<span><span class="co">#&gt;  [37] XVector_0.36.0         pkgconfig_2.0.3        htmltools_0.5.2       </span></span>
+<span><span class="co">#&gt;  [40] highr_0.9              fastmap_1.1.0          rlang_1.0.2           </span></span>
+<span><span class="co">#&gt;  [43] RSQLite_2.2.14         rstudioapi_0.13        farver_2.1.0          </span></span>
+<span><span class="co">#&gt;  [46] jquerylib_0.1.4        generics_0.1.2         jsonlite_1.8.0        </span></span>
+<span><span class="co">#&gt;  [49] RCurl_1.98-1.6         magrittr_2.0.3         GenomeInfoDbData_1.2.8</span></span>
+<span><span class="co">#&gt;  [52] biomformat_1.24.0      Matrix_1.4-1           Rcpp_1.0.8.3          </span></span>
+<span><span class="co">#&gt;  [55] munsell_0.5.0          S4Vectors_0.34.0       Rhdf5lib_1.18.2       </span></span>
+<span><span class="co">#&gt;  [58] fansi_1.0.3            DECIPHER_2.24.0        ape_5.6-2             </span></span>
+<span><span class="co">#&gt;  [61] lifecycle_1.0.1        stringi_1.7.6          yaml_2.3.5            </span></span>
+<span><span class="co">#&gt;  [64] MASS_7.3-57            zlibbioc_1.42.0        rhdf5_2.40.0          </span></span>
+<span><span class="co">#&gt;  [67] Rtsne_0.16             plyr_1.8.7             blob_1.2.3            </span></span>
+<span><span class="co">#&gt;  [70] grid_4.2.1             parallel_4.2.1         crayon_1.5.1          </span></span>
+<span><span class="co">#&gt;  [73] lattice_0.20-45        Biostrings_2.64.0      splines_4.2.1         </span></span>
+<span><span class="co">#&gt;  [76] multtest_2.52.0        knitr_1.39             pillar_1.7.0          </span></span>
+<span><span class="co">#&gt;  [79] igraph_1.3.1           reshape2_1.4.4         codetools_0.2-18      </span></span>
+<span><span class="co">#&gt;  [82] stats4_4.2.1           fastmatch_1.1-3        picante_1.8.2         </span></span>
+<span><span class="co">#&gt;  [85] glue_1.6.2             evaluate_0.15          data.table_1.14.2     </span></span>
+<span><span class="co">#&gt;  [88] vctrs_0.4.1            foreach_1.5.2          gtable_0.3.0          </span></span>
+<span><span class="co">#&gt;  [91] purrr_0.3.4            tidyr_1.2.0            assertthat_0.2.1      </span></span>
+<span><span class="co">#&gt;  [94] cachem_1.0.6           xfun_0.31              ragg_1.2.2            </span></span>
+<span><span class="co">#&gt;  [97] survival_3.3-1         tibble_3.1.7           iterators_1.0.14      </span></span>
+<span><span class="co">#&gt; [100] memoise_2.0.1          IRanges_2.30.0         cluster_2.1.3         </span></span>
+<span><span class="co">#&gt; [103] ellipsis_0.3.2</span></span></code></pre></div>
 </div>
   </div>
 
@@ -493,11 +520,13 @@ Below we use four R packages in combination to check for differences in ASVs bet
 
 
       <footer><div class="copyright">
-  <p>Developed by Sudarshan Shetty, Person Person, Person Person.</p>
+  <p></p>
+<p>Developed by Sudarshan Shetty, Person Person, Person Person.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer>
@@ -505,6 +534,8 @@ Below we use four R packages in combination to check for differences in ASVs bet
 
   
 
+
+  
 
   </body>
 </html>
