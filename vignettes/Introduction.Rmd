@@ -133,7 +133,7 @@ comparePhyloseq(ps.list)
 
 ### Phylogenetic diversity  
 
-```{r}
+```{r eval=FALSE}
 library(biomeUtils)
 data("FuentesIliGutData")
 # reduce size for example
@@ -155,6 +155,28 @@ prev_tib <- getPrevalence(FuentesIliGutData,
                           sort=TRUE)
 head(prev_tib)
 ```
+
+### Microbiota Uniqueness  
+Extracts the minimum value from a \code{dissimilarity} matrix for each individual. This is the dissimilarity of an individual from their nearest neighbor. Here, the option of using a one or more reference samples is provided. see the man page. The original article (cite when using this) did all versus all samples dissimilarities. 
+Wilmanski T, et al., (2021) Gut microbiome pattern reflects healthy ageing and predicts survival in humans. [Nature metabolism](https://www.nature.com/articles/s42255-021-00348-0)  
+
+```{r fig.width=4}
+library(biomeUtils)
+data("FuentesIliGutData")
+ps <- getProportions(FuentesIliGutData)
+dist.mat <- phyloseq::distance(ps, "bray")
+muniq <- uniqueness(ps,
+                    dist_mat=dist.mat,
+                    reference_samples = NULL)
+#head(muniq)
+
+ggplot(muniq,aes(age,uniqueness)) +
+  geom_point(alpha=0.5) +
+  geom_smooth(method = "lm") +
+  theme_bw()
+
+```
+
 
 ### Fold Difference   
 

@@ -47,7 +47,7 @@ getAbundanceTibble <- function(x,
                                column_id = "FeatureID",
                                select_rows = NULL,
                                select_cols = NULL) {
-  if (class(x) != "phyloseq") {
+  if (!is(x, "phyloseq")) {
     stop("Input is not an object of phyloseq class")
   }
 
@@ -82,7 +82,7 @@ getTaxaTibble <- function(x,
                           column_id = "FeatureID",
                           select_rows = NULL,
                           select_cols = NULL) {
-  if (class(x) != "phyloseq") {
+  if (!is(x, "phyloseq")) {
     stop("Input is not an object of phyloseq class")
   }
 
@@ -116,7 +116,7 @@ getSampleTibble <- function(x,
                             column_id = "SampleID",
                             select_rows = NULL,
                             select_cols = NULL) {
-  if (class(x) != "phyloseq") {
+  if (!is(x, "phyloseq")) {
     stop("Input is not an object of phyloseq class")
   }
 

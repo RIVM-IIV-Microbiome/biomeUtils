@@ -32,7 +32,7 @@ clusterASVs clusters ASV sequences
          choice based on their research questions and properties of data.
 }
 \examples{
-
+\dontrun{
 library(biomeUtils)
 library(dplyr)
 library(data.table)
@@ -40,10 +40,9 @@ library(tibble)
 
 testSprockett <- core(subset_samples(SprockettTHData, Community == "River_4"), 5, 20 / 100)
 testSprockett <- clusterASVs(testSprockett,
-                             cluster_method = "NJ",
                              cluster_cutoff = 0.01,
                              threads = 2)
-
+}
 }
 \references{
 \itemize{

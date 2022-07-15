@@ -34,7 +34,7 @@ NULL
 #' @export
 getProportions <- function(x) {
 
-  if (class(x) != "phyloseq") {
+  if (!is(x, "phyloseq")) {
     stop("Input is not an object of phyloseq class")
   }
   otu_table(x) <- otu_table(abundances(x, "compositional"), taxa_are_rows=T)
@@ -46,7 +46,7 @@ getProportions <- function(x) {
 #' @aliases getCLR
 #' @export
 getCLR <- function(x){
-  if (class(x) != "phyloseq") {
+  if (!is(x, "phyloseq")) {
     stop("Input is not an object of phyloseq class")
   }
   otu_table(x) <- otu_table(abundances(x, "clr"), taxa_are_rows=T)

@@ -1,3 +1,9 @@
+## biomeUtils 0.017
+
+* Fixed check errors.  
+* Added `uniqueness` function.  
+* Fixed bug in checkPolyphyletic.  
+
 ## biomeUtils 0.016
 
 * Added `filterTaxaTotal` functions.  

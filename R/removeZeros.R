@@ -27,7 +27,7 @@
 #' @export
 
 removeZeros <- function(x) {
-  if (class(x) == "phyloseq") {
+  if (is(x, "phyloseq")) {
     x <- prune_taxa(taxa_sums(x) > 0, x)
     x <- prune_samples(sample_sums(x) > 0, x)
     return(x)

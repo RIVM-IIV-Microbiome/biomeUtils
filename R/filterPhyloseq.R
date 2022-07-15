@@ -91,7 +91,7 @@ NULL
 #'
 filterSampleData <- function(x, ...) {
 
-  if (class(x) != "phyloseq") {
+  if (!is(x, "phyloseq")) {
     stop("Input is not an object of phyloseq class")
   }
 
@@ -124,7 +124,7 @@ filterSampleData <- function(x, ...) {
 #'
 filterTaxaData <- function(x, ...) {
 
-  if (class(x) != "phyloseq") {
+  if (!is(x, "phyloseq")) {
     stop("Input is not an object of phyloseq class")
   }
   # check for sample names
@@ -158,7 +158,7 @@ filterTaxaByNames <- function(x,
   # global var
   sel.tx <- NULL
 
-  if (class(x) != "phyloseq") {
+  if (!is(x, "phyloseq")) {
     stop("Input is not an object of phyloseq class")
   }
 
@@ -215,7 +215,7 @@ filterSampleByNames <- function(x,
   }
 
 
-  if (class(x) != "phyloseq") {
+  if (!is(x, "phyloseq")) {
     stop("Input is not an object of phyloseq class")
   }
 

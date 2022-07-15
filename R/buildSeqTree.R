@@ -42,10 +42,10 @@ buildSeqTree <- function(x,
   # global vars
   alignment <- phangAlign <- dm <- treeNJ <- fit <- fitGTR <- NULL
 
-  if(class(x)=="DNAStringSet"){
+  if(is(x)[1]=="DNAStringSet"){
     x <- x
   } else {
-    x <- DNAStringSet(x)
+    x <- Biostrings::DNAStringSet(x)
   }
 
   alignment <- DECIPHER::AlignSeqs(x, anchor=NA, verbose=T)

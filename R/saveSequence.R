@@ -37,7 +37,7 @@ saveSequence <- function(x, file = NULL) {
     stop("Provide a file name e.g.
          'mypath/myseqs.fasta'")
   }
-  if (class(x) == "DNAStringSet") {
+  if (is(x)[1] == "DNAStringSet") {
     writeXStringSet(x, file)
   } else {
     .check_refseq(x)

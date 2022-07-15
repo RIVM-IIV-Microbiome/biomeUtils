@@ -36,7 +36,7 @@ checkPolyphyletic <- function(x,
                               return_df = TRUE){
 
   nfeatures <- NULL
-  if (class(x) != "phyloseq") {
+  if (!is(x, "phyloseq")) {
     stop("Input is not an object of phyloseq class")
   }
 
@@ -59,11 +59,12 @@ checkPolyphyletic <- function(x,
 
   } else {
 
+    cols.sel <- 2:num.level
     tax.tb <- tax %>%
-      dplyr::select(2:num.level) %>%
+      dplyr::select(dplyr::all_of(cols.sel)) %>%
       dplyr::distinct() %>%
       dplyr::group_by(!!sym(taxa_level)) %>%
-      dplyr::mutate(nfeatures = n()) %>%
+      dplyr::mutate(nfeatures = dplyr::n()) %>%
       dplyr::filter(!is.na(!!sym(taxa_level)), nfeatures > 1)
 
   }
@@ -102,7 +103,7 @@ checkPolyphyletic <- function(x,
 .check_names_dup <- function(tax.tb) {
 
   n <- NULL
-  tax.tb %>% {all(.data$n == 1)}
+  tax.tb %>% {all(n == 1)}
 
 }
 

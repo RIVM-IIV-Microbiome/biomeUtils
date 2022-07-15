@@ -77,7 +77,7 @@ jobs:
       - name: Install R dependencies
         run: |
           remotes::install_github("joey711/phyloseq", repos = BiocManager::repositories())
-          remotes::install_github("microbiome/microbiome", repos = BiocManager::repositories())
+          #remotes::install_github("microbiome/microbiome", repos = BiocManager::repositories())
           BiocManager::install(remotes::dev_package_deps(dependencies = TRUE, repos = BiocManager::repositories())$package)
           remotes::install_cran(c("rcmdcheck","covr","magick"))
         shell: Rscript {0}

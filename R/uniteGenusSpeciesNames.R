@@ -33,7 +33,7 @@ uniteGenusSpeciesNames <- function(x) {
 
   # global vars
   Genus.Species <- Genus <- Species <- NULL
-  if (class(x) != "phyloseq") {
+  if (!is(x, "phyloseq")) {
     stop("Input is not an object of phyloseq class")
   }
 

@@ -48,7 +48,7 @@ mutateSampleData <- function(x, ...) {
   # during data organiszation
   .m_holder <- NULL
 
-  if (class(x) != "phyloseq") {
+  if (!is(x, "phyloseq")) {
     stop("Input is not an object of phyloseq class")
   }
 
@@ -80,7 +80,7 @@ mutateTaxaTable <- function(x, ...){
   # during data organiszation
   .m_holder <- txtb <- NULL
 
-  if (class(x) != "phyloseq") {
+  if (!is(x, "phyloseq")) {
     stop("Input is not an object of phyloseq class")
   }
 
@@ -114,7 +114,7 @@ mutateAbundanceTable <- function(x, ...){
   .m_holder <- NULL
   otutb <- new_sams <- dum.sam <- NULL
 
-  if (class(x) != "phyloseq") {
+  if (!is(x, "phyloseq")) {
     stop("Input is not an object of phyloseq class")
   }
 

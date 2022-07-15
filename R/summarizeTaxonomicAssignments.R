@@ -24,7 +24,7 @@
 #' @export
 
 summarizeTaxonomicAssignments <- function(x) {
-  if (class(x) != "phyloseq") {
+  if (!is(x, "phyloseq")) {
     stop("Input is not an object of phyloseq class")
   }
   taxadf <- tax_table(x) %>%

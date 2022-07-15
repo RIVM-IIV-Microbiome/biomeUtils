@@ -43,7 +43,7 @@ meltDistanceToTable <- function(x,
     stop("name_dist_column must be a single character value")
   }
 
-  if(class(dist_mat) != "dist"){
+  if(is(dist_mat)[1] != "dist"){
     stop("dist_mat required an object of class 'dist'")
   }
 

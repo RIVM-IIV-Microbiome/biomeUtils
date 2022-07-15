@@ -39,7 +39,7 @@ NULL
 filterTaxaTotal <- function(x, rank = "Phylum", percent_thres = 50, verbose = TRUE) {
 
   Percent <- NULL
-  if (class(x) != "phyloseq") {
+  if (!is(x, "phyloseq")) {
 
     stop("Input is not an object of phyloseq class")
   }

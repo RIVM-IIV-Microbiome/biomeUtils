@@ -22,9 +22,8 @@
 #'
 #' @param threads No. of processors to use
 #'
-#'
 #' @examples
-#'
+#' \dontrun{
 #' library(biomeUtils)
 #' library(dplyr)
 #' library(data.table)
@@ -32,10 +31,9 @@
 #'
 #' testSprockett <- core(subset_samples(SprockettTHData, Community == "River_4"), 5, 20 / 100)
 #' testSprockett <- clusterASVs(testSprockett,
-#'                              cluster_method = "NJ",
 #'                              cluster_cutoff = 0.01,
 #'                              threads = 2)
-#'
+#'}
 #' @return A new \code{phyloseq} object with cluster ASVs
 #'
 #' @author Sudarshan A. Shetty
@@ -81,6 +79,7 @@ clusterASVs <- function(x,
                         cluster_cutoff = 0.03,
                         threads = 2) {
 
+  .Deprecated("clusterASVs")
   # global vars
   #utils::globalVariables(c("seqs", "aln", "d.mat", "group", "taxa", "clusters", "."))
   seqs <- aln <- d.mat <- group <- taxa <- clusters <- . <- NULL
@@ -103,7 +102,7 @@ clusterASVs <- function(x,
       aln <- DECIPHER::AlignSeqs(seqs, processors = threads)
       d.mat <- DECIPHER::DistanceMatrix(aln, processors = threads)
       clusters.mat <- DECIPHER::IdClusters(d.mat,
-                                           method = cluster_method,
+                                           #method = cluster_method,
                                            cutoff = cluster_cutoff, # cluster.cutoff=0.03
                                            processors = threads)
     }
