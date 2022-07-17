@@ -160,7 +160,7 @@ head(prev_tib)
 Extracts the minimum value from a \code{dissimilarity} matrix for each individual. This is the dissimilarity of an individual from their nearest neighbor. Here, the option of using a one or more reference samples is provided. see the man page. The original article (cite when using this) did all versus all samples dissimilarities. 
 Wilmanski T, et al., (2021) Gut microbiome pattern reflects healthy ageing and predicts survival in humans. [Nature metabolism](https://www.nature.com/articles/s42255-021-00348-0)  
 
-```{r fig.width=4}
+```{r fig.width=4,fig.height=3}
 library(biomeUtils)
 data("FuentesIliGutData")
 ps <- getProportions(FuentesIliGutData)
@@ -175,6 +175,36 @@ ggplot(muniq,aes(age,uniqueness)) +
   geom_smooth(method = "lm") +
   theme_bw()
 
+```
+
+### Dysbiosis Score    
+
+Dysbiosis score or index are often used to identify the extent to which clinically classified diseased samples are different from non diseased reference samples. There are several approaches, large-scale bacterial marker profiling, relevant taxon-based methods, neighborhood classification, random forest prediction, and combined alpha-beta diversity reviewed by [Wei et al 2021](https://journals.asm.org/doi/10.1128/AEM.00395-21). Here we provide two scores based on neighborhood classification. see `?dysbiosisScore` for more information on the two methods.  
+See also [Brüssow H. Problems with the concept of gut microbiota dysbiosis. Microbial biotechnology. (2020)](https://sfamjournals.onlinelibrary.wiley.com/doi/10.1111/1751-7915.13479).  
+
+```{r}
+library(biomeUtils)
+data("FuentesIliGutData")
+# Keep only two groups. controls and L1.
+ps <- filterSampleData(FuentesIliGutData, ILI != "L2")
+ps <- getProportions(ps)
+# Define controls as reference samples
+ref_samples <- rownames(meta(subset_samples(ps, ILI == "C")))
+# Median Bray-Curtis dissimilarity method  
+dys_bc <- dysbiosisScore(ps,
+                         reference_samples = ref_samples,
+                         method="median-BC")
+```
+
+Visualize the score in ILI (L1) and Control group.  
+
+```{r fig.width=3, fig.height=3}
+dys_bc |> 
+  ggplot(aes(ILI, dysbiosis.socre)) +
+  geom_violin() +
+  geom_boxplot(width=0.2) +
+  theme_bw() +
+  labs(x="", y="Dysbiosis Score")
 ```
 
 

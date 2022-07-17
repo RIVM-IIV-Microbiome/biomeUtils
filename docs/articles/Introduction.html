@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">biomeUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.017</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.018</span>
       </span>
     </div>
 
@@ -333,9 +333,46 @@ metabolism</a></p>
 <p><img src="Introduction_files/figure-html/unnamed-chunk-9-1.png" width="1200"></p>
 </div>
 <div class="section level4">
+<h4 id="dysbiosis-score">Dysbiosis Score<a class="anchor" aria-label="anchor" href="#dysbiosis-score"></a>
+</h4>
+<p>Dysbiosis score or index are often used to identify the extent to
+which clinically classified diseased samples are different from non
+diseased reference samples. There are several approaches, large-scale
+bacterial marker profiling, relevant taxon-based methods, neighborhood
+classification, random forest prediction, and combined alpha-beta
+diversity reviewed by <a href="https://journals.asm.org/doi/10.1128/AEM.00395-21" class="external-link">Wei et al
+2021</a>. Here we provide two scores based on neighborhood
+classification. see <code><a href="../reference/dysbiosisScore.html">?dysbiosisScore</a></code> for more information on
+the two methods.<br>
+See also <a href="https://sfamjournals.onlinelibrary.wiley.com/doi/10.1111/1751-7915.13479" class="external-link">Brüssow
+H. Problems with the concept of gut microbiota dysbiosis. Microbial
+biotechnology. (2020)</a>.</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">biomeUtils</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"FuentesIliGutData"</span><span class="op">)</span></span>
+<span><span class="co"># Keep only two groups. controls and L1.</span></span>
+<span><span class="va">ps</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/filterPhyloseq.html">filterSampleData</a></span><span class="op">(</span><span class="va">FuentesIliGutData</span>, <span class="va">ILI</span> <span class="op">!=</span> <span class="st">"L2"</span><span class="op">)</span></span>
+<span><span class="va">ps</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/transformation.html">getProportions</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span></span>
+<span><span class="co"># Define controls as reference samples</span></span>
+<span><span class="va">ref_samples</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/meta.html" class="external-link">meta</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/subset_samples-methods.html" class="external-link">subset_samples</a></span><span class="op">(</span><span class="va">ps</span>, <span class="va">ILI</span> <span class="op">==</span> <span class="st">"C"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># Median Bray-Curtis dissimilarity method  </span></span>
+<span><span class="va">dys_bc</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dysbiosisScore.html">dysbiosisScore</a></span><span class="op">(</span><span class="va">ps</span>,</span>
+<span>                         reference_samples <span class="op">=</span> <span class="va">ref_samples</span>,</span>
+<span>                         method<span class="op">=</span><span class="st">"median-BC"</span><span class="op">)</span></span></code></pre></div>
+<p>Visualize the score in ILI (L1) and Control group.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dys_bc</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">ILI</span>, <span class="va">dysbiosis.socre</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html" class="external-link">geom_violin</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html" class="external-link">geom_boxplot</a></span><span class="op">(</span>width<span class="op">=</span><span class="fl">0.2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>x<span class="op">=</span><span class="st">""</span>, y<span class="op">=</span><span class="st">"Dysbiosis Score"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="Introduction_files/figure-html/unnamed-chunk-11-1.png" width="900"></p>
+</div>
+<div class="section level4">
 <h4 id="fold-difference">Fold Difference<a class="anchor" aria-label="anchor" href="#fold-difference"></a>
 </h4>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">biomeUtils</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"FuentesIliGutData"</span><span class="op">)</span></span>
@@ -372,7 +409,7 @@ metabolism</a></p>
 <div class="section level4">
 <h4 id="melting">Melting<a class="anchor" aria-label="anchor" href="#melting"></a>
 </h4>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">biomeUtils</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"FuentesIliGutData"</span><span class="op">)</span></span>
@@ -392,12 +429,12 @@ metabolism</a></p>
 <span>                                        select_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"participant_id"</span>, <span class="st">"ILI"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">dist.melt.sample</span><span class="op">)</span></span>
 <span><span class="co">#&gt;         S1       S2 Bray.Curtis participant_id_S1 ILI_S1 participant_id_S2</span></span>
-<span><span class="co">#&gt; 1 sample_2 sample_1   0.5632802              ELD2      C              ELD1</span></span>
-<span><span class="co">#&gt; 2 sample_3 sample_1   0.5895216              ELD3      C              ELD1</span></span>
-<span><span class="co">#&gt; 3 sample_4 sample_1   0.5536219              ELD4      C              ELD1</span></span>
-<span><span class="co">#&gt; 4 sample_5 sample_1   0.6345330              ELD5     L1              ELD1</span></span>
-<span><span class="co">#&gt; 5 sample_6 sample_1   0.7358542              ELD6      C              ELD1</span></span>
-<span><span class="co">#&gt; 6 sample_7 sample_1   0.5847836              ELD7     L1              ELD1</span></span>
+<span><span class="co">#&gt; 1 sample_2 sample_1   0.5540774              ELD2      C              ELD1</span></span>
+<span><span class="co">#&gt; 2 sample_3 sample_1   0.5813212              ELD3      C              ELD1</span></span>
+<span><span class="co">#&gt; 3 sample_4 sample_1   0.5554442              ELD4      C              ELD1</span></span>
+<span><span class="co">#&gt; 4 sample_5 sample_1   0.6393622              ELD5     L1              ELD1</span></span>
+<span><span class="co">#&gt; 5 sample_6 sample_1   0.7341230              ELD6      C              ELD1</span></span>
+<span><span class="co">#&gt; 6 sample_7 sample_1   0.5966287              ELD7     L1              ELD1</span></span>
 <span><span class="co">#&gt;   ILI_S2</span></span>
 <span><span class="co">#&gt; 1      C</span></span>
 <span><span class="co">#&gt; 2      C</span></span>
@@ -414,7 +451,7 @@ metabolism</a></p>
 <p>Read <code>%&gt;%</code> as <code>and then</code><br>
 Below we use four R packages in combination to check for differences in
 ASVs between two groups.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">biomeUtils</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://microbiome.github.io/microbiome" class="external-link">microbiome</a></span><span class="op">)</span></span>
@@ -447,8 +484,8 @@ ASVs between two groups.</p>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Joining, by = c("Taxa", "Domain", "Phylum", "Class", "Order", "Family",</span></span>
 <span><span class="co">#&gt; "Genus", "Species")</span></span></code></pre></div>
-<p><img src="Introduction_files/figure-html/unnamed-chunk-12-1.png" width="1800"></p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<p><img src="Introduction_files/figure-html/unnamed-chunk-14-1.png" width="1800"></p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; R version 4.2.1 (2022-06-23 ucrt)</span></span>
 <span><span class="co">#&gt; Platform: x86_64-w64-mingw32/x64 (64-bit)</span></span>
@@ -467,7 +504,7 @@ ASVs between two groups.</p>
 <span><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; other attached packages:</span></span>
-<span><span class="co">#&gt; [1] dplyr_1.0.9       biomeUtils_0.017  microbiome_1.18.0 ggplot2_3.3.6    </span></span>
+<span><span class="co">#&gt; [1] dplyr_1.0.9       biomeUtils_0.018  microbiome_1.18.0 ggplot2_3.3.6    </span></span>
 <span><span class="co">#&gt; [5] phyloseq_1.40.0  </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>

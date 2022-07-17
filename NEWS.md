@@ -1,3 +1,7 @@
+## biomeUtils 0.018
+
+* Added `dysbiosisScore` function.  
+
 ## biomeUtils 0.017
 
 * Fixed check errors.  
