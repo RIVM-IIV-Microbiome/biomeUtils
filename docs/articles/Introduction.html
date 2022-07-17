@@ -419,9 +419,6 @@ biotechnology. (2020)</a>.</p>
 <span><span class="co">#&gt;  the random seed of your session for reproducibility.</span></span>
 <span><span class="co">#&gt; See `?set.seed`</span></span>
 <span><span class="co">#&gt; ...</span></span>
-<span><span class="co">#&gt; 1OTUs were removed because they are no longer </span></span>
-<span><span class="co">#&gt; present in any sample after random subsampling</span></span>
-<span><span class="co">#&gt; ...</span></span>
 <span><span class="va">dist.mat</span> <span class="op">&lt;-</span> <span class="fu">phyloseq</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/distance.html" class="external-link">distance</a></span><span class="op">(</span><span class="va">ps</span>, <span class="st">"bray"</span><span class="op">)</span></span>
 <span><span class="va">dist.melt.sample</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/meltDistanceToTable.html">meltDistanceToTable</a></span><span class="op">(</span><span class="va">ps</span>,</span>
 <span>                                        dist_mat <span class="op">=</span> <span class="va">dist.mat</span>,</span>
@@ -429,12 +426,12 @@ biotechnology. (2020)</a>.</p>
 <span>                                        select_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"participant_id"</span>, <span class="st">"ILI"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">dist.melt.sample</span><span class="op">)</span></span>
 <span><span class="co">#&gt;         S1       S2 Bray.Curtis participant_id_S1 ILI_S1 participant_id_S2</span></span>
-<span><span class="co">#&gt; 1 sample_2 sample_1   0.5540774              ELD2      C              ELD1</span></span>
-<span><span class="co">#&gt; 2 sample_3 sample_1   0.5813212              ELD3      C              ELD1</span></span>
-<span><span class="co">#&gt; 3 sample_4 sample_1   0.5554442              ELD4      C              ELD1</span></span>
-<span><span class="co">#&gt; 4 sample_5 sample_1   0.6393622              ELD5     L1              ELD1</span></span>
-<span><span class="co">#&gt; 5 sample_6 sample_1   0.7341230              ELD6      C              ELD1</span></span>
-<span><span class="co">#&gt; 6 sample_7 sample_1   0.5966287              ELD7     L1              ELD1</span></span>
+<span><span class="co">#&gt; 1 sample_2 sample_1   0.5546241              ELD2      C              ELD1</span></span>
+<span><span class="co">#&gt; 2 sample_3 sample_1   0.5832346              ELD3      C              ELD1</span></span>
+<span><span class="co">#&gt; 3 sample_4 sample_1   0.5552620              ELD4      C              ELD1</span></span>
+<span><span class="co">#&gt; 4 sample_5 sample_1   0.6336219              ELD5     L1              ELD1</span></span>
+<span><span class="co">#&gt; 5 sample_6 sample_1   0.7368565              ELD6      C              ELD1</span></span>
+<span><span class="co">#&gt; 6 sample_7 sample_1   0.5859681              ELD7     L1              ELD1</span></span>
 <span><span class="co">#&gt;   ILI_S2</span></span>
 <span><span class="co">#&gt; 1      C</span></span>
 <span><span class="co">#&gt; 2      C</span></span>

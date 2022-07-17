@@ -19,7 +19,7 @@
 #'
 #' \item{'BC-ED' }{The Euclidian distance between test sample and the centroid (median)
 #' of PCoA Axis 1 and 2 (based on Bray-Curtis dissimilarity) of the reference
-#' samples. (Mahapatra S et al 1992)}
+#' samples. (Mahapatra S et al 2021)}
 #'
 #' }
 #'
