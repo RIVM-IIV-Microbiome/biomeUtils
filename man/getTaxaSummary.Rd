@@ -27,5 +27,14 @@ x <- subset_samples(SprockettTHData,
                     Delivery_Mode=="Vaginal" & Cohort == "Tsimane")
 x <- removeZeros(x)
 getTaxaSummary(x, rank="Phylum")
-
+}
+\references{
+Shetty SA (2020). Utilities for microbiome analytics.
+\url{https://github.com/RIVM-IIV-Microbiome/biomeUtils}
+}
+\seealso{
+getTaxaSummary
+}
+\author{
+Sudarshan A. Shetty
 }

@@ -18,6 +18,13 @@
 #'                     Delivery_Mode=="Vaginal" & Cohort == "Tsimane")
 #' x <- removeZeros(x)
 #' getTaxaSummary(x, rank="Phylum")
+#' @author Sudarshan A. Shetty
+#'
+#' @seealso getTaxaSummary
+#'
+#' @references
+#' Shetty SA (2020). Utilities for microbiome analytics.
+#' \url{https://github.com/RIVM-IIV-Microbiome/biomeUtils}
 #'
 #' @importFrom data.table as.data.table melt
 #' @importFrom dplyr left_join group_by ungroup mutate arrange desc summarise
