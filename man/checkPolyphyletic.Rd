@@ -3,9 +3,6 @@
 \name{checkPolyphyletic}
 \alias{checkPolyphyletic}
 \title{Check for Polyphyletic Taxa}
-\usage{
-checkPolyphyletic(x, taxa_level = "Genus", return_df = TRUE)
-}
 \arguments{
 \item{x}{\code{phyloseq} object}
 

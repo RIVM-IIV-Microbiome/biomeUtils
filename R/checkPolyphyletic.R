@@ -30,7 +30,7 @@
 #' @importFrom dplyr select distinct group_by_at count %>% vars
 #' @importFrom rlang sym
 #' @export
-
+NULL
 checkPolyphyletic <- function(x,
                               taxa_level = "Genus",
                               return_df = TRUE){

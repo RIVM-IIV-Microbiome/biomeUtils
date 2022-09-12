@@ -1,3 +1,9 @@
+
+## biomeUtils 0.019
+
+* Added `getYCTheta` function.  
+* Fixed typo `dysbiosisScore` function.  
+
 ## biomeUtils 0.018
 
 * Added `dysbiosisScore` function.  

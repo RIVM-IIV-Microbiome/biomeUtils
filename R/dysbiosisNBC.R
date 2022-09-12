@@ -72,7 +72,7 @@ dysbiosisScore <- function(x,
   S1 <- S2 <- n <- dysbiosis.score <- value <- pcoa.tab <- dys.tib <- NULL
   dist.melt.sample <- sam_tib <- centroids <- hold <- NULL
   cent.1 <- cent.2 <- a.two <- a.one <- is.dysbiotic <- NULL
-  Axis.1 <- Axis.2 <- S2 <- dysbiosis.socre <- NULL
+  Axis.1 <- Axis.2 <- S2 <- dysbiosis.score <- NULL
 
   if(method=="median-BC"){
 
@@ -89,7 +89,7 @@ dysbiosisScore <- function(x,
     dys.tib <- dist.melt.sample |>
       dplyr::filter(S1 %in% reference_samples) |>
       dplyr::group_by(S2) |>
-      dplyr::summarise(dysbiosis.socre =median(value))
+      dplyr::summarise(dysbiosis.score =median(value))
 
     sam_tib <- getSampleTibble(x)
 
@@ -111,7 +111,7 @@ dysbiosisScore <- function(x,
     pcoa.tab <- pcoa.tab |>
       dplyr::mutate(a.one = (Axis.1 - centroids[[1]]),
                     a.two = (Axis.2 - centroids[[2]])) |>
-      dplyr::mutate(dysbiosis.socre = sqrt((a.one)^2 + (a.two)^2)) |>
+      dplyr::mutate(dysbiosis.score = sqrt((a.one)^2 + (a.two)^2)) |>
       dplyr::select(-c(a.one, a.two))
     return(pcoa.tab)
   }
@@ -121,12 +121,12 @@ dysbiosisScore <- function(x,
 # Helper classification
 #' @importFrom stats quantile
 .is_dysbiotic <- function(dys.tib, reference_samples, percentile=.90){
-  is.dysbiotic <- S2 <- dysbiosis.socre <- NULL
+  is.dysbiotic <- S2 <- dysbiosis.score <- NULL
   ref.dys <- dys.tib |>
     dplyr::filter(S2 %in% reference_samples) |>
-    dplyr::pull(dysbiosis.socre)
+    dplyr::pull(dysbiosis.score)
   dys.tib <- dys.tib |>
-    dplyr::mutate(is.dysbiotic = ifelse(dysbiosis.socre >= quantile(ref.dys,probs = percentile),
+    dplyr::mutate(is.dysbiotic = ifelse(dysbiosis.score >= quantile(ref.dys,probs = percentile),
                                         "yes", "no"))
 }
 
