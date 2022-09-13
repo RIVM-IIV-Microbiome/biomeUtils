@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">biomeUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.018</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.019</span>
       </span>
     </div>
 
@@ -107,7 +107,20 @@ of phyloseq object.</p></dd>
 <span class="r-in"><span><span class="fu"><a href="transformation.html">getProportions</a></span><span class="op">(</span><span class="va">FuentesIliGutData</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>   <span class="fu"><a href="filterPhyloseq.html">filterSampleData</a></span><span class="op">(</span><span class="va">ILI</span> <span class="op">==</span> <span class="st">"C"</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>   <span class="fu">getTaxaOverview</span><span class="op">(</span>rank<span class="op">=</span><span class="st">"Phylum"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in getTaxaOverview(filterSampleData(getProportions(FuentesIliGutData),     ILI == "C"), rank = "Phylum"):</span> could not find function "getTaxaOverview"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 10 × 9</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    taxa         mean_abund median_abund min_abund max_abund stdev_abund cv_abund</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Firmicutes    0.783          0.803   0.360       0.976      0.110       0.140</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Bacteroidet…  0.142          0.125   0.001<span style="text-decoration: underline;">42</span>     0.624      0.100       0.706</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Verrucomicr…  0.021<span style="text-decoration: underline;">6</span>         0.001<span style="text-decoration: underline;">77</span> 0           0.425      0.052<span style="text-decoration: underline;">4</span>      2.43 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Actinobacte…  0.020<span style="text-decoration: underline;">7</span>         0.009<span style="text-decoration: underline;">55</span> 0.000<span style="text-decoration: underline;">053</span>4   0.189      0.029<span style="text-decoration: underline;">1</span>      1.40 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Proteobacte…  0.015<span style="text-decoration: underline;">7</span>         0.006<span style="text-decoration: underline;">09</span> 0.000<span style="text-decoration: underline;">027</span>8   0.380      0.036<span style="text-decoration: underline;">9</span>      2.35 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Euryarchaeo…  0.015<span style="text-decoration: underline;">2</span>         0.002<span style="text-decoration: underline;">37</span> 0           0.168      0.026<span style="text-decoration: underline;">8</span>      1.76 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Tenericutes   0.001<span style="text-decoration: underline;">35</span>        0       0           0.038<span style="text-decoration: underline;">3</span>     0.004<span style="text-decoration: underline;">13</span>     3.06 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Lentisphaer…  0.000<span style="text-decoration: underline;">131</span>       0       0           0.005<span style="text-decoration: underline;">41</span>    0.000<span style="text-decoration: underline;">507</span>    3.87 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Cyanobacter…  0.000<span style="text-decoration: underline;">126</span>       0       0           0.004<span style="text-decoration: underline;">81</span>    0.000<span style="text-decoration: underline;">490</span>    3.90 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Synergistet…  0.000<span style="text-decoration: underline;">056</span>9      0       0           0.003<span style="text-decoration: underline;">18</span>    0.000<span style="text-decoration: underline;">343</span>    6.04 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 2 more variables: dectected_samples &lt;dbl&gt;, prevalence &lt;dbl&gt;</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

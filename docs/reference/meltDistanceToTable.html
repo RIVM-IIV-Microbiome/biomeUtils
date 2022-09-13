@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">biomeUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.018</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.019</span>
       </span>
     </div>
 
@@ -112,6 +112,9 @@ to be included in the output.</p></dd>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>  the random seed of your session for reproducibility.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> See `?set.seed`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> ...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 1OTUs were removed because they are no longer </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> present in any sample after random subsampling</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ...</span>
 <span class="r-in"><span><span class="va">dist.mat</span> <span class="op">&lt;-</span> <span class="fu">phyloseq</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/distance.html" class="external-link">distance</a></span><span class="op">(</span><span class="va">ps</span>, <span class="st">"bray"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">dist.melt.sample</span> <span class="op">&lt;-</span> <span class="fu">meltDistanceToTable</span><span class="op">(</span><span class="va">ps</span>,</span></span>
 <span class="r-in"><span>                                        dist_mat <span class="op">=</span> <span class="va">dist.mat</span>,</span></span>
@@ -119,12 +122,12 @@ to be included in the output.</p></dd>
 <span class="r-in"><span>                                        select_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"participant_id"</span>, <span class="st">"ILI"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">dist.melt.sample</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         S1       S2 Bray.Curtis participant_id_S1 ILI_S1 participant_id_S2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 sample_2 sample_1   0.5524374              ELD2      C              ELD1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 sample_3 sample_1   0.5824146              ELD3      C              ELD1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 sample_4 sample_1   0.5471526              ELD4      C              ELD1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 sample_5 sample_1   0.6278815              ELD5     L1              ELD1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 sample_6 sample_1   0.7392255              ELD6      C              ELD1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 sample_7 sample_1   0.5824146              ELD7     L1              ELD1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 sample_2 sample_1   0.5548064              ELD2      C              ELD1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 sample_3 sample_1   0.5776765              ELD3      C              ELD1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 sample_4 sample_1   0.5489749              ELD4      C              ELD1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 sample_5 sample_1   0.6342597              ELD5     L1              ELD1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 sample_6 sample_1   0.7386788              ELD6      C              ELD1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 sample_7 sample_1   0.5899772              ELD7     L1              ELD1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ILI_S2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1      C</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2      C</span>

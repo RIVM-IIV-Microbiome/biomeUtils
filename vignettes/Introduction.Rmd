@@ -201,10 +201,11 @@ Visualize the score in ILI (L1) and Control group.
 ```{r fig.width=3, fig.height=3}
 dys_bc |> 
   ggplot(aes(ILI, dysbiosis.score)) +
-  geom_violin() +
-  geom_boxplot(width=0.2) +
+  geom_violin(aes(fill=ILI), show.legend = FALSE) +
+  geom_boxplot(width=0.2,aes(fill=ILI)) +
   theme_bw() +
-  labs(x="", y="Dysbiosis Score")
+  labs(x="", y="Dysbiosis Score") +
+  scale_fill_manual(values=c("#415289","#c3377b"))
 ```
 
 

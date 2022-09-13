@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">biomeUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.018</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.019</span>
       </span>
     </div>
 
@@ -362,11 +362,12 @@ biotechnology. (2020)</a>.</p>
 <p>Visualize the score in ILI (L1) and Control group.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dys_bc</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">ILI</span>, <span class="va">dysbiosis.socre</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html" class="external-link">geom_violin</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html" class="external-link">geom_boxplot</a></span><span class="op">(</span>width<span class="op">=</span><span class="fl">0.2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">ILI</span>, <span class="va">dysbiosis.score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html" class="external-link">geom_violin</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>fill<span class="op">=</span><span class="va">ILI</span><span class="op">)</span>, show.legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html" class="external-link">geom_boxplot</a></span><span class="op">(</span>width<span class="op">=</span><span class="fl">0.2</span>,<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>fill<span class="op">=</span><span class="va">ILI</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>x<span class="op">=</span><span class="st">""</span>, y<span class="op">=</span><span class="st">"Dysbiosis Score"</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>x<span class="op">=</span><span class="st">""</span>, y<span class="op">=</span><span class="st">"Dysbiosis Score"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_fill_manual</a></span><span class="op">(</span>values<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#415289"</span>,<span class="st">"#c3377b"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="Introduction_files/figure-html/unnamed-chunk-11-1.png" width="900"></p>
 </div>
 <div class="section level4">
@@ -419,6 +420,9 @@ biotechnology. (2020)</a>.</p>
 <span><span class="co">#&gt;  the random seed of your session for reproducibility.</span></span>
 <span><span class="co">#&gt; See `?set.seed`</span></span>
 <span><span class="co">#&gt; ...</span></span>
+<span><span class="co">#&gt; 1OTUs were removed because they are no longer </span></span>
+<span><span class="co">#&gt; present in any sample after random subsampling</span></span>
+<span><span class="co">#&gt; ...</span></span>
 <span><span class="va">dist.mat</span> <span class="op">&lt;-</span> <span class="fu">phyloseq</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/distance.html" class="external-link">distance</a></span><span class="op">(</span><span class="va">ps</span>, <span class="st">"bray"</span><span class="op">)</span></span>
 <span><span class="va">dist.melt.sample</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/meltDistanceToTable.html">meltDistanceToTable</a></span><span class="op">(</span><span class="va">ps</span>,</span>
 <span>                                        dist_mat <span class="op">=</span> <span class="va">dist.mat</span>,</span>
@@ -426,12 +430,12 @@ biotechnology. (2020)</a>.</p>
 <span>                                        select_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"participant_id"</span>, <span class="st">"ILI"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">dist.melt.sample</span><span class="op">)</span></span>
 <span><span class="co">#&gt;         S1       S2 Bray.Curtis participant_id_S1 ILI_S1 participant_id_S2</span></span>
-<span><span class="co">#&gt; 1 sample_2 sample_1   0.5611845              ELD2      C              ELD1</span></span>
-<span><span class="co">#&gt; 2 sample_3 sample_1   0.5809567              ELD3      C              ELD1</span></span>
-<span><span class="co">#&gt; 3 sample_4 sample_1   0.5461503              ELD4      C              ELD1</span></span>
-<span><span class="co">#&gt; 4 sample_5 sample_1   0.6389977              ELD5     L1              ELD1</span></span>
-<span><span class="co">#&gt; 5 sample_6 sample_1   0.7315718              ELD6      C              ELD1</span></span>
-<span><span class="co">#&gt; 6 sample_7 sample_1   0.5860592              ELD7     L1              ELD1</span></span>
+<span><span class="co">#&gt; 1 sample_2 sample_1   0.5536219              ELD2      C              ELD1</span></span>
+<span><span class="co">#&gt; 2 sample_3 sample_1   0.5884282              ELD3      C              ELD1</span></span>
+<span><span class="co">#&gt; 3 sample_4 sample_1   0.5476993              ELD4      C              ELD1</span></span>
+<span><span class="co">#&gt; 4 sample_5 sample_1   0.6382688              ELD5     L1              ELD1</span></span>
+<span><span class="co">#&gt; 5 sample_6 sample_1   0.7372210              ELD6      C              ELD1</span></span>
+<span><span class="co">#&gt; 6 sample_7 sample_1   0.5911617              ELD7     L1              ELD1</span></span>
 <span><span class="co">#&gt;   ILI_S2</span></span>
 <span><span class="co">#&gt; 1      C</span></span>
 <span><span class="co">#&gt; 2      C</span></span>
@@ -501,7 +505,7 @@ ASVs between two groups.</p>
 <span><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; other attached packages:</span></span>
-<span><span class="co">#&gt; [1] dplyr_1.0.9       biomeUtils_0.018  microbiome_1.18.0 ggplot2_3.3.6    </span></span>
+<span><span class="co">#&gt; [1] dplyr_1.0.9       biomeUtils_0.019  microbiome_1.18.0 ggplot2_3.3.6    </span></span>
 <span><span class="co">#&gt; [5] phyloseq_1.40.0  </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
