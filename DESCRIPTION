@@ -1,7 +1,7 @@
 Package: biomeUtils
 Type: Package
 Title: Utilities for microbiome analytics
-Version: 0.019
+Version: 0.020
 Authors@R: 
     c(person(given = "Sudarshan", family = "Shetty", role = c("aut", "cre"),
              email = "sudarshanshetty9@gmail.com",
@@ -42,5 +42,5 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.1
 BugReports: https://github.com/RIVM-IIV-Microbiome/biomeUtils/issues

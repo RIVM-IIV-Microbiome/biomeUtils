@@ -1,4 +1,8 @@
 
+## biomeUtils 0.020
+
+* Added `cloudStatistic` function.   
+
 ## biomeUtils 0.019
 
 * Added `getYCTheta` function.  
