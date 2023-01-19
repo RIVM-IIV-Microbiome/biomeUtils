@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">biomeUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.019</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.021</span>
       </span>
     </div>
 
@@ -110,7 +110,7 @@
 <span class="r-in"><span><span class="va">qc_Data</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $SampleQC</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 589 × 4</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    Samples   sample_total_taxa sample_total_reads number_taxa_account_fifty_per…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Samples   sample_total_taxa sample_total_reads number_taxa_account_fifty_pe…¹</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>                          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> sample_1                259              <span style="text-decoration: underline;">15</span>237                             11</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> sample_2                291              <span style="text-decoration: underline;">18</span>970                             16</span>
@@ -122,24 +122,26 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> sample_8                273              <span style="text-decoration: underline;">22</span>730                             15</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> sample_9                279              <span style="text-decoration: underline;">22</span>706                             15</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> sample_10               219              <span style="text-decoration: underline;">15</span>521                              9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 579 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 579 more rows, and abbreviated variable name</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ¹​number_taxa_account_fifty_percent</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $TaxaQC</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 905 × 9</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    taxa    taxa_counts taxa_mean_counts taxa_stdev_counts taxa_cv taxa_rank</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> ASV302        <span style="text-decoration: underline;">13</span>913           23.6               47.3     2.00     648  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> ASV636         <span style="text-decoration: underline;">4</span>063            6.90              27.4     3.97     462  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> ASV500         <span style="text-decoration: underline;">6</span>223           10.6               45.0     4.26     535  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> ASV7         <span style="text-decoration: underline;">784</span>128         <span style="text-decoration: underline;">1</span>331.              <span style="text-decoration: underline;">1</span>652.      1.24     899  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> ASV2617         311            0.528              1.50    2.84      45  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> ASV148        <span style="text-decoration: underline;">40</span>396           68.6              224.      3.26     765  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> ASV196        <span style="text-decoration: underline;">24</span>796           42.1              137.      3.26     724  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> ASV2699         294            0.499              1.81    3.63      40.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> ASV109        <span style="text-decoration: underline;">60</span>088          102.               303.      2.97     798  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> ASV1472         907            1.54               3.62    2.35     229  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 895 more rows, and 3 more variables: taxa_dectected_samples &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   taxa_prevalence &lt;dbl&gt;, percent_of_total &lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    taxa    taxa_counts taxa_me…¹ taxa_…² taxa_cv taxa_…³ taxa_…⁴ taxa_…⁵ perce…⁶</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> ASV302        <span style="text-decoration: underline;">13</span>913    23.6     47.3     2.00   648       504    85.6 4.44<span style="color: #949494;">e</span><span style="color: #BB0000;">-2</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> ASV636         <span style="text-decoration: underline;">4</span>063     6.90    27.4     3.97   462       112    19.0 1.30<span style="color: #949494;">e</span><span style="color: #BB0000;">-2</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> ASV500         <span style="text-decoration: underline;">6</span>223    10.6     45.0     4.26   535       227    38.5 1.98<span style="color: #949494;">e</span><span style="color: #BB0000;">-2</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> ASV7         <span style="text-decoration: underline;">784</span>128  <span style="text-decoration: underline;">1</span>331.    <span style="text-decoration: underline;">1</span>652.      1.24   899       578    98.1 2.50<span style="color: #949494;">e</span>+0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> ASV2617         311     0.528    1.50    2.84    45       117    19.9 9.92<span style="color: #949494;">e</span><span style="color: #BB0000;">-4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> ASV148        <span style="text-decoration: underline;">40</span>396    68.6    224.      3.26   765       189    32.1 1.29<span style="color: #949494;">e</span><span style="color: #BB0000;">-1</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> ASV196        <span style="text-decoration: underline;">24</span>796    42.1    137.      3.26   724       248    42.1 7.91<span style="color: #949494;">e</span><span style="color: #BB0000;">-2</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> ASV2699         294     0.499    1.81    3.63    40.5      68    11.5 9.38<span style="color: #949494;">e</span><span style="color: #BB0000;">-4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> ASV109        <span style="text-decoration: underline;">60</span>088   102.     303.      2.97   798       454    77.1 1.92<span style="color: #949494;">e</span><span style="color: #BB0000;">-1</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> ASV1472         907     1.54     3.62    2.35   229       197    33.4 2.89<span style="color: #949494;">e</span><span style="color: #BB0000;">-3</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 895 more rows, and abbreviated variable names ¹​taxa_mean_counts,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ²​taxa_stdev_counts, ³​taxa_rank, ⁴​taxa_dectected_samples, ⁵​taxa_prevalence,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ⁶​percent_of_total</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
@@ -156,7 +158,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

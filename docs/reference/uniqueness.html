@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">biomeUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.019</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.021</span>
       </span>
     </div>
 
@@ -125,21 +125,21 @@ healthy ageing and predicts survival in humans.
 <span class="r-in"><span>                    reference_samples <span class="op">=</span> <span class="va">ref_samples</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">muniq</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 63</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   S2     uniqueness Duplo..1.2. QPCR..fg.ul. Run.nr Reads.after.pip… sex     age</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> sampl…      0.428           1     45<span style="text-decoration: underline;">700</span>000 272               <span style="text-decoration: underline;">14</span>826 M        72</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> sampl…      0.450           1     75<span style="text-decoration: underline;">100</span>000 272               <span style="text-decoration: underline;">13</span>754 F        68</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> sampl…      0.502           1     27<span style="text-decoration: underline;">800</span>000 273               <span style="text-decoration: underline;">47</span>863 M        70</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> sampl…      0.474           1      4<span style="text-decoration: underline;">300</span>000 273               <span style="text-decoration: underline;">38</span>995 M        78</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> sampl…      0.597           1      3<span style="text-decoration: underline;">690</span>000 273               <span style="text-decoration: underline;">22</span>720 M        72</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> sampl…      0.627           1     22<span style="text-decoration: underline;">200</span>000 273               <span style="text-decoration: underline;">25</span>059 F        61</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 55 more variables: ILI &lt;fct&gt;, BMI &lt;dbl&gt;, flu.vaccine &lt;fct&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   respiratory.disease &lt;fct&gt;, cardiovascular.disease &lt;fct&gt;, diabetes &lt;fct&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   renal.disease &lt;fct&gt;, transplant &lt;fct&gt;, autoimmune.disease &lt;fct&gt;, hiv &lt;fct&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   asplenia &lt;fct&gt;, leukemia &lt;fct&gt;, lymphatic.cancer &lt;fct&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   other.malignancies &lt;fct&gt;, smoking &lt;fct&gt;, passive.smoking &lt;fct&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   statins &lt;fct&gt;, ACE.inhibitor &lt;fct&gt;, PPI &lt;fct&gt;, alphabeta.blocker &lt;fct&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   antimicrobial &lt;fct&gt;, ARB &lt;fct&gt;, insuline &lt;fct&gt;, corticosteroids &lt;fct&gt;, …</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   S2      uniqu…¹ Duplo…² QPCR.…³ Run.nr Reads…⁴ sex     age ILI     BMI flu.v…⁵</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> sample…   0.428       1  4.57<span style="color: #949494;">e</span>7 272      <span style="text-decoration: underline;">14</span>826 M        72 C        28 Y      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> sample…   0.450       1  7.51<span style="color: #949494;">e</span>7 272      <span style="text-decoration: underline;">13</span>754 F        68 L1       27 Y      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> sample…   0.502       1  2.78<span style="color: #949494;">e</span>7 273      <span style="text-decoration: underline;">47</span>863 M        70 C        28 Y      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> sample…   0.474       1  4.3 <span style="color: #949494;">e</span>6 273      <span style="text-decoration: underline;">38</span>995 M        78 L1       29 Y      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> sample…   0.597       1  3.69<span style="color: #949494;">e</span>6 273      <span style="text-decoration: underline;">22</span>720 M        72 L1       32 Y      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> sample…   0.627       1  2.22<span style="color: #949494;">e</span>7 273      <span style="text-decoration: underline;">25</span>059 F        61 L1       23 N      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 52 more variables: respiratory.disease &lt;fct&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   cardiovascular.disease &lt;fct&gt;, diabetes &lt;fct&gt;, renal.disease &lt;fct&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   transplant &lt;fct&gt;, autoimmune.disease &lt;fct&gt;, hiv &lt;fct&gt;, asplenia &lt;fct&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   leukemia &lt;fct&gt;, lymphatic.cancer &lt;fct&gt;, other.malignancies &lt;fct&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   smoking &lt;fct&gt;, passive.smoking &lt;fct&gt;, statins &lt;fct&gt;, ACE.inhibitor &lt;fct&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   PPI &lt;fct&gt;, alphabeta.blocker &lt;fct&gt;, antimicrobial &lt;fct&gt;, ARB &lt;fct&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   insuline &lt;fct&gt;, corticosteroids &lt;fct&gt;, antiepileptic &lt;fct&gt;, …</span></span>
 </code></pre></div>
     </div>
   </div>
@@ -154,7 +154,7 @@ healthy ageing and predicts survival in humans.
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

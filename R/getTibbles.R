@@ -151,7 +151,10 @@ getSampleTibble <- function(x,
 
 
   if (!column_id_nw == column_id) {
+    # tib_dat <- tib_dat %>%
+    #   select(-column_id_nw)
     tib_dat <- tib_dat %>%
+      select(c(column_id,cols)) %>%
       select(-column_id_nw)
   }
   return(tib_dat)
@@ -252,7 +255,7 @@ getSampleTibble <- function(x,
 
     column_id_nw <- paste0(column_id,"XX")
     #message(paste0(column_id, "is already present, hence creating a
-     #              new column variable", column_id_nw))
+    #              new column variable", column_id_nw))
     return(column_id_nw)
   }
 

@@ -1,3 +1,8 @@
+## biomeUtils 0.020
+
+* Remove `cloudStatistic` function.   
+* Remove `dysbiosisScore` function.   
+* Fix `getSampleTibble` function when `SampleID` is present in sample_data().   
 
 ## biomeUtils 0.020
 
