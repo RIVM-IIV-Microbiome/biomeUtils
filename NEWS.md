@@ -1,3 +1,7 @@
+## biomeUtils 0.022
+
+* Remove `clusterASVs` function, changes to DECIPHER led to failure.   
+
 ## biomeUtils 0.020
 
 * Remove `cloudStatistic` function.   
